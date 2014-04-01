@@ -1,0 +1,134 @@
+package 
+
+public/*package*/ /*synthesized*/ fun JSuper1(/*0*/ function: (kotlin.Int) -> kotlin.Unit): JSuper1
+public/*package*/ /*synthesized*/ fun JSuper2(/*0*/ function: (kotlin.Int) -> kotlin.Unit): JSuper2
+
+public/*package*/ trait JSuper1 : java.lang.Object {
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public abstract fun foo(/*0*/ jsuper1Name: kotlin.Int): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+public/*package*/ trait JSuper2 : java.lang.Object {
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public abstract fun foo(/*0*/ jsuper2Name: kotlin.Int): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+internal trait KSuper {
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    internal abstract fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String
+}
+
+public/*package*/ trait Sub1 : KSuper, JSuper1, JSuper2 {
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*3*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    java.lang.Override() public abstract override /*3*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*3*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*2*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*3*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*2*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+public/*package*/ trait Sub2 : JSuper1, KSuper, JSuper2 {
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*3*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    java.lang.Override() public abstract override /*3*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*3*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*2*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*3*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*2*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+public/*package*/ trait Sub3 : JSuper1, JSuper2, KSuper {
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*3*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*2*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    java.lang.Override() public abstract override /*3*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*3*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*2*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*3*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*2*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*2*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+internal final class SubSub1 : Sub1 {
+    public constructor SubSub1()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public open override /*1*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+internal final class SubSub2 : Sub2 {
+    public constructor SubSub2()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public open override /*1*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+internal final class SubSub3 : Sub3 {
+    public constructor SubSub3()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public open override /*1*/ fun foo(/*0*/ ksuperName: kotlin.Int): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}

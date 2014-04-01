@@ -1,0 +1,60 @@
+package 
+
+package a {
+    internal val mc: a.MyJavaClass
+    internal val x: kotlin.Int
+    internal val y: kotlin.Int
+    internal val z: a.MyJavaClass.NestedClass
+    
+    public/*package*/ open class MyJavaClass : java.lang.Object {
+        public/*package*/ constructor MyJavaClass()
+        protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+        public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+        protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+        public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+        public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+        public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+        public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+        public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+        public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+        public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+        public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+        
+        public/*package*/ open class NestedClass : java.lang.Object {
+            public/*package*/ constructor NestedClass()
+            protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+            public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+            protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+            public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+            public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+            public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+            public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+            public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+            public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+            public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+            public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+        }
+    }
+    
+    package a.MyJavaClass {
+        public/*package*/ open fun staticMethod(): kotlin.Int
+        
+        package a.MyJavaClass.NestedClass {
+            public/*package*/ open fun staticMethodOfNested(): kotlin.Int
+        }
+    }
+    
+    package a.c {
+        internal val mc1: a.MyJavaClass
+        internal val x: kotlin.Int
+        internal val y: kotlin.Int
+        internal val z: a.MyJavaClass.NestedClass
+    }
+}
+
+package b {
+    internal val mc1: a.MyJavaClass
+    internal val x: kotlin.Int
+    internal val y: kotlin.Int
+    internal val z: a.MyJavaClass.NestedClass
+}

@@ -103,6 +103,7 @@ import org.jetbrains.jet.plugin.debugger.AbstractSmartStepIntoTest
 import org.jetbrains.jet.plugin.stubs.AbstractStubBuilderTest
 import org.jetbrains.jet.plugin.codeInsight.AbstractJetInspectionTest
 import org.jetbrains.jet.plugin.debugger.AbstractKotlinSteppingTest
+import org.jetbrains.jet.lang.resolve.lazy.AbstractLazyResolveDiagnosticsTest
 
 fun main(args: Array<String>) {
     System.setProperty("java.awt.headless", "true")
@@ -113,6 +114,11 @@ fun main(args: Array<String>) {
             model("diagnostics/tests")
             model("diagnostics/tests/script", extension = "kts")
             model("codegen/box/functions/tailRecursion")
+        }
+
+        testClass(javaClass<AbstractLazyResolveDiagnosticsTest>()) {
+            model("diagnostics/tests")
+            model("diagnostics/tests/script", extension = "kts")
         }
 
         testClass(javaClass<AbstractJetDiagnosticsTestWithStdLib>()) {

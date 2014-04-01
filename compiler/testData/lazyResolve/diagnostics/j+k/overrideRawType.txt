@@ -1,0 +1,49 @@
+package 
+
+public /*synthesized*/ fun Bar(/*0*/ function: (Foo<out kotlin.CharSequence?>?) -> kotlin.Unit): Bar
+
+public trait Bar : java.lang.Object {
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    public abstract fun f(/*0*/ f: Foo<out kotlin.CharSequence?>?): kotlin.Unit
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+internal final class BarImpl : Bar {
+    public constructor BarImpl()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    public open override /*1*/ fun f(/*0*/ f: Foo<out kotlin.CharSequence?>?): kotlin.Unit
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+public open class Foo</*0*/ T : kotlin.CharSequence?> : java.lang.Object {
+    public constructor Foo</*0*/ T : kotlin.CharSequence?>()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}

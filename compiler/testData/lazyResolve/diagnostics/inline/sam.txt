@@ -1,0 +1,38 @@
+package 
+
+public /*synthesized*/ fun Run(/*0*/ function: () -> kotlin.Int): Run
+kotlin.inline() internal fun inlineFunWithInvoke(/*0*/ s: (kotlin.Int) -> kotlin.Unit, /*1*/ ext: kotlin.Int.(kotlin.Int) -> kotlin.Unit): kotlin.Unit
+kotlin.inline() internal fun inlineFunWithInvokeNonInline(/*0*/ kotlin.noinline() s: (kotlin.Int) -> kotlin.Unit, /*1*/ ext: kotlin.Int.(kotlin.Int) -> kotlin.Unit): kotlin.Unit
+kotlin.inline() internal fun (kotlin.Int) -> kotlin.Unit.inlineExt(): kotlin.Unit
+
+public trait Run : java.lang.Object {
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public abstract fun run(): kotlin.Int
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
+
+public open class Test : java.lang.Object {
+    public constructor Test()
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun clone(): kotlin.Any
+    public open override /*1*/ /*fake_override*/ fun equals(/*0*/ other: kotlin.Any?): kotlin.Boolean
+    protected/*protected and package*/ open override /*1*/ /*fake_override*/ fun finalize(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun getClass(): java.lang.Class<out kotlin.Any?>
+    public open override /*1*/ /*fake_override*/ fun hashCode(): kotlin.Int
+    public final override /*1*/ /*fake_override*/ fun notify(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun notifyAll(): kotlin.Unit
+    public final /*synthesized*/ fun test(/*0*/ r: (() -> kotlin.Int)?): kotlin.Unit
+    public open fun test(/*0*/ r: Run?): kotlin.Unit
+    public open override /*1*/ /*fake_override*/ fun toString(): kotlin.String?
+    public final override /*1*/ /*fake_override*/ fun wait(): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long): kotlin.Unit
+    public final override /*1*/ /*fake_override*/ fun wait(/*0*/ p0: kotlin.Long, /*1*/ p1: kotlin.Int): kotlin.Unit
+}
