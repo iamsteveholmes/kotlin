@@ -16,6 +16,8 @@
 
 package org.jetbrains.jet.test.util;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 import junit.framework.Assert;
 import org.jetbrains.annotations.NotNull;
@@ -67,18 +69,32 @@ public class DescriptorValidator {
     }
 
     public static class ValidationVisitor implements DeclarationDescriptorVisitor<Boolean, DiagnosticCollector> {
-        public static final ValidationVisitor FORBID_ERROR_TYPES = new ValidationVisitor(false);
-        public static final ValidationVisitor ALLOW_ERROR_TYPES = new ValidationVisitor(true);
+        public static final ValidationVisitor FORBID_ERROR_TYPES = forbidErrorTypes(Predicates.<DeclarationDescriptor>alwaysTrue());
+        public static final ValidationVisitor ALLOW_ERROR_TYPES = allowErrorTypes(Predicates.<DeclarationDescriptor>alwaysTrue());
 
-        private final boolean allowErrorTypes;
-
-        private ValidationVisitor(boolean allowErrorTypes) {
-            this.allowErrorTypes = allowErrorTypes;
+        @NotNull
+        public static ValidationVisitor forbidErrorTypes(@NotNull Predicate<DeclarationDescriptor> filter) {
+            return new ValidationVisitor(false, filter);
         }
 
-        private static void validateScope(@NotNull JetScope scope, @NotNull DiagnosticCollector collector) {
+        @NotNull
+        public static ValidationVisitor allowErrorTypes(@NotNull Predicate<DeclarationDescriptor> filter) {
+            return new ValidationVisitor(true, filter);
+        }
+
+        private final boolean allowErrorTypes;
+        private final Predicate<DeclarationDescriptor> filter;
+
+        private ValidationVisitor(boolean allowErrorTypes, @NotNull Predicate<DeclarationDescriptor> filter) {
+            this.allowErrorTypes = allowErrorTypes;
+            this.filter = filter;
+        }
+
+        private void validateScope(@NotNull JetScope scope, @NotNull DiagnosticCollector collector) {
             for (DeclarationDescriptor descriptor : scope.getAllDescriptors()) {
-                descriptor.accept(new ScopeValidatorVisitor(collector), scope);
+                if (filter.apply(descriptor)) {
+                    descriptor.accept(new ScopeValidatorVisitor(collector), scope);
+                }
             }
         }
 

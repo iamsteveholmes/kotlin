@@ -20,11 +20,13 @@ import com.google.common.base.Predicate;
 import com.intellij.openapi.util.io.FileUtil;
 import org.jetbrains.jet.JetTestUtils;
 import org.jetbrains.jet.checkers.BaseDiagnosticsTest;
+import org.jetbrains.jet.lang.descriptors.DeclarationDescriptor;
 import org.jetbrains.jet.lang.descriptors.ModuleDescriptor;
 import org.jetbrains.jet.lang.descriptors.PackageViewDescriptor;
 import org.jetbrains.jet.lang.psi.JetFile;
 import org.jetbrains.jet.lang.resolve.name.FqName;
 import org.jetbrains.jet.lang.resolve.name.Name;
+import org.jetbrains.jet.test.util.DescriptorValidator;
 
 import java.io.File;
 import java.util.List;
@@ -53,18 +55,37 @@ public abstract class AbstractLazyResolveDiagnosticsTest extends BaseDiagnostics
         // Only recurse into those packages mentioned in the files
         // Otherwise we'll be examining the whole JDK
         final Set<Name> names = LazyResolveTestUtil.getTopLevelPackagesFromFileList(jetFiles);
+        //compareDescriptors(
+        final Predicate<FqName> fqNameFilter = new Predicate<FqName>() {
+            @Override
+            public boolean apply(FqName fqName) {
+                if (fqName.isRoot()) return true;
+                if (fqName.parent().isRoot()) {
+                    return names.contains(fqName.shortName());
+                }
+                return true;
+            }
+        };
         validateAndCompareDescriptors(
-                expected, actual,
-                RECURSIVE.filterRecursion(new Predicate<FqName>() {
-                    @Override
-                    public boolean apply(FqName fqName) {
-                        if (fqName.isRoot()) return true;
-                        if (fqName.parent().isRoot()) {
-                            return names.contains(fqName.shortName());
-                        }
-                        return true;
-                    }
-                }),
-                txtFile);
+                expected, expected,
+                RECURSIVE.filterRecursion(fqNameFilter).withValidationStrategy(
+                        DescriptorValidator.ValidationVisitor.allowErrorTypes(
+                                new Predicate<DeclarationDescriptor>() {
+                                    @Override
+                                    public boolean apply(DeclarationDescriptor input) {
+                                        if (input instanceof PackageViewDescriptor) {
+                                            PackageViewDescriptor descriptor = (PackageViewDescriptor) input;
+                                            FqName fqName = descriptor.getFqName();
+                                            System.out.println(fqName);
+
+                                            return fqNameFilter.apply(fqName);
+                                        }
+                                        return true;
+                                    }
+                                }
+                        )
+                ),
+                txtFile
+        );
     }
 }
