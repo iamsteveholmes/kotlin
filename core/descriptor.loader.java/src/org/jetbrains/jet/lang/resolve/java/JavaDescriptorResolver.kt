@@ -16,7 +16,6 @@
 
 package org.jetbrains.jet.lang.resolve.java
 
-import org.jetbrains.annotations.Nullable
 import org.jetbrains.jet.lang.descriptors.ClassDescriptor
 import org.jetbrains.jet.lang.descriptors.ModuleDescriptor
 import org.jetbrains.jet.lang.descriptors.PackageFragmentDescriptor
@@ -26,6 +25,13 @@ import org.jetbrains.jet.lang.resolve.java.structure.JavaClass
 import org.jetbrains.jet.lang.resolve.name.FqName
 import org.jetbrains.jet.lang.resolve.name.Name
 import org.jetbrains.jet.lang.types.DependencyClassByQualifiedNameResolver
+import org.jetbrains.jet.lang.resolve.java.structure.JavaMethod
+import org.jetbrains.jet.lang.descriptors.FunctionDescriptor
+import org.jetbrains.jet.lang.resolve.scopes.JetScope
+import org.jetbrains.jet.lang.resolve.java.descriptor.JavaDeclarationDescriptor
+import org.jetbrains.jet.lang.resolve.java.structure.JavaField
+import org.jetbrains.jet.lang.resolve.java.structure.JavaMember
+import org.jetbrains.jet.lang.descriptors.PropertyDescriptor
 
 public class JavaDescriptorResolver(
         private val _packageFragmentProvider: LazyJavaPackageFragmentProvider,
@@ -45,4 +51,31 @@ public class JavaDescriptorResolver(
     public fun getPackageFragment(fqName: FqName): PackageFragmentDescriptor? = _packageFragmentProvider.getPackageFragment(fqName)
 
     public fun getPackageFragment(javaClass: JavaClass): PackageFragmentDescriptor? = _packageFragmentProvider.getPackageFragment(javaClass)
+}
+
+public fun JavaDescriptorResolver.resolveMethod(method: JavaMethod): FunctionDescriptor? {
+    val functions = if (method.isConstructor())
+                        resolveClass(method.getContainingClass())?.getConstructors()
+                    else
+                        getContainingScope(method)?.getFunctions(method.getName())
+
+    return functions?.firstOrNull {
+        function ->
+        function is JavaDeclarationDescriptor && function.getJavaElement() == method
+    }
+}
+
+public fun JavaDescriptorResolver.resolveField(field: JavaField): PropertyDescriptor? {
+    return getContainingScope(field)?.getProperties(field.getName())?.firstOrNull {
+        property ->
+        property is JavaDeclarationDescriptor && property.getJavaElement() == field
+    } as? PropertyDescriptor
+}
+
+private fun JavaDescriptorResolver.getContainingScope(method: JavaMember): JetScope? {
+    val containingClass = method.getContainingClass()
+    return if (method.isStatic())
+        getPackageFragment(containingClass)?.getMemberScope()
+    else
+        resolveClass(containingClass)?.getDefaultType()?.getMemberScope()
 }
