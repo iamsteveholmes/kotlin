@@ -24,29 +24,40 @@ import org.jetbrains.jet.lang.descriptors.SimpleFunctionDescriptor;
 import org.jetbrains.jet.lang.descriptors.annotations.Annotations;
 import org.jetbrains.jet.lang.descriptors.impl.FunctionDescriptorImpl;
 import org.jetbrains.jet.lang.descriptors.impl.SimpleFunctionDescriptorImpl;
+import org.jetbrains.jet.lang.resolve.java.structure.JavaMethod;
 import org.jetbrains.jet.lang.resolve.name.Name;
 
 public class JavaMethodDescriptor extends SimpleFunctionDescriptorImpl implements JavaCallableMemberDescriptor {
+    private final JavaMethod javaMethod;
+
     private Boolean hasStableParameterNames = null;
     private Boolean hasSynthesizedParameterNames = null;
 
     private JavaMethodDescriptor(
             @NotNull DeclarationDescriptor containingDeclaration,
             @Nullable SimpleFunctionDescriptor original,
+            @NotNull JavaMethod javaMethod,
             @NotNull Annotations annotations,
             @NotNull Name name,
             @NotNull Kind kind
     ) {
         super(containingDeclaration, original, annotations, name, kind);
+        this.javaMethod = javaMethod;
     }
 
     @NotNull
     public static JavaMethodDescriptor createJavaMethod(
             @NotNull DeclarationDescriptor containingDeclaration,
-            @NotNull Annotations annotations,
-            @NotNull Name name
+            @NotNull JavaMethod javaMethod,
+            @NotNull Annotations annotations
     ) {
-        return new JavaMethodDescriptor(containingDeclaration, null, annotations, name, Kind.DECLARATION);
+        return new JavaMethodDescriptor(containingDeclaration, null, javaMethod, annotations, javaMethod.getName(), Kind.DECLARATION);
+    }
+
+    @NotNull
+    @Override
+    public JavaMethod getJavaElement() {
+        return javaMethod;
     }
 
     @Override
@@ -79,6 +90,7 @@ public class JavaMethodDescriptor extends SimpleFunctionDescriptorImpl implement
         JavaMethodDescriptor result = new JavaMethodDescriptor(
                 newOwner,
                 (SimpleFunctionDescriptor) original,
+                javaMethod,
                 getAnnotations(),
                 getName(),
                 kind

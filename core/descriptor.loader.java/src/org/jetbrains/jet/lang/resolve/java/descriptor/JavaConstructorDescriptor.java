@@ -23,27 +23,40 @@ import org.jetbrains.jet.lang.descriptors.DeclarationDescriptor;
 import org.jetbrains.jet.lang.descriptors.FunctionDescriptor;
 import org.jetbrains.jet.lang.descriptors.annotations.Annotations;
 import org.jetbrains.jet.lang.descriptors.impl.ConstructorDescriptorImpl;
+import org.jetbrains.jet.lang.resolve.java.structure.JavaMethod;
 
 public class JavaConstructorDescriptor extends ConstructorDescriptorImpl implements JavaCallableMemberDescriptor {
+    private final JavaMethod javaConstructor;
+    
     private Boolean hasStableParameterNames = null;
     private Boolean hasSynthesizedParameterNames = null;
 
     private JavaConstructorDescriptor(
             @NotNull ClassDescriptor containingDeclaration,
             @Nullable JavaConstructorDescriptor original,
+            @Nullable JavaMethod javaConstructor,
             @NotNull Annotations annotations,
             boolean isPrimary
     ) {
         super(containingDeclaration, original, annotations, isPrimary, Kind.DECLARATION);
+        assert javaConstructor == null || javaConstructor.isConstructor() : "Not a constructor: " + javaConstructor;
+        this.javaConstructor = javaConstructor;
     }
 
     @NotNull
     public static JavaConstructorDescriptor createJavaConstructor(
             @NotNull ClassDescriptor containingDeclaration,
+            @Nullable JavaMethod javaConstructor,
             @NotNull Annotations annotations,
             boolean isPrimary
     ) {
-        return new JavaConstructorDescriptor(containingDeclaration, null, annotations, isPrimary);
+        return new JavaConstructorDescriptor(containingDeclaration, null, javaConstructor, annotations, isPrimary);
+    }
+
+    @Nullable
+    @Override
+    public JavaMethod getJavaElement() {
+        return javaConstructor;
     }
 
     @Override
@@ -80,7 +93,7 @@ public class JavaConstructorDescriptor extends ConstructorDescriptorImpl impleme
                                             "kind: " + kind);
         }
         JavaConstructorDescriptor result =
-                new JavaConstructorDescriptor((ClassDescriptor) newOwner, this, Annotations.EMPTY /* TODO */, isPrimary);
+                new JavaConstructorDescriptor((ClassDescriptor) newOwner, this, javaConstructor, Annotations.EMPTY /* TODO */, isPrimary);
         result.setHasStableParameterNames(hasStableParameterNames());
         result.setHasSynthesizedParameterNames(hasSynthesizedParameterNames());
         return result;

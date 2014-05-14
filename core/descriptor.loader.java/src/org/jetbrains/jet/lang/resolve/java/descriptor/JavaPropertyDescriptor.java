@@ -22,17 +22,28 @@ import org.jetbrains.jet.lang.descriptors.Modality;
 import org.jetbrains.jet.lang.descriptors.Visibility;
 import org.jetbrains.jet.lang.descriptors.annotations.Annotations;
 import org.jetbrains.jet.lang.descriptors.impl.PropertyDescriptorImpl;
+import org.jetbrains.jet.lang.resolve.java.structure.JavaField;
 import org.jetbrains.jet.lang.resolve.name.Name;
 
 public class JavaPropertyDescriptor extends PropertyDescriptorImpl implements JavaCallableMemberDescriptor {
+    private final JavaField javaField;
+
     public JavaPropertyDescriptor(
             @NotNull DeclarationDescriptor containingDeclaration,
+            @NotNull JavaField javaField,
             @NotNull Annotations annotations,
             @NotNull Visibility visibility,
             boolean isVar,
             @NotNull Name name
     ) {
         super(containingDeclaration, null, annotations, Modality.FINAL, visibility, isVar, name, Kind.DECLARATION);
+        this.javaField = javaField;
+    }
+
+    @NotNull
+    @Override
+    public JavaField getJavaElement() {
+        return javaField;
     }
 
     @Override

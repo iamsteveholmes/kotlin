@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 JetBrains s.r.o.
+ * Copyright 2010-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,11 @@
 
 package org.jetbrains.jet.lang.resolve.java.descriptor;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.jet.lang.descriptors.ClassDescriptor;
-import org.jetbrains.jet.lang.resolve.java.structure.JavaClass;
-import org.jetbrains.jet.lang.types.JetType;
+import org.jetbrains.jet.lang.descriptors.DeclarationDescriptor;
+import org.jetbrains.jet.lang.resolve.java.structure.JavaElement;
 
-public interface JavaClassDescriptor extends ClassDescriptor, JavaDeclarationDescriptor {
+public interface JavaDeclarationDescriptor extends DeclarationDescriptor {
     @Nullable
-    JetType getFunctionTypeForSamInterface();
-
-    @Nullable
-    JavaClassStaticsPackageFragmentDescriptor getCorrespondingPackageFragment();
-
-    @NotNull
-    @Override
-    JavaClass getJavaElement();
+    JavaElement getJavaElement();
 }

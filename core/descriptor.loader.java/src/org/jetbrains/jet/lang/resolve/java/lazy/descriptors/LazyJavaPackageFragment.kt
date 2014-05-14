@@ -17,30 +17,25 @@
 package org.jetbrains.jet.lang.resolve.java.lazy.descriptors
 
 import org.jetbrains.jet.lang.resolve.java.lazy.LazyJavaResolverContext
-import org.jetbrains.jet.lang.resolve.name.Name
-import org.jetbrains.jet.lang.resolve.scopes.JetScope
 import org.jetbrains.jet.lang.resolve.java.structure.JavaPackage
 import org.jetbrains.jet.lang.resolve.name.FqName
-import org.jetbrains.jet.lang.resolve.name.FqNameUnsafe
 import org.jetbrains.jet.lang.resolve.java.structure.JavaClass
-import org.jetbrains.kotlin.util.sure
 import org.jetbrains.jet.lang.descriptors.ModuleDescriptor
-import org.jetbrains.jet.lang.descriptors.impl.DeclarationDescriptorNonRootImpl
-import org.jetbrains.jet.lang.descriptors.DeclarationDescriptorVisitor
-import org.jetbrains.jet.lang.types.TypeSubstitutor
 import org.jetbrains.jet.lang.resolve.java.descriptor.JavaPackageFragmentDescriptor
-import org.jetbrains.jet.lang.descriptors.PackageFragmentProvider
-import org.jetbrains.jet.lang.descriptors.annotations.Annotations
 import org.jetbrains.jet.lang.resolve.java.descriptor.JavaClassStaticsPackageFragmentDescriptor
 import org.jetbrains.jet.lang.resolve.java.descriptor.JavaClassDescriptor
 import org.jetbrains.jet.lang.descriptors.PackageFragmentDescriptorImpl
+import org.jetbrains.kotlin.util.sure
+import org.jetbrains.jet.lang.resolve.java.structure.JavaNamedElement
 
 class LazyPackageFragmentForJavaPackage(
         c: LazyJavaResolverContext,
         containingDeclaration: ModuleDescriptor,
-        jPackage: JavaPackage
+        private val jPackage: JavaPackage
 ) : LazyJavaPackageFragment(c, containingDeclaration, jPackage.getFqName(),
-                            { LazyPackageFragmentScopeForJavaPackage(c, jPackage, this) })
+                            { LazyPackageFragmentScopeForJavaPackage(c, jPackage, this) }) {
+    override fun getJavaElement() = jPackage
+}
 
 class LazyPackageFragmentForJavaClass(
         c: LazyJavaResolverContext,
@@ -57,6 +52,9 @@ class LazyPackageFragmentForJavaClass(
         }
         return classDescriptor
     }
+
+
+    override fun getJavaElement() = jClass
 }
 
 abstract class LazyJavaPackageFragment(

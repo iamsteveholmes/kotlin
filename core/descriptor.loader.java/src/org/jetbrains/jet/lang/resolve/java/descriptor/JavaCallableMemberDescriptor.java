@@ -16,7 +16,12 @@
 
 package org.jetbrains.jet.lang.resolve.java.descriptor;
 
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jet.lang.descriptors.CallableMemberDescriptor;
+import org.jetbrains.jet.lang.resolve.java.structure.JavaMember;
 
-public interface JavaCallableMemberDescriptor extends CallableMemberDescriptor {
+public interface JavaCallableMemberDescriptor extends CallableMemberDescriptor, JavaDeclarationDescriptor {
+    @Nullable
+    @Override
+    JavaMember getJavaElement();
 }

@@ -17,9 +17,12 @@
 package org.jetbrains.jet.lang.resolve.java.descriptor
 
 import org.jetbrains.jet.lang.descriptors.PackageFragmentDescriptor
+import org.jetbrains.jet.lang.resolve.java.structure.JavaClass
 
-public trait JavaPackageFragmentDescriptor : PackageFragmentDescriptor
+public trait JavaPackageFragmentDescriptor : PackageFragmentDescriptor, JavaDeclarationDescriptor
 
 public trait JavaClassStaticsPackageFragmentDescriptor : JavaPackageFragmentDescriptor {
     public fun getCorrespondingClass(): JavaClassDescriptor
+
+    override fun getJavaElement(): JavaClass
 }
