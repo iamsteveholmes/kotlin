@@ -4872,9 +4872,24 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClass.kt");
             }
             
+            @TestMetadata("duplicateClassDifferentGenericArguments.kt")
+            public void testDuplicateClassDifferentGenericArguments() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClassDifferentGenericArguments.kt");
+            }
+            
+            @TestMetadata("duplicateClassDifferentGenericArgumentsReversed.kt")
+            public void testDuplicateClassDifferentGenericArgumentsReversed() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClassDifferentGenericArgumentsReversed.kt");
+            }
+            
             @TestMetadata("duplicateClassInTheSameModuleWithUsage.kt")
             public void testDuplicateClassInTheSameModuleWithUsage() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClassInTheSameModuleWithUsage.kt");
+            }
+            
+            @TestMetadata("duplicateClassMembers.kt")
+            public void testDuplicateClassMembers() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClassMembers.kt");
             }
             
             @TestMetadata("internal.kt")
