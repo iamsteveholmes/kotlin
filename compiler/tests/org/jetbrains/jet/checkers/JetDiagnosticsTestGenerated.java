@@ -4867,6 +4867,16 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/diagnostics/tests/multimodule"), Pattern.compile("^(.+)\\.kt$"), true);
             }
             
+            @TestMetadata("duplicateClass.kt")
+            public void testDuplicateClass() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClass.kt");
+            }
+            
+            @TestMetadata("duplicateClassInTheSameModuleWithUsage.kt")
+            public void testDuplicateClassInTheSameModuleWithUsage() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/duplicateClassInTheSameModuleWithUsage.kt");
+            }
+            
             @TestMetadata("internal.kt")
             public void testInternal() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/multimodule/internal.kt");
@@ -4875,6 +4885,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("packagePrivate.kt")
             public void testPackagePrivate() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/multimodule/packagePrivate.kt");
+            }
+            
+            @TestMetadata("sameClassNameDifferentPackages.kt")
+            public void testSameClassNameDifferentPackages() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/multimodule/sameClassNameDifferentPackages.kt");
             }
             
         }

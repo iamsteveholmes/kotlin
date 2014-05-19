@@ -228,6 +228,9 @@ public class ErrorUtils {
     }
 
     private static final ErrorClassDescriptor ERROR_CLASS = new ErrorClassDescriptor("");
+    static {
+        ERROR_CLASS.doInitialize();
+    }
 
     @NotNull
     public static JetScope createErrorScope(@NotNull String debugMessage) {
@@ -299,7 +302,7 @@ public class ErrorUtils {
 
     @NotNull
     private static TypeConstructor createErrorTypeConstructorWithCustomDebugName(@NotNull String debugName) {
-        return new TypeConstructorImpl(ERROR_CLASS, Annotations.EMPTY, false, debugName,
+        return TypeConstructorImpl.createForClass(ERROR_CLASS, Annotations.EMPTY, false, debugName,
                                 Collections.<TypeParameterDescriptorImpl>emptyList(),
                                 Collections.singleton(KotlinBuiltIns.getInstance().getAnyType()));
     }

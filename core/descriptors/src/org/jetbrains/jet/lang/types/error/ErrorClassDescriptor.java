@@ -35,7 +35,9 @@ import static org.jetbrains.jet.lang.types.ErrorUtils.*;
 public final class ErrorClassDescriptor extends ClassDescriptorImpl {
     public ErrorClassDescriptor(@NotNull String debugMessage) {
         super(getErrorModule(), Name.special("<ERROR CLASS: " + debugMessage + ">"), Modality.OPEN, Collections.<JetType>emptyList());
+    }
 
+    public void doInitialize() {
         ConstructorDescriptorImpl errorConstructor =
                 ConstructorDescriptorImpl.create(this, Annotations.EMPTY, true);
 

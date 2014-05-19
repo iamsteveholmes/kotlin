@@ -88,7 +88,7 @@ public class TypeParameterDescriptorImpl extends DeclarationDescriptorNonRootImp
         this.upperBounds = Sets.newLinkedHashSet();
         this.reified = reified;
         // TODO: Should we actually pass the annotations on to the type constructor?
-        this.typeConstructor = new TypeConstructorImpl(
+        this.typeConstructor = TypeConstructorImpl.createForTypeParameter(
                 this,
                 annotations,
                 false,
