@@ -32,7 +32,9 @@ import org.jetbrains.jet.codegen.binding.CodegenBinding;
 import org.jetbrains.jet.codegen.binding.MutableClosure;
 import org.jetbrains.jet.codegen.context.*;
 import org.jetbrains.jet.codegen.inline.InlineCodegen;
+import org.jetbrains.jet.codegen.inline.InlineCodegenUtil;
 import org.jetbrains.jet.codegen.inline.NameGenerator;
+import org.jetbrains.jet.codegen.inline.NonLocalReturnInfo;
 import org.jetbrains.jet.codegen.intrinsics.IntrinsicMethod;
 import org.jetbrains.jet.codegen.state.GenerationState;
 import org.jetbrains.jet.codegen.state.JetTypeMapper;
@@ -41,6 +43,7 @@ import org.jetbrains.jet.lang.diagnostics.DiagnosticUtils;
 import org.jetbrains.jet.lang.evaluate.EvaluatePackage;
 import org.jetbrains.jet.lang.psi.*;
 import org.jetbrains.jet.lang.resolve.BindingContext;
+import org.jetbrains.jet.lang.resolve.BindingContextUtils;
 import org.jetbrains.jet.lang.resolve.DescriptorUtils;
 import org.jetbrains.jet.lang.resolve.calls.model.*;
 import org.jetbrains.jet.lang.resolve.calls.util.CallMaker;
@@ -63,6 +66,7 @@ import org.jetbrains.jet.lexer.JetTokens;
 import org.jetbrains.jet.renderer.DescriptorRenderer;
 import org.jetbrains.org.objectweb.asm.Label;
 import org.jetbrains.org.objectweb.asm.MethodVisitor;
+import org.jetbrains.org.objectweb.asm.Opcodes;
 import org.jetbrains.org.objectweb.asm.Type;
 import org.jetbrains.org.objectweb.asm.commons.InstructionAdapter;
 import org.jetbrains.org.objectweb.asm.commons.Method;
@@ -73,13 +77,13 @@ import static org.jetbrains.jet.codegen.AsmUtil.*;
 import static org.jetbrains.jet.codegen.JvmCodegenUtil.*;
 import static org.jetbrains.jet.codegen.binding.CodegenBinding.*;
 import static org.jetbrains.jet.lang.resolve.BindingContext.*;
-import static org.jetbrains.jet.lang.resolve.BindingContextUtils.getNotNull;
-import static org.jetbrains.jet.lang.resolve.BindingContextUtils.isVarCapturedInClosure;
+import static org.jetbrains.jet.lang.resolve.BindingContextUtils.*;
 import static org.jetbrains.jet.lang.resolve.java.AsmTypeConstants.*;
 import static org.jetbrains.jet.lang.resolve.java.JvmAnnotationNames.KotlinSyntheticClass;
 import static org.jetbrains.jet.lang.resolve.java.diagnostics.DiagnosticsPackage.OtherOrigin;
 import static org.jetbrains.jet.lang.resolve.scopes.receivers.ReceiverValue.NO_RECEIVER;
-import static org.jetbrains.org.objectweb.asm.Opcodes.*;
+import static org.jetbrains.org.objectweb.asm.Opcodes.ACC_PRIVATE;
+import static org.jetbrains.org.objectweb.asm.Opcodes.GETFIELD;
 
 public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implements LocalLookup {
     private static final Set<DeclarationDescriptor> INTEGRAL_RANGES = KotlinBuiltIns.getInstance().getIntegralRanges();
@@ -98,7 +102,7 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
     private final TailRecursionCodegen tailRecursionCodegen;
     public final CallGenerator defaultCallGenerator = new CallGenerator.DefaultCallGenerator(this);
 
-    private final Stack<BlockStackElement> blockStackElements = new Stack<BlockStackElement>();
+    private final Stack<BlockStackElement> blockStackElements;
 
     /*
      * When we create a temporary variable to hold some value not to compute it many times
@@ -116,6 +120,18 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
             @NotNull GenerationState state,
             @NotNull MemberCodegen<?> parentCodegen
     ) {
+        this(mv, frameMap, returnType, context, state, parentCodegen, new Stack<BlockStackElement>());
+    }
+
+    public ExpressionCodegen(
+            @NotNull MethodVisitor mv,
+            @NotNull FrameMap frameMap,
+            @NotNull Type returnType,
+            @NotNull MethodContext context,
+            @NotNull GenerationState state,
+            @NotNull MemberCodegen<?> parentCodegen,
+            @NotNull Stack<BlockStackElement> blockStackElements
+    ) {
         this.state = state;
         this.typeMapper = state.getTypeMapper();
         this.bindingContext = state.getBindingContext();
@@ -125,6 +141,7 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
         this.returnType = returnType;
         this.parentCodegen = parentCodegen;
         this.tailRecursionCodegen = new TailRecursionCodegen(context, this, this.v, state);
+        this.blockStackElements = blockStackElements;
     }
 
     static class BlockStackElement {
@@ -1530,7 +1547,7 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
         }
     }
 
-    private boolean hasFinallyBLocks() {
+    public boolean hasFinallyBLocks() {
         for (BlockStackElement element : blockStackElements) {
             if (element instanceof FinallyBlockStackElement) {
                 return true;
@@ -1575,23 +1592,65 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
     @Override
     public StackValue visitReturnExpression(@NotNull JetReturnExpression expression, StackValue receiver) {
         JetExpression returnedExpression = expression.getReturnedExpression();
+        CallableMemberDescriptor descriptor = getContext().getContextDescriptor();
+        NonLocalReturnInfo nonLocalReturn = getNonLocalReturnInfo(descriptor, expression);
+        boolean isNonLocalReturn = nonLocalReturn != null;
+        if (isNonLocalReturn && !state.isInlineEnabled()) {
+            throw new CompilationException("Non local returns requires enabled inlining", null, expression);
+        }
+
+        Type returnType = isNonLocalReturn ? nonLocalReturn.getReturnType() : this.returnType;
         if (returnedExpression != null) {
             gen(returnedExpression, returnType);
-            boolean hasFinallyBLocks = hasFinallyBLocks();
-            if (hasFinallyBLocks) {
+        }
+
+        generateFinallyBlocksIfNeeded(returnType);
+
+        if (isNonLocalReturn) {
+            InlineCodegenUtil.generateGlobalReturnFlag(v, nonLocalReturn.getLabelName());
+        }
+        v.visitInsn(returnType.getOpcode(Opcodes.IRETURN));
+
+        return StackValue.none();
+    }
+
+    public void generateFinallyBlocksIfNeeded(Type returnType) {
+        if (hasFinallyBLocks()) {
+            if (!Type.VOID_TYPE.equals(returnType)) {
                 int returnValIndex = myFrameMap.enterTemp(returnType);
                 StackValue.local(returnValIndex, returnType).store(returnType, v);
                 doFinallyOnReturn();
                 StackValue.local(returnValIndex, returnType).put(returnType, v);
                 myFrameMap.leaveTemp(returnType);
             }
-            v.areturn(returnType);
+            else {
+                doFinallyOnReturn();
+            }
         }
-        else {
-            doFinallyOnReturn();
-            v.visitInsn(RETURN);
+    }
+
+    @Nullable
+    private NonLocalReturnInfo getNonLocalReturnInfo(@NotNull CallableMemberDescriptor descriptor, @NotNull JetReturnExpression expression) {
+        //call inside lambda
+        if (isLocalFunOrLambda(descriptor) && descriptor.getName().isSpecial()) {
+            if (expression.getLabelName() == null) {
+                //non labeled return couldn't be local in lambda
+                FunctionDescriptor containingFunction = BindingContextUtils.getContainingFunctionSkipFunctionLiterals(bindingContext,
+                                                                                                                      descriptor,
+                                                                                                                      true).getFirst();
+                //ROOT_LABEL to prevent clashing with existing labels
+                return new NonLocalReturnInfo(typeMapper.mapReturnType(containingFunction), InlineCodegenUtil.ROOT_LABEL);
+            }
+
+            PsiElement element = bindingContext.get(LABEL_TARGET, expression.getTargetLabel());
+            if (element != callableDescriptorToDeclaration(bindingContext, context.getContextDescriptor())) {
+                DeclarationDescriptor elementDescriptor = typeMapper.getBindingContext().get(DECLARATION_TO_DESCRIPTOR, element);
+                assert element != null : "Expression should be not null " + expression.getText();
+                assert elementDescriptor != null : "Descriptor should be not null: " + element.getText();
+                return new NonLocalReturnInfo(typeMapper.mapReturnType((CallableDescriptor) elementDescriptor), expression.getLabelName());
+            }
         }
-        return StackValue.none();
+        return null;
     }
 
     public void returnExpression(JetExpression expr) {
@@ -3978,5 +4037,13 @@ The "returned" value of try expression with no finally is either the last expres
         NameGenerator nameGenerator = getParentCodegen().getInlineNameGenerator();
         Name name = context.getContextDescriptor().getName();
         return nameGenerator.subGenerator((name.isSpecial() ? "$special" : name.asString()) + "$$inlined" );
+    }
+
+    public Type getReturnType() {
+        return returnType;
+    }
+
+    public Stack<BlockStackElement> getBlockStackElements() {
+        return new Stack<BlockStackElement>(blockStackElements);
     }
 }
