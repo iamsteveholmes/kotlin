@@ -6346,9 +6346,19 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/platformTypes/dereference.kt");
             }
             
+            @TestMetadata("elvis.kt")
+            public void testElvis() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/platformTypes/elvis.kt");
+            }
+            
             @TestMetadata("override.kt")
             public void testOverride() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/platformTypes/override.kt");
+            }
+            
+            @TestMetadata("safeCall.kt")
+            public void testSafeCall() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/platformTypes/safeCall.kt");
             }
             
             @TestMetadata("compiler/testData/diagnostics/tests/platformTypes/methodCall")
