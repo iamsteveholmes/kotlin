@@ -43,6 +43,7 @@
                         <source>${basedir}/../../../core/builtins/native</source>
                         <source>${basedir}/../../../core/builtins/src</source>
                         <source>${basedir}/../../../core/reflection/src</source>
+                        <source>${basedir}/../../../core/runtime/src</source>
                         <source>${basedir}/../../stdlib/src</source>
                         <source>${basedir}/../../kunit/src/main/kotlin</source>
                         <source>${basedir}/../../kotlin-jdbc/src/main/kotlin</source>
@@ -58,7 +59,10 @@
                         <ignorePackage>org</ignorePackage>
                         <ignorePackage>kotlin.support</ignorePackage>
                         <ignorePackage>kotlin.properties</ignorePackage>
+                        <ignorePackage>kotlin.jvm.internal</ignorePackage>
                         <ignorePackage>kotlin.jvm.internal.unsafe</ignorePackage>
+                        <ignorePackage>kotlin.reflect.jvm.internal</ignorePackage>
+                        <ignorePackage>jet.runtime.typeinfo</ignorePackage>
                     </ignorePackages>
                     <sourceRootHref>https://github.com/JetBrains/kotlin/blob/master</sourceRootHref>
                     <projectRootDir>${project-root}</projectRootDir>
