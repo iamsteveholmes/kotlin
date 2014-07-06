@@ -58,6 +58,7 @@
                         <ignorePackage>org</ignorePackage>
                         <ignorePackage>kotlin.support</ignorePackage>
                         <ignorePackage>kotlin.properties</ignorePackage>
+                        <ignorePackage>kotlin.jvm.internal.unsafe</ignorePackage>
                     </ignorePackages>
                     <sourceRootHref>https://github.com/JetBrains/kotlin/blob/master</sourceRootHref>
                     <projectRootDir>${project-root}</projectRootDir>
