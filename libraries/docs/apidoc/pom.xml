@@ -42,6 +42,7 @@
                     <sources>
                         <source>${basedir}/../../../core/builtins/native</source>
                         <source>${basedir}/../../../core/builtins/src</source>
+                        <source>${basedir}/../../../core/reflection/src</source>
                         <source>${basedir}/../../stdlib/src</source>
                         <source>${basedir}/../../kunit/src/main/kotlin</source>
                         <source>${basedir}/../../kotlin-jdbc/src/main/kotlin</source>
