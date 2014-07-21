@@ -26,9 +26,15 @@ import org.jetbrains.jet.lang.resolve.ImportPath
 import org.jetbrains.jet.lexer.JetKeywordToken
 import org.jetbrains.jet.plugin.JetFileType
 import org.jetbrains.jet.lang.psi.JetPsiFactory.CallableBuilder.Target
+import com.intellij.openapi.util.Key
+import java.io.ByteArrayOutputStream
+import java.io.PrintWriter
+import java.io.StringWriter
 
 public fun JetPsiFactory(project: Project?): JetPsiFactory = JetPsiFactory(project!!)
 public fun JetPsiFactory(contextElement: JetElement): JetPsiFactory = JetPsiFactory(contextElement.getProject())
+
+public val DO_NOT_ANALYZE: Key<String> = Key.create("DO_NO_ANALYZE")
 
 public class JetPsiFactory(private val project: Project) {
 
@@ -115,7 +121,11 @@ public class JetPsiFactory(private val project: Project) {
     }
 
     public fun createFile(fileName: String, text: String): JetFile {
-        return PsiFileFactory.getInstance(project).createFileFromText(fileName, JetFileType.INSTANCE, text, LocalTimeCounter.currentTime(), false) as JetFile
+        val file = PsiFileFactory.getInstance(project).createFileFromText(fileName, JetFileType.INSTANCE, text, LocalTimeCounter.currentTime(), false)
+        val sw = StringWriter()
+        Exception().printStackTrace(PrintWriter(sw))
+        file.putUserData(DO_NOT_ANALYZE, sw.toString())
+        return file as JetFile
     }
 
     public fun createPhysicalFile(fileName: String, text: String): JetFile {
