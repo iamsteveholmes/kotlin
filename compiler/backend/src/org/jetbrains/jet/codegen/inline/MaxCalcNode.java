@@ -16,6 +16,7 @@
 
 package org.jetbrains.jet.codegen.inline;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.org.objectweb.asm.MethodVisitor;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 import org.jetbrains.org.objectweb.asm.Type;
@@ -30,12 +31,24 @@ public class MaxCalcNode extends MethodVisitor {
 
     private final MethodNode node;
 
-    public MaxCalcNode(MethodNode node) {
+    public MaxCalcNode(@NotNull MethodNode node) {
         super(InlineCodegenUtil.API, node);
         this.node = node;
         int paramsSize = (node.access & Opcodes.ACC_STATIC) == 0 ? 1 : 0;
 
         Type[] types = Type.getArgumentTypes(node.desc);
+        for (Type type : types) {
+            paramsSize += type.getSize();
+        }
+        maxLocal = paramsSize;
+    }
+
+    public MaxCalcNode(String desc, boolean isStatic) {
+        super(InlineCodegenUtil.API, null);
+        node = null;
+
+        int paramsSize = isStatic ? 1 : 0;
+        Type[] types = Type.getArgumentTypes(desc);
         for (Type type : types) {
             paramsSize += type.getSize();
         }
@@ -63,15 +76,24 @@ public class MaxCalcNode extends MethodVisitor {
     public void visitMaxs(int maxStack, int maxLocals) {
         //NB: it's hack for fast maxStack calculation cause it performed only in MethodWriter
         //temporary solution: maxStack = instruction size (without labels and line numbers) * 2 (cause 1 instruction could put value of size 2)
-        int size = 0;
-        ListIterator<AbstractInsnNode> iterator = node.instructions.iterator();
-        while (iterator.hasNext()) {
-            AbstractInsnNode next = iterator.next();
-            int type = next.getType();
-            if (type != AbstractInsnNode.LINE && type != AbstractInsnNode.LABEL) {
-                size++;
+        if (node != null) {
+            int size = 0;
+            ListIterator<AbstractInsnNode> iterator = node.instructions.iterator();
+            while (iterator.hasNext()) {
+                AbstractInsnNode next = iterator.next();
+                int type = next.getType();
+                if (type != AbstractInsnNode.LINE && type != AbstractInsnNode.LABEL) {
+                    size++;
+                }
             }
+            super.visitMaxs(Math.max(size * 2, maxStack), Math.max(maxLocals, this.maxLocal));
         }
-        super.visitMaxs(Math.max(size * 2, maxStack), Math.max(maxLocals, this.maxLocal));
+        else {
+            super.visitMaxs(maxStack, maxLocals);
+        }
+    }
+
+    public int getMaxLocal() {
+        return maxLocal;
     }
 }
