@@ -143,7 +143,7 @@ public class KotlinSignatureAnnotationIntention extends BaseIntentionAction impl
 
     @NotNull
     private static String getDefaultSignature(@NotNull Project project, @NotNull PsiMember psiMember) {
-        JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project);
+        JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project).invoke(psiMember);
 
         if (psiMember instanceof PsiMethod) {
             PsiMethod psiMethod = (PsiMethod) psiMember;
