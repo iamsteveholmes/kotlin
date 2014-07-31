@@ -327,23 +327,156 @@ public class BlackBoxInlineCodegenTestGenerated extends AbstractBlackBoxCodegenT
         }
         
         @TestMetadata("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally")
+        @InnerTestClasses({TryFinally.CallSite.class, TryFinally.DeclSite.class, TryFinally.ExceptionTable.class})
         public static class TryFinally extends AbstractBlackBoxCodegenTest {
             public void testAllFilesPresentInTryFinally() throws Exception {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally"), Pattern.compile("^(.+)\\.1.kt$"), true);
             }
             
-            @TestMetadata("external.1.kt")
-            public void testExternal() throws Exception {
-                doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/external.1.kt");
+            @TestMetadata("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/callSite")
+            public static class CallSite extends AbstractBlackBoxCodegenTest {
+                public void testAllFilesPresentInCallSite() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/callSite"), Pattern.compile("^(.+)\\.1.kt$"), true);
+                }
+                
+                @TestMetadata("callSite.1.kt")
+                public void testCallSite() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/callSite/callSite.1.kt");
+                }
+                
             }
             
+            @TestMetadata("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite")
+            public static class DeclSite extends AbstractBlackBoxCodegenTest {
+                public void testAllFilesPresentInDeclSite() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite"), Pattern.compile("^(.+)\\.1.kt$"), true);
+                }
+                
+                @TestMetadata("complex.1.kt")
+                public void testComplex() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/complex.1.kt");
+                }
+                
+                @TestMetadata("intReturn.1.kt")
+                public void testIntReturn() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/intReturn.1.kt");
+                }
+                
+                @TestMetadata("longReturn.1.kt")
+                public void testLongReturn() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/longReturn.1.kt");
+                }
+                
+                @TestMetadata("nested.1.kt")
+                public void testNested() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/nested.1.kt");
+                }
+                
+                @TestMetadata("returnInFinally.1.kt")
+                public void testReturnInFinally() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/returnInFinally.1.kt");
+                }
+                
+                @TestMetadata("returnInTry.1.kt")
+                public void testReturnInTry() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/returnInTry.1.kt");
+                }
+                
+                @TestMetadata("returnInTryAndFinally.1.kt")
+                public void testReturnInTryAndFinally() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/returnInTryAndFinally.1.kt");
+                }
+                
+                @TestMetadata("voidInlineFun.1.kt")
+                public void testVoidInlineFun() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/voidInlineFun.1.kt");
+                }
+                
+                @TestMetadata("voidNonLocal.1.kt")
+                public void testVoidNonLocal() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/declSite/voidNonLocal.1.kt");
+                }
+                
+            }
+            
+            @TestMetadata("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable")
+            public static class ExceptionTable extends AbstractBlackBoxCodegenTest {
+                public void testAllFilesPresentInExceptionTable() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable"), Pattern.compile("^(.+)\\.1.kt$"), true);
+                }
+                
+                @TestMetadata("break.1.kt")
+                public void testBreak() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/break.1.kt");
+                }
+                
+                @TestMetadata("continue.1.kt")
+                public void testContinue() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/continue.1.kt");
+                }
+                
+                @TestMetadata("forInFinally.1.kt")
+                public void testForInFinally() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/forInFinally.1.kt");
+                }
+                
+                @TestMetadata("innerAndExternal.1.kt")
+                public void testInnerAndExternal() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/innerAndExternal.1.kt");
+                }
+                
+                @TestMetadata("innerAndExternalNested.1.kt")
+                public void testInnerAndExternalNested() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/innerAndExternalNested.1.kt");
+                }
+                
+                @TestMetadata("innerAndExternalSimple.1.kt")
+                public void testInnerAndExternalSimple() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/innerAndExternalSimple.1.kt");
+                }
+                
+                @TestMetadata("nested.1.kt")
+                public void testNested() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/nested.1.kt");
+                }
+                
+                @TestMetadata("noFinally.1.kt")
+                public void testNoFinally() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/noFinally.1.kt");
+                }
+                
+                @TestMetadata("severalCatchClause.1.kt")
+                public void testSeveralCatchClause() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/severalCatchClause.1.kt");
+                }
+                
+                @TestMetadata("simpleThrow.1.kt")
+                public void testSimpleThrow() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/simpleThrow.1.kt");
+                }
+                
+                @TestMetadata("throwInFinally.1.kt")
+                public void testThrowInFinally() throws Exception {
+                    doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/nonLocalReturns/tryFinally/exceptionTable/throwInFinally.1.kt");
+                }
+                
+            }
+            
+            public static Test innerSuite() {
+                TestSuite suite = new TestSuite("TryFinally");
+                suite.addTestSuite(TryFinally.class);
+                suite.addTestSuite(CallSite.class);
+                suite.addTestSuite(DeclSite.class);
+                suite.addTestSuite(ExceptionTable.class);
+                return suite;
+            }
         }
         
         public static Test innerSuite() {
             TestSuite suite = new TestSuite("NonLocalReturns");
             suite.addTestSuite(NonLocalReturns.class);
             suite.addTestSuite(Deparenthesize.class);
-            suite.addTestSuite(TryFinally.class);
+            suite.addTest(TryFinally.innerSuite());
             return suite;
         }
     }
