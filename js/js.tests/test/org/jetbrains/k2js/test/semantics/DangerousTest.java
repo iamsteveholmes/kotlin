@@ -51,4 +51,60 @@ public final class DangerousTest extends SingleFileTranslationTest {
     public void testDangerousInline() throws Exception {
         fooBoxTest();
     }
+
+    public void testSimpleAndAndSimple() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testSimpleAndAndComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testComplexAndAndSimple() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testComplexAndAndComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testSimpleOrOrComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testComplexOrOrComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testElvisComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testIfWithComplex() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testOrderOfEvaluation() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testIfInsideLambda() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testTryCatch1() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testTryCatch2() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testTryCatchFinally() throws Exception {
+        checkFooBoxIsOk();
+    }
+
+    public void testNestedIf() throws Exception {
+        checkFooBoxIsOk();
+    }
 }
