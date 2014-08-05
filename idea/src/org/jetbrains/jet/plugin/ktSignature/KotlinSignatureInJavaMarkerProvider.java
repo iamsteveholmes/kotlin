@@ -90,7 +90,7 @@ public class KotlinSignatureInJavaMarkerProvider implements LineMarkerProvider {
             return;
         }
 
-        BindingContext bindingContext = ResolvePackage.getLazyResolveSession(project, TargetPlatform.JVM).getBindingContext();
+        BindingContext bindingContext = ResolvePackage.getLazyResolveSessionForJavaElement(firstElement).getBindingContext();
 
         JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project);
 
