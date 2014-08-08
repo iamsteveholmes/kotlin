@@ -18,11 +18,21 @@ package org.jetbrains.jet.plugin.project;
 
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.jet.lang.psi.JetFile;
+import org.jetbrains.k2js.config.Config;
 import org.jetbrains.k2js.config.EcmaVersion;
-import org.jetbrains.k2js.config.LibrarySourcesConfig;
 
-public final class IDEAConfig extends LibrarySourcesConfig {
+import java.util.Collections;
+import java.util.List;
+
+public final class IDEAConfig extends Config {
     public IDEAConfig(@NotNull Project project) {
-        super(project, "default", ProjectStructureUtil.getLibLocationForProject(project), EcmaVersion.defaultVersion(), false);
+        super(project, "default", EcmaVersion.defaultVersion(), false);
+    }
+
+    @NotNull
+    @Override
+    protected List<JetFile> generateLibFiles() {
+        return Collections.emptyList();
     }
 }
