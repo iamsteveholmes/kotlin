@@ -99,7 +99,7 @@ class ModuleSetup(private val descriptorByModule: Map<IdeaModuleInfo, ModuleDesc
 //TODO: should be private
 fun PsiElement.getModuleInfo(): IdeaModuleInfo? {
     //TODO: clearer code
-    if (this is KotlinLightElement<*, *>) return this.getPluginModuleInfo()
+    if (this is KotlinLightElement<*, *>) return this.getIdeaModuleInfo()
     if (this is JetCodeFragment) return this.getContext()?.getModuleInfo()
 
     val containingFile = (this as? JetElement)?.getContainingFile()
@@ -146,7 +146,7 @@ fun PsiElement.getModuleInfo(): IdeaModuleInfo? {
 }
 
 //TODO: make member?
-public fun KotlinLightElement<*, *>.getPluginModuleInfo(): IdeaModuleInfo {
+private fun KotlinLightElement<*, *>.getIdeaModuleInfo(): IdeaModuleInfo {
     val element = origin ?: when (this) {
         is FakeLightClassForFileOfPackage -> this.getContainingFile()!!
         is KotlinLightClassForPackage -> this.getFiles().first()
