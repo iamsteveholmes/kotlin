@@ -58,6 +58,7 @@ fun JetElement.getBindingContext(): BindingContext {
     return getAnalysisResults().getBindingContext()
 }
 
+//TODO_r: used from debugger for multiple files
 fun getAnalysisResultsForElements(elements: Collection<JetElement>): AnalyzeExhaust {
     if (elements.isEmpty()) return AnalyzeExhaust.EMPTY
     val element = elements.first()
@@ -73,7 +74,7 @@ class KotlinCacheService(val project: Project) {
         val globalContext = GlobalContext()
         val analyzerFacade = AnalyzerFacadeProvider.getAnalyzerFacade(platform)
         val moduleMapping = createMappingForProject(globalContext, project, analyzerFacade, syntheticFiles)
-        //TODO: collective exception tracking
+        //TODO_r: collective exception tracking
         CachedValueProvider.Result.create(
                 moduleMapping,
                 PsiModificationTracker.OUT_OF_CODE_BLOCK_MODIFICATION_COUNT,

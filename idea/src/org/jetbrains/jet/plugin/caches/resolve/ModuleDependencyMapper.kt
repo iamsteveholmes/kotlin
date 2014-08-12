@@ -57,6 +57,7 @@ import org.jetbrains.jet.asJava.KotlinLightClassForPackage
 //TODO: Idea(Ide)ModuleInfo?
 private abstract class PluginModuleInfo : ModuleInfo<PluginModuleInfo> {
     //TODO: add project to this fun and remove from classes params?
+    //TODO_r: content scope
     abstract fun filesScope(): GlobalSearchScope
 }
 
@@ -134,7 +135,7 @@ private data class LibraryInfo(val project: Project, val library: Library) : Plu
     }
 }
 
-private data class LibrarySourcesInfo(val project: Project, val library: Library) : PluginModuleInfo() {
+private data class LibrarySourceInfo(val project: Project, val library: Library) : PluginModuleInfo() {
     override val name: Name = Name.special("<sources for library ${library.getName()}>")
 
     override fun filesScope() = GlobalSearchScope.EMPTY_SCOPE
@@ -239,8 +240,10 @@ fun PsiElement.getModuleInfo(): PluginModuleInfo? {
     val context = containingFile?.getUserData(ANALYSIS_CONTEXT)
     if (context != null) return context.getModuleInfo()
 
+    //TODO_r: log info about contents and file name
     val doNotAnalyze = containingFile?.getUserData(DO_NOT_ANALYZE)
     if (doNotAnalyze != null) {
+        //TODO_r: println!!!
         println("Should not analyze element: ${getText()} in file ${containingFile?.getName() ?: " no file"}")
         println(doNotAnalyze)
     }
@@ -264,7 +267,7 @@ fun PsiElement.getModuleInfo(): PluginModuleInfo? {
             //TODO: deal with null again
             val library = libraryOrSdkOrderEntry.getLibrary().sure("bla bla")
             if (ProjectFileIndex.SERVICE.getInstance(project).isInLibrarySource(virtualFile)) {
-                LibrarySourcesInfo(project, library)
+                LibrarySourceInfo(project, library)
             }
             else {
                 LibraryInfo(project, library)

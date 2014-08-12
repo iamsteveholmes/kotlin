@@ -34,6 +34,7 @@ import java.io.StringWriter
 public fun JetPsiFactory(project: Project?): JetPsiFactory = JetPsiFactory(project!!)
 public fun JetPsiFactory(contextElement: JetElement): JetPsiFactory = JetPsiFactory(contextElement.getProject())
 
+//TODO_r: comment keys
 public val DO_NOT_ANALYZE: Key<String> = Key.create("DO_NO_ANALYZE")
 public val ANALYSIS_CONTEXT: Key<PsiElement> = Key.create("ANALYSIS_CONTEXT")
 
@@ -123,6 +124,7 @@ public class JetPsiFactory(private val project: Project) {
 
     public fun createFile(fileName: String, text: String): JetFile {
         val file = PsiFileFactory.getInstance(project).createFileFromText(fileName, JetFileType.INSTANCE, text, LocalTimeCounter.currentTime(), false)
+        //TODO_r:
         val sw = StringWriter()
         Exception().printStackTrace(PrintWriter(sw))
         file.putUserData(DO_NOT_ANALYZE, sw.toString())

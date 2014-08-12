@@ -83,6 +83,7 @@ public class JetRunConfigurationProducer extends RuntimeConfigurationProducer im
         PsiFile psiFile = location.getPsiElement().getContainingFile();
         if (psiFile instanceof JetFile) {
             JetFile jetFile = (JetFile) psiFile;
+            //TODO_r: no run configurations in test data
             final ResolveSessionForBodies session = ResolvePackage.getLazyResolveSession(jetFile);
             MainFunctionDetector mainFunctionDetector = new MainFunctionDetector(
                     new NotNullFunction<JetNamedFunction, FunctionDescriptor>() {
