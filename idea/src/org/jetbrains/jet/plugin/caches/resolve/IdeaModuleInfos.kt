@@ -56,9 +56,6 @@ private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): Id
         is LibraryOrderEntry -> {
             //TODO: null?
             val library = orderEntry.getLibrary()!!
-            val isKotlinRuntime = library.getName() == "KotlinJavaRuntime"
-            if (isKotlinRuntime) {
-            }
             LibraryInfo(project, library)
         }
         is JdkOrderEntry -> {
