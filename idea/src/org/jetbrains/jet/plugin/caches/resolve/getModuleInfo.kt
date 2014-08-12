@@ -62,7 +62,7 @@ fun PsiElement.getModuleInfo(): IdeaModuleInfo {
     //TODO: can be multiple?
     val moduleSourceOrderEntry = orderEntries.filterIsInstance(javaClass<ModuleSourceOrderEntry>()).firstOrNull()
     if (moduleSourceOrderEntry != null) {
-        return ModuleSourcesInfo(moduleSourceOrderEntry.getRootModel().getModule())
+        return ModuleSourceInfo(moduleSourceOrderEntry.getRootModel().getModule())
     }
     val libraryOrSdkOrderEntry = orderEntries.filterIsInstance(javaClass<LibraryOrSdkOrderEntry>()).firstOrNull()
     return when (libraryOrSdkOrderEntry) {

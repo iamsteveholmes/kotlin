@@ -46,12 +46,12 @@ private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
 private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): IdeaModuleInfo? {
     return when (orderEntry) {
         is ModuleSourceOrderEntry -> {
-            orderEntry.getRootModel().getModule().toSourcesInfo()
+            orderEntry.getRootModel().getModule().toSourceInfo()
         }
         is ModuleOrderEntry -> {
             val dependencyModule = orderEntry.getModule()
             //TODO: null?
-            dependencyModule!!.toSourcesInfo()
+            dependencyModule!!.toSourceInfo()
         }
         is LibraryOrderEntry -> {
             //TODO: null?
@@ -71,7 +71,7 @@ private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): Id
     }
 }
 
-private data class ModuleSourcesInfo(val module: Module) : IdeaModuleInfo() {
+private data class ModuleSourceInfo(val module: Module) : IdeaModuleInfo() {
     override val name = Name.special("<sources for module ${module.getName()}>")
 
     override fun filesScope() = GlobalSearchScope.moduleScope(module)
@@ -102,12 +102,12 @@ private data class ModuleSourcesInfo(val module: Module) : IdeaModuleInfo() {
     }
 }
 
-private fun Module.toSourcesInfo() = ModuleSourcesInfo(this)
+private fun Module.toSourceInfo() = ModuleSourceInfo(this)
 
 private data class LibraryInfo(val project: Project, val library: Library) : IdeaModuleInfo() {
     override val name: Name = Name.special("<library ${library.getName()}>")
 
-    override fun filesScope() = LibraryWithoutSourcesScope(project, library)
+    override fun filesScope() = LibraryWithoutSourceScope(project, library)
 
     override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
         //TODO: correct dependencies
@@ -148,7 +148,7 @@ private object NotUnderSourceRootModuleInfo : IdeaModuleInfo() {
 }
 
 //TODO: duplication with LibraryScope
-private data class LibraryWithoutSourcesScope(project: Project, private val library: Library) :
+private data class LibraryWithoutSourceScope(project: Project, private val library: Library) :
         LibraryScopeBase(project, library.getFiles(OrderRootType.CLASSES), array<VirtualFile>()) {
 }
 
