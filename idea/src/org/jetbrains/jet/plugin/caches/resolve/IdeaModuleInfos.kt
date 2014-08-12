@@ -46,7 +46,7 @@ private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
 private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): IdeaModuleInfo? {
     return when (orderEntry) {
         is ModuleSourceOrderEntry -> {
-            orderEntry.getRootModel().getModule().toSourceInfo()
+            orderEntry.getOwnerModule().toSourceInfo()
         }
         is ModuleOrderEntry -> {
             val dependencyModule = orderEntry.getModule()
