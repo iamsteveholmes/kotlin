@@ -67,7 +67,7 @@ public object JvmAnalyzerFacade : AnalyzerFacade<JvmResolverForModule, JvmPlatfo
 
         val resolveSession = injector.getResolveSession()!!
         val javaDescriptorResolver = injector.getJavaDescriptorResolver()!!
-        val providersForSources = listOf(resolveSession.getPackageFragmentProvider(), javaDescriptorResolver.getPackageFragmentProvider())
+        val providersForSources = listOf(resolveSession.getPackageFragmentProvider(), javaDescriptorResolver.packageFragmentProvider)
         moduleDescriptor.initialize(CompositePackageFragmentProvider(providersForSources))
         return JvmResolverForModule(injector.getResolveSession()!!, injector.getJavaDescriptorResolver()!!)
 
