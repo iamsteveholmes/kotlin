@@ -54,14 +54,13 @@ import java.util.LinkedHashSet
 import org.jetbrains.jet.asJava.FakeLightClassForFileOfPackage
 import org.jetbrains.jet.asJava.KotlinLightClassForPackage
 
-//TODO: Idea(Ide)ModuleInfo?
-private abstract class PluginModuleInfo : ModuleInfo<PluginModuleInfo> {
+private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
     //TODO: add project to this fun and remove from classes params?
     //TODO_r: content scope
     abstract fun filesScope(): GlobalSearchScope
 }
 
-private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): PluginModuleInfo? {
+private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): IdeaModuleInfo? {
     return when (orderEntry) {
         is ModuleSourceOrderEntry -> {
             ModuleSourcesInfo(project, orderEntry.getRootModel().getModule())
@@ -89,13 +88,13 @@ private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): Pl
     }
 }
 
-private data class ModuleSourcesInfo(val project: Project, val module: Module) : PluginModuleInfo() {
+private data class ModuleSourcesInfo(val project: Project, val module: Module) : IdeaModuleInfo() {
     override val name = Name.special("<sources for module ${module.getName()}>")
 
     override fun filesScope() = GlobalSearchScope.moduleScope(module)
 
-    override fun dependencies(): List<ModuleInfo<PluginModuleInfo>> {
-        return collectModuleDependencies(module).mapTo(LinkedHashSet<PluginModuleInfo?>(), { orderEntryToModuleInfo(project, it) }).toList().filterNotNull()
+    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
+        return collectModuleDependencies(module).mapTo(LinkedHashSet<IdeaModuleInfo?>(), { orderEntryToModuleInfo(project, it) }).toList().filterNotNull()
     }
 
     private fun collectModuleDependencies(module: Module, exportedOnly: Boolean = false): List<OrderEntry> {
@@ -120,12 +119,12 @@ private data class ModuleSourcesInfo(val project: Project, val module: Module) :
     }
 }
 
-private data class LibraryInfo(val project: Project, val library: Library) : PluginModuleInfo() {
+private data class LibraryInfo(val project: Project, val library: Library) : IdeaModuleInfo() {
     override val name: Name = Name.special("<library ${library.getName()}>")
 
     override fun filesScope() = LibraryWithoutSourcesScope(project, library)
 
-    override fun dependencies(): List<ModuleInfo<PluginModuleInfo>> {
+    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
         //TODO: correct dependencies
         //val sdk = ProjectRootManager.getInstance(project)!!.getProjectSdk()
         //TODO: Think on this
@@ -135,32 +134,32 @@ private data class LibraryInfo(val project: Project, val library: Library) : Plu
     }
 }
 
-private data class LibrarySourceInfo(val project: Project, val library: Library) : PluginModuleInfo() {
+private data class LibrarySourceInfo(val project: Project, val library: Library) : IdeaModuleInfo() {
     override val name: Name = Name.special("<sources for library ${library.getName()}>")
 
     override fun filesScope() = GlobalSearchScope.EMPTY_SCOPE
 
-    override fun dependencies(): List<ModuleInfo<PluginModuleInfo>> {
+    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
         return listOf(this) + LibraryInfo(project, library).dependencies()
     }
 }
 
-private data class SdkInfo(val project: Project, val sdk: Sdk) : PluginModuleInfo() {
+private data class SdkInfo(val project: Project, val sdk: Sdk) : IdeaModuleInfo() {
     //TODO: null?
     override val name: Name = Name.special("<library ${sdk.getName()}>")
 
     override fun filesScope() = SdkScope(project, sdk)
 
-    override fun dependencies(): List<ModuleInfo<PluginModuleInfo>> = listOf(this)
+    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> = listOf(this)
 }
 
-private object NotUnderSourceRootModuleInfo : PluginModuleInfo() {
+private object NotUnderSourceRootModuleInfo : IdeaModuleInfo() {
     override val name: Name = Name.special("<special module for files not under source root>")
 
     override fun filesScope() = GlobalSearchScope.EMPTY_SCOPE
 
     //TODO: provide dependency on runtime
-    override fun dependencies(): List<ModuleInfo<PluginModuleInfo>> = listOf(this)
+    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> = listOf(this)
 }
 
 
@@ -185,7 +184,7 @@ fun createMappingForProject(
     val syntheticFilesByModule = syntheticFiles.groupBy { it.getModuleInfo()!! /*TODO: null?*/ }
     allModuleInfos.addAll(syntheticFilesByModule.keySet())
 
-    val jvmPlatformParameters = {(module: PluginModuleInfo) ->
+    val jvmPlatformParameters = {(module: IdeaModuleInfo) ->
         JvmPlatformParameters(syntheticFilesByModule[module] ?: listOf(), module.filesScope()) {
             javaClass ->
             val psiClass = (javaClass as JavaClassImpl).getPsi()
@@ -205,19 +204,19 @@ fun createMappingForProject(
 
 //TODO: actually nullable
 //TODO: rename
-class ModuleSetup(private val descriptorByModule: Map<PluginModuleInfo, ModuleDescriptor>,
+class ModuleSetup(private val descriptorByModule: Map<IdeaModuleInfo, ModuleDescriptor>,
                   private val setupByModuleDescriptor: Map<ModuleDescriptor, ResolverForModule>,
-                  private val bodiesResolveByModule: Map<PluginModuleInfo, ResolveSessionForBodies>
+                  private val bodiesResolveByModule: Map<IdeaModuleInfo, ResolveSessionForBodies>
 ) {
-    fun descriptorByModule(module: PluginModuleInfo) = descriptorByModule[module].sure("$module")
-    fun setupByModule(module: PluginModuleInfo) = setupByModuleDescriptor[descriptorByModule[module]!!].sure("$module")
+    fun descriptorByModule(module: IdeaModuleInfo) = descriptorByModule[module].sure("$module")
+    fun setupByModule(module: IdeaModuleInfo) = setupByModuleDescriptor[descriptorByModule[module]!!].sure("$module")
     fun setupByDescriptor(module: ModuleDescriptor) = setupByModuleDescriptor[module].sure("$module")
-    fun resolveSessionForBodiesByModule(module: PluginModuleInfo) = bodiesResolveByModule[module].sure("$module")
+    fun resolveSessionForBodiesByModule(module: IdeaModuleInfo) = bodiesResolveByModule[module].sure("$module")
     fun resolveSessionForBodiesByModuleDescriptor(module: ModuleDescriptor): ResolveSessionForBodies? {
         val moduleInfo = descriptorByModule.entrySet().firstOrNull() { it.value == module }?.key ?: return null
         return bodiesResolveByModule[moduleInfo]
     }
-    val modules: Collection<PluginModuleInfo> = descriptorByModule.keySet()
+    val modules: Collection<IdeaModuleInfo> = descriptorByModule.keySet()
 }
 
 //TODO: duplication with LibraryScope
@@ -231,7 +230,7 @@ private data class SdkScope(project: Project, private val sdk: Sdk) :
 
 //TODO: is it nullable?
 //TODO: should be private
-fun PsiElement.getModuleInfo(): PluginModuleInfo? {
+fun PsiElement.getModuleInfo(): IdeaModuleInfo? {
     //TODO: clearer code
     if (this is KotlinLightElement<*, *>) return this.getPluginModuleInfo()
     if (this is JetCodeFragment) return this.getContext()?.getModuleInfo()
@@ -280,7 +279,7 @@ fun PsiElement.getModuleInfo(): PluginModuleInfo? {
 }
 
 //TODO: make member?
-public fun KotlinLightElement<*, *>.getPluginModuleInfo(): PluginModuleInfo {
+public fun KotlinLightElement<*, *>.getPluginModuleInfo(): IdeaModuleInfo {
     val element = origin ?: when (this) {
         is FakeLightClassForFileOfPackage -> this.getContainingFile()!!
         is KotlinLightClassForPackage -> this.getFiles().first()
