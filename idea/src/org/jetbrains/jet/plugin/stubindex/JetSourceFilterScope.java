@@ -32,7 +32,7 @@ public class JetSourceFilterScope extends DelegatingGlobalSearchScope {
 
     private enum Mode {
         ONLY_MODULE_CONTENT_SOURCES(false, false),
-        MODULE_CONTEXT_SOURCES_AND_JS_LIBS(false, true),
+        MODULE_CONTENT_SOURCES_AND_JS_LIBS(false, true),
         ALL_KOTLIN_SOURCES(true, true);
 
         Mode(boolean librarySources, boolean libraryClasses) {
@@ -57,7 +57,7 @@ public class JetSourceFilterScope extends DelegatingGlobalSearchScope {
 
     @NotNull
     public static GlobalSearchScope kotlinSourcesAndJsLibraries(@NotNull GlobalSearchScope delegate, @NotNull Project project) {
-        return new JetSourceFilterScope(delegate, Mode.MODULE_CONTEXT_SOURCES_AND_JS_LIBS, project);
+        return new JetSourceFilterScope(delegate, Mode.MODULE_CONTENT_SOURCES_AND_JS_LIBS, project);
     }
 
     private final ProjectFileIndex index;
