@@ -27,7 +27,7 @@ object JavaResolveExtension : CacheExtension<(PsiElement) -> JavaDescriptorResol
 
     override fun getData(setup: ModuleSetup): (PsiElement) -> JavaDescriptorResolver {
         return {
-            (setup.setupByModule(it.getModuleInfo()!!) as JvmResolverForModule).javaDescriptorResolver
+            (setup.setupByModule(it.getModuleInfo()) as JvmResolverForModule).javaDescriptorResolver
         }
     }
 

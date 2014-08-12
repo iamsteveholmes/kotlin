@@ -57,14 +57,14 @@ fun createMappingForProject(
 
     val allModuleInfos = (modulesSourcesInfos.values() + librariesInfos.values() + sdksInfos.values()).toHashSet()
 
-    val syntheticFilesByModule = syntheticFiles.groupBy { it.getModuleInfo()!! /*TODO: null?*/ }
+    val syntheticFilesByModule = syntheticFiles.groupBy { it.getModuleInfo() }
     allModuleInfos.addAll(syntheticFilesByModule.keySet())
 
     val jvmPlatformParameters = {(module: IdeaModuleInfo) ->
         JvmPlatformParameters(syntheticFilesByModule[module] ?: listOf(), module.filesScope()) {
             javaClass ->
             val psiClass = (javaClass as JavaClassImpl).getPsi()
-            psiClass.getModuleInfo().sure("Module not found for ${psiClass.getName()} in ${psiClass.getContainingFile()}")
+            psiClass.getModuleInfo()
         }
     }
     val resolverForProject = analyzerFacade.setupResolverForProject(globalContext, project, allModuleInfos, jvmPlatformParameters)

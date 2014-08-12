@@ -33,10 +33,11 @@ import org.jetbrains.jet.asJava.KotlinLightClassForPackage
 
 //TODO: is it nullable?
 //TODO: should be private
-fun PsiElement.getModuleInfo(): IdeaModuleInfo? {
+fun PsiElement.getModuleInfo(): IdeaModuleInfo {
     //TODO: clearer code
     if (this is KotlinLightElement<*, *>) return this.getIdeaModuleInfo()
-    if (this is JetCodeFragment) return this.getContext()?.getModuleInfo()
+    //TODO_r: change assertion to LOG
+    if (this is JetCodeFragment) return this.getContext().sure("Analyzing code fragment with no context element: $this").getModuleInfo()
 
     val containingFile = (this as? JetElement)?.getContainingFile()
     val context = containingFile?.getUserData(ANALYSIS_CONTEXT)
@@ -88,5 +89,5 @@ private fun KotlinLightElement<*, *>.getIdeaModuleInfo(): IdeaModuleInfo {
         is KotlinLightClassForPackage -> this.getFiles().first()
         else -> throw IllegalStateException("Unknown light class is referenced by IDE lazy resolve: $javaClass")
     }
-    return element.getModuleInfo()!!
+    return element.getModuleInfo()
 }
