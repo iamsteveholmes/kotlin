@@ -47,7 +47,7 @@ fun createMappingForProject(
 ): ModuleSetup {
 
     val ideaModules = ModuleManager.getInstance(project).getModules().toList()
-    val modulesSourcesInfos = ideaModules.keysToMap { ModuleSourcesInfo(project, it) }
+    val modulesSourcesInfos = ideaModules.keysToMap { it.toSourcesInfo() }
 
     val ideaLibraries = ideaModules.flatMap { ModuleRootManager.getInstance(it).getOrderEntries().filterIsInstance(javaClass<LibraryOrderEntry>()).map { /*TODO: null*/it.getLibrary()!! } }.toSet()
     val librariesInfos = ideaLibraries.keysToMap { LibraryInfo(project, it) }

@@ -46,12 +46,12 @@ private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
 private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): IdeaModuleInfo? {
     return when (orderEntry) {
         is ModuleSourceOrderEntry -> {
-            ModuleSourcesInfo(project, orderEntry.getRootModel().getModule())
+            orderEntry.getRootModel().getModule().toSourcesInfo()
         }
         is ModuleOrderEntry -> {
             val dependencyModule = orderEntry.getModule()
             //TODO: null?
-            ModuleSourcesInfo(project, dependencyModule!!)
+            dependencyModule!!.toSourcesInfo()
         }
         is LibraryOrderEntry -> {
             //TODO: null?
@@ -71,13 +71,13 @@ private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): Id
     }
 }
 
-private data class ModuleSourcesInfo(val project: Project, val module: Module) : IdeaModuleInfo() {
+private data class ModuleSourcesInfo(val module: Module) : IdeaModuleInfo() {
     override val name = Name.special("<sources for module ${module.getName()}>")
 
     override fun filesScope() = GlobalSearchScope.moduleScope(module)
 
     override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
-        return collectModuleDependencies(module).mapTo(LinkedHashSet<IdeaModuleInfo?>(), { orderEntryToModuleInfo(project, it) }).toList().filterNotNull()
+        return collectModuleDependencies(module).mapTo(LinkedHashSet<IdeaModuleInfo?>(), { orderEntryToModuleInfo(module.getProject(), it) }).toList().filterNotNull()
     }
 
     private fun collectModuleDependencies(module: Module, exportedOnly: Boolean = false): List<OrderEntry> {
@@ -101,6 +101,8 @@ private data class ModuleSourcesInfo(val project: Project, val module: Module) :
         return result
     }
 }
+
+private fun Module.toSourcesInfo() = ModuleSourcesInfo(this)
 
 private data class LibraryInfo(val project: Project, val library: Library) : IdeaModuleInfo() {
     override val name: Name = Name.special("<library ${library.getName()}>")
