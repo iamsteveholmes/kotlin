@@ -177,17 +177,17 @@ public class IDELightClassGenerationSupport extends LightClassGenerationSupport 
             @NotNull FqName fqName, @NotNull final GlobalSearchScope wholeScope
     ) {
         Collection<JetFile> allFiles = findFilesForPackage(fqName, wholeScope);
-        Map<PluginModuleInfo, List<JetFile>> filesByInfo =
+        Map<IdeaModuleInfo, List<JetFile>> filesByInfo =
                 KotlinPackage.groupByTo(allFiles,
-                                        new LinkedHashMap<PluginModuleInfo, List<JetFile>>(),
-                                        new Function1<JetFile, PluginModuleInfo>() {
+                                        new LinkedHashMap<IdeaModuleInfo, List<JetFile>>(),
+                                        new Function1<JetFile, IdeaModuleInfo>() {
                                             @Override
-                                            public PluginModuleInfo invoke(JetFile file) {
+                                            public IdeaModuleInfo invoke(JetFile file) {
                                                 return ResolvePackage.getModuleInfo(file);
                                             }
                                         });
         List<KotlinLightPackageClassInfo> result = new ArrayList<KotlinLightPackageClassInfo>();
-        for (Map.Entry<PluginModuleInfo, List<JetFile>> entry : filesByInfo.entrySet()) {
+        for (Map.Entry<IdeaModuleInfo, List<JetFile>> entry : filesByInfo.entrySet()) {
             result.add(new KotlinLightPackageClassInfo(entry.getValue(), entry.getKey().filesScope()));
         }
         Collections.sort(result, new Comparator<KotlinLightPackageClassInfo>() {
