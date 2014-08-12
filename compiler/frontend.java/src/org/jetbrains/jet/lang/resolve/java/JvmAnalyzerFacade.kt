@@ -73,9 +73,9 @@ public object JvmAnalyzerFacade : AnalyzerFacade<JvmResolverForModule, JvmPlatfo
 
     }
 
+    private fun <M, P, K> Function1<M, P>.times(other: (P) -> K): (M) -> K = { p -> other(this(p)) }
+
     override val defaultImports = AnalyzerFacadeForJVM.DEFAULT_IMPORTS
     override val platformToKotlinClassMap = JavaToKotlinClassMap.getInstance()
 
 }
-
-fun <M, P, K> Function1<M, P>.times(other: (P) -> K): (M) -> K = { p -> other(this(p)) }
