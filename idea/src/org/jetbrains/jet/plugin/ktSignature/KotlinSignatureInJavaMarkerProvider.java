@@ -46,7 +46,6 @@ import org.jetbrains.jet.plugin.JetIcons;
 import org.jetbrains.jet.plugin.caches.resolve.JavaResolveExtension;
 import org.jetbrains.jet.plugin.caches.resolve.ResolvePackage;
 import org.jetbrains.jet.plugin.project.ProjectStructureUtil;
-import org.jetbrains.jet.plugin.project.TargetPlatform;
 
 import java.awt.event.MouseEvent;
 import java.util.Collection;
@@ -76,7 +75,8 @@ public class KotlinSignatureInJavaMarkerProvider implements LineMarkerProvider {
             return;
         }
 
-        Project project = elements.get(0).getProject();
+        PsiElement firstElement = elements.get(0);
+        Project project = firstElement.getProject();
         if (!isMarkersEnabled(project)) {
             return;
         }
@@ -85,14 +85,14 @@ public class KotlinSignatureInJavaMarkerProvider implements LineMarkerProvider {
             return;
         }
 
-        Module module = ModuleUtilCore.findModuleForPsiElement(elements.get(0));
+        Module module = ModuleUtilCore.findModuleForPsiElement(firstElement);
         if (module != null && !ProjectStructureUtil.isUsedInKotlinJavaModule(module)) {
             return;
         }
 
         BindingContext bindingContext = ResolvePackage.getLazyResolveSessionForJavaElement(firstElement).getBindingContext();
 
-        JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project);
+        JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project).invoke(firstElement);
 
         for (PsiElement element : elements) {
             if (!(element instanceof PsiMember)) {
