@@ -36,6 +36,7 @@ import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.module.impl.scopes.LibraryScopeBase
 import com.intellij.openapi.roots.OrderRootType
 import com.intellij.openapi.vfs.VirtualFile
+import org.jetbrains.jet.utils.addIfNotNull
 
 private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
     //TODO: add project to this fun and remove from classes params?
@@ -43,6 +44,7 @@ private abstract class IdeaModuleInfo : ModuleInfo<IdeaModuleInfo> {
     abstract fun filesScope(): GlobalSearchScope
 }
 
+//TODO_r: make not null
 private fun orderEntryToModuleInfo(project: Project, orderEntry: OrderEntry): IdeaModuleInfo? {
     return when (orderEntry) {
         is ModuleSourceOrderEntry -> {
@@ -73,27 +75,12 @@ private data class ModuleSourceInfo(val module: Module) : IdeaModuleInfo() {
 
     override fun filesScope() = GlobalSearchScope.moduleScope(module)
 
-    override fun dependencies(): List<ModuleInfo<IdeaModuleInfo>> {
-        return collectModuleDependencies(module).mapTo(LinkedHashSet<IdeaModuleInfo?>(), { orderEntryToModuleInfo(module.getProject(), it) }).toList().filterNotNull()
-    }
-
-    private fun collectModuleDependencies(module: Module, exportedOnly: Boolean = false): List<OrderEntry> {
-        val result = ArrayList<OrderEntry>()
-        val entries = ModuleRootManager.getInstance(module).getOrderEntries()
-        entries.flatMapTo(result) { entry ->
-            val isExported = entry is ExportableOrderEntry && entry.isExported()
-            if (!isExported && exportedOnly) {
-                listOf()
-            }
-            else if (entry in result) {
-                listOf()
-            }
-            else if (entry is ModuleOrderEntry) {
-                listOf(entry) + collectModuleDependencies(entry.getModule()!!, exportedOnly = true)
-            }
-            else {
-                listOf(entry)
-            }
+    override fun dependencies(): List<IdeaModuleInfo> {
+        val result = ArrayList<IdeaModuleInfo>()
+        ModuleRootManager.getInstance(module).orderEntries().recursively().exportedOnly().forEach {
+            orderEntry ->
+            result.addIfNotNull(orderEntryToModuleInfo(module.getProject(), orderEntry!!))
+            true
         }
         return result
     }
