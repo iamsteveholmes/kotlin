@@ -31,6 +31,7 @@ import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.*;
+import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.Function;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
@@ -90,12 +91,8 @@ public class KotlinSignatureInJavaMarkerProvider implements LineMarkerProvider {
             return;
         }
 
-        BindingContext bindingContext = ResolvePackage.getLazyResolveSessionForJavaElement(firstElement).getBindingContext();
-
-        JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project).invoke(firstElement);
-
         for (PsiElement element : elements) {
-            if (!(element instanceof PsiMember)) {
+            if (!(element instanceof PsiMember) || element instanceof PsiClass) {
                 continue;
             }
 
@@ -103,7 +100,18 @@ public class KotlinSignatureInJavaMarkerProvider implements LineMarkerProvider {
             if (member.hasModifierProperty(PsiModifier.PRIVATE)) {
                 continue;
             }
+
+            PsiClass containingClass = member.getContainingClass();
+            if (containingClass != null && PsiUtil.isLocalOrAnonymousClass(containingClass)) {
+                continue;
+            }
+
             PsiModifierListOwner annotationOwner = KotlinSignatureUtil.getAnnotationOwner(element);
+
+            //TODO_r: signature load errors in decompiled java files
+            BindingContext bindingContext = ResolvePackage.getLazyResolveSessionForJavaElement(annotationOwner).getBindingContext();
+
+            JavaDescriptorResolver javaDescriptorResolver = JavaResolveExtension.INSTANCE$.get(project).invoke(annotationOwner);
 
             DeclarationDescriptor memberDescriptor = getDescriptorForMember(javaDescriptorResolver, annotationOwner);
 
