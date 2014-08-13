@@ -111,11 +111,6 @@ public class LazyJavaPackageFragmentProvider(
                 if (javaClass.getOriginKind() == JavaClass.OriginKind.KOTLIN_LIGHT_CLASS) {
                     return c.javaResolverCache.getClassResolvedFromSource(fqName)
                 }
-                //TODO: temp assertion
-                val ourJavaClass = c.finder.findClass(fqName)
-                if (ourJavaClass != javaClass) {
-                   // throw AssertionError("$fqName")
-                }
             }
             val outerClass = javaClass.getOuterClass()
             if (outerClass == null) {
