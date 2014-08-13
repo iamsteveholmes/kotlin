@@ -21,95 +21,131 @@ import com.intellij.openapi.module.StdModuleTypes
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.roots.ModuleRootModificationUtil
 import com.intellij.openapi.roots.DependencyScope
+import com.intellij.testFramework.UsefulTestCase
+import junit.framework.Assert
+import com.intellij.openapi.roots.libraries.LibraryTable
+import com.intellij.openapi.roots.impl.libraries.ProjectLibraryTable
+import com.intellij.openapi.roots.libraries.Library
+import com.intellij.openapi.command.WriteCommandAction
 
-//TODO_r: use smth instead of assertContainsOrdered
 class IdeaModuleInfoTest : ModuleTestCase() {
 
-    fun testSimpleDependency() {
-        val moduleA = module("a")
-        val moduleB = module("b")
+    //NOTE: wrapper classes to reduce boilerplate in test cases
+    private class ModuleDef(val ideaModule: Module) {
+        val source = ideaModule.toSourceInfo()
+    }
 
-        moduleB.addDependency(moduleA)
+    private inner class LibraryDef(val ideaLibrary: Library) {
+        val classes = LibraryInfo(getProject()!!, ideaLibrary)
+    }
 
-        val moduleAInfo = moduleA.toSourceInfo()
-        val moduleBInfo = moduleB.toSourceInfo()
+    fun testSimpleModuleDependency() {
+        val (a, b) = modules()
+        b.addDependency(a)
 
-        assertContainsOrdered(moduleBInfo.dependencies(), moduleBInfo, moduleAInfo)
-        assertDoesntContain(moduleAInfo.dependencies(), moduleBInfo)
+        b.source.assertDependsOn(b.source, a.source)
+        assertDoesntContain(a.source.dependencies(), b.source)
     }
 
     fun testCircularDependency() {
-        val moduleA = module("a")
-        val moduleB = module("b")
+        val (a, b) = modules()
 
-        moduleB.addDependency(moduleA)
-        moduleA.addDependency(moduleB)
+        b.addDependency(a)
+        a.addDependency(b)
 
-        val moduleAInfo = moduleA.toSourceInfo()
-        val moduleBInfo = moduleB.toSourceInfo()
-
-        assertContainsOrdered(moduleAInfo.dependencies(), moduleAInfo, moduleBInfo)
-        assertContainsOrdered(moduleBInfo.dependencies(), moduleBInfo, moduleAInfo)
+        a.source.assertDependsOn(a.source, b.source)
+        b.source.assertDependsOn(b.source, a.source)
     }
 
     fun testExportedDependency() {
-        val moduleA = module("a")
-        val moduleB = module("b")
-        val moduleC = module("c")
+        val (a, b, c) = modules()
 
-        moduleB.addDependency(moduleA, exported = true)
-        moduleC.addDependency(moduleB)
+        b.addDependency(a, exported = true)
+        c.addDependency(b)
 
-        val moduleAInfo = moduleA.toSourceInfo()
-        val moduleBInfo = moduleB.toSourceInfo()
-        val moduleCInfo = moduleC.toSourceInfo()
-
-        assertContainsOrdered(moduleAInfo.dependencies(), moduleAInfo)
-        assertContainsOrdered(moduleBInfo.dependencies(), moduleBInfo, moduleAInfo)
-        assertContainsOrdered(moduleCInfo.dependencies(), moduleCInfo, moduleBInfo, moduleAInfo)
+        a.source.assertDependsOn(a.source)
+        b.source.assertDependsOn(b.source, a.source)
+        c.source.assertDependsOn(c.source, b.source, a.source)
     }
 
     fun testRedundantExportedDependency() {
-        val moduleA = module("a")
-        val moduleB = module("b")
-        val moduleC = module("c")
+        val (a, b, c) = modules()
 
-        moduleB.addDependency(moduleA, exported = true)
-        moduleC.addDependency(moduleA)
-        moduleC.addDependency(moduleB)
+        b.addDependency(a, exported = true)
+        c.addDependency(a)
+        c.addDependency(b)
 
-        val moduleAInfo = moduleA.toSourceInfo()
-        val moduleBInfo = moduleB.toSourceInfo()
-        val moduleCInfo = moduleC.toSourceInfo()
-
-        assertContainsOrdered(moduleAInfo.dependencies(), moduleAInfo)
-        assertContainsOrdered(moduleBInfo.dependencies(), moduleBInfo, moduleAInfo)
-        assertContainsOrdered(moduleCInfo.dependencies(), moduleCInfo, moduleAInfo, moduleBInfo)
+        a.source.assertDependsOn(a.source)
+        b.source.assertDependsOn(b.source, a.source)
+        c.source.assertDependsOn(c.source, a.source, b.source)
     }
 
     fun testCircularExportedDependency() {
-        val moduleA = module("a")
-        val moduleB = module("b")
-        val moduleC = module("c")
+        val (a, b, c) = modules()
 
-        moduleB.addDependency(moduleA, exported = true)
-        moduleC.addDependency(moduleB, exported = true)
-        moduleA.addDependency(moduleC, exported = true)
+        b.addDependency(a, exported = true)
+        c.addDependency(b, exported = true)
+        a.addDependency(c, exported = true)
 
-        val moduleAInfo = moduleA.toSourceInfo()
-        val moduleBInfo = moduleB.toSourceInfo()
-        val moduleCInfo = moduleC.toSourceInfo()
-
-        assertContainsOrdered(moduleAInfo.dependencies(), moduleAInfo, moduleCInfo, moduleBInfo)
-        assertContainsOrdered(moduleBInfo.dependencies(), moduleBInfo, moduleAInfo, moduleCInfo)
-        assertContainsOrdered(moduleCInfo.dependencies(), moduleCInfo, moduleBInfo, moduleAInfo)
+        a.source.assertDependsOn(a.source, c.source, b.source)
+        b.source.assertDependsOn(b.source, a.source, c.source)
+        c.source.assertDependsOn(c.source, b.source, a.source)
     }
 
-    private fun Module.addDependency(other: Module, dependencyScope: DependencyScope = DependencyScope.COMPILE, exported: Boolean = false) =
-            ModuleRootModificationUtil.addDependency(this, other, dependencyScope, exported)
+    fun testSimpleLibDependency() {
+        val a = module("a")
+        val lib = projectLibrary("lib")
+        a.addDependency(lib)
 
-    private fun module(name: String): Module {
-        return createModuleFromTestData(createTempDirectory()!!.getAbsolutePath(), name, StdModuleTypes.JAVA, false)!!
+        a.source.assertDependsOn(a.source, lib.classes)
     }
 
+    fun testCircularExportedDependencyWithLib() {
+        val (a, b, c) = modules()
+
+        val lib = projectLibrary()
+
+        b.addDependency(a, exported = true)
+        c.addDependency(b, exported = true)
+        a.addDependency(c, exported = true)
+
+        a.addDependency(lib)
+        b.addDependency(lib)
+        c.addDependency(lib)
+
+        a.source.assertDependsOn(a.source, c.source, b.source, lib.classes)
+        b.source.assertDependsOn(b.source, a.source, c.source, lib.classes)
+        c.source.assertDependsOn(c.source, b.source, a.source, lib.classes)
+    }
+
+    private fun ModuleDef.addDependency(
+            other: ModuleDef,
+            dependencyScope: DependencyScope = DependencyScope.COMPILE,
+            exported: Boolean = false
+    ) = ModuleRootModificationUtil.addDependency(this.ideaModule, other.ideaModule, dependencyScope, exported)
+
+    private fun ModuleDef.addDependency(
+            lib: LibraryDef,
+            dependencyScope: DependencyScope = DependencyScope.COMPILE,
+            exported: Boolean = false
+    ) = ModuleRootModificationUtil.addDependency(this.ideaModule, lib.ideaLibrary, dependencyScope, exported)
+
+    private fun module(name: String): ModuleDef {
+        val ideaModule = createModuleFromTestData(createTempDirectory()!!.getAbsolutePath(), name, StdModuleTypes.JAVA, false)!!
+        return ModuleDef(ideaModule)
+    }
+
+    private fun modules(name1: String = "a", name2: String = "b", name3: String = "c") = Triple(module(name1), module(name2), module(name3))
+
+    private fun IdeaModuleInfo.assertDependsOn(vararg dependencies: IdeaModuleInfo) {
+        Assert.assertEquals(this.dependencies(), dependencies.toList())
+    }
+
+    private fun projectLibrary(name: String = "lib"): LibraryDef {
+        val libraryTable = ProjectLibraryTable.getInstance(myProject)!!
+        val library = WriteCommandAction.runWriteCommandAction<Library>(myProject) {
+            libraryTable.createLibrary(name)
+        }!!
+        return LibraryDef(library)
+    }
 }
