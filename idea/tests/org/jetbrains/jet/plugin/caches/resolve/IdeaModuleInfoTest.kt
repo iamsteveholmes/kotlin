@@ -118,6 +118,52 @@ class IdeaModuleInfoTest : ModuleTestCase() {
         c.source.assertDependsOn(c.source, b.source, a.source, lib.classes)
     }
 
+    fun testSeveralModulesExportLibs() {
+        val (a, b, c) = modules()
+
+        val lib1 = projectLibrary("lib1")
+        val lib2 = projectLibrary("lib2")
+
+        a.addDependency(lib1, exported = true)
+        b.addDependency(lib2, exported = true)
+        c.addDependency(a)
+        c.addDependency(b)
+
+        c.source.assertDependsOn(c.source, a.source, lib1.classes, b.source, lib2.classes)
+    }
+
+    fun testSeveralModulesExportSameLib() {
+        val (a, b, c) = modules()
+
+        val lib = projectLibrary()
+
+        a.addDependency(lib, exported = true)
+        b.addDependency(lib, exported = true)
+        c.addDependency(a)
+        c.addDependency(b)
+
+        c.source.assertDependsOn(c.source, a.source, lib.classes, b.source)
+    }
+
+    fun testRuntimeDependency() {
+        val (a, b) = modules()
+
+        b.addDependency(a, dependencyScope = DependencyScope.RUNTIME)
+        b.addDependency(projectLibrary(), dependencyScope = DependencyScope.RUNTIME)
+
+        b.source.assertDependsOn(b.source)
+    }
+
+    fun testProvidedDependency() {
+        val (a, b) = modules()
+        val lib = projectLibrary()
+
+        b.addDependency(a, dependencyScope = DependencyScope.PROVIDED)
+        b.addDependency(lib, dependencyScope = DependencyScope.PROVIDED)
+
+        b.source.assertDependsOn(b.source, a.source, lib.classes)
+    }
+
     private fun ModuleDef.addDependency(
             other: ModuleDef,
             dependencyScope: DependencyScope = DependencyScope.COMPILE,
@@ -138,7 +184,7 @@ class IdeaModuleInfoTest : ModuleTestCase() {
     private fun modules(name1: String = "a", name2: String = "b", name3: String = "c") = Triple(module(name1), module(name2), module(name3))
 
     private fun IdeaModuleInfo.assertDependsOn(vararg dependencies: IdeaModuleInfo) {
-        Assert.assertEquals(this.dependencies(), dependencies.toList())
+        Assert.assertEquals(dependencies.toList(), this.dependencies())
     }
 
     private fun projectLibrary(name: String = "lib"): LibraryDef {

@@ -76,13 +76,14 @@ private data class ModuleSourceInfo(val module: Module) : IdeaModuleInfo() {
     override fun filesScope() = GlobalSearchScope.moduleScope(module)
 
     override fun dependencies(): List<IdeaModuleInfo> {
-        val result = ArrayList<IdeaModuleInfo>()
-        ModuleRootManager.getInstance(module).orderEntries().recursively().exportedOnly().forEach {
+        //NOTE: lib dependencies can be processed several times during recursive traversal
+        val result = LinkedHashSet<IdeaModuleInfo>()
+        ModuleRootManager.getInstance(module).orderEntries().compileOnly().recursively().exportedOnly().forEach {
             orderEntry ->
             result.addIfNotNull(orderEntryToModuleInfo(module.getProject(), orderEntry!!))
             true
         }
-        return result
+        return result.toList()
     }
 }
 
