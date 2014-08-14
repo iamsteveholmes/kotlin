@@ -5,7 +5,7 @@ trait <lineMarker descr="*"></lineMarker>SkipSupport {
 
 public trait <lineMarker descr="*"></lineMarker>SkipSupportWithDefaults : SkipSupport {
     override fun <lineMarker descr="*"><lineMarker descr="Implements function in 'SkipSupport'"></lineMarker></lineMarker>skip(why: String) {}
-    override fun <lineMarker descr="*"><lineMarker descr="Implements function in 'SkipSupport'"></lineMarker></lineMarker>skip() {
+    override fun <lineMarker descr="Implements function in 'SkipSupport'"></lineMarker>skip() {
         skip("not given")
     }
 }

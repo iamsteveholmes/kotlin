@@ -94,6 +94,14 @@ public class OverrideImplementLineMarkerTest extends JetLightCodeInsightFixtureT
         doTest();
     }
 
+    public void testNoOverridingMarkerOnDefaultTraitImpl() {
+        doTest();
+    }
+
+    public void testOverridingTooltipOnDefaultTraitImpl() {
+        doTest();
+    }
+
     public void testOverloads() {
         doTest();
     }
@@ -135,7 +143,7 @@ public class OverrideImplementLineMarkerTest extends JetLightCodeInsightFixtureT
             }
             catch (AssertionError error) {
                 try {
-                    String actualTextWithTestData = HighlightTestDataUtil.insertInfoTags(markers, false, myFixture.getFile().getText());
+                    String actualTextWithTestData = HighlightTestDataUtil.insertInfoTags(markers, true, myFixture.getFile().getText());
                     JetTestUtils.assertEqualsToFile(new File(getTestDataPath(), fileName()), actualTextWithTestData);
                 }
                 catch (FileComparisonFailure failure) {
