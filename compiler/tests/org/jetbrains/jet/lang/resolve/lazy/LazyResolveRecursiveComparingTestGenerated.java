@@ -54,37 +54,37 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("ClassObjectPropertyField.kt")
                 public void testClassObjectPropertyField() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/ClassObjectPropertyField.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/ClassObjectPropertyField.kt");
                 }
                 
                 @TestMetadata("DelegatedProperty.kt")
                 public void testDelegatedProperty() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/DelegatedProperty.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/DelegatedProperty.kt");
                 }
                 
                 @TestMetadata("EnumArgument.kt")
                 public void testEnumArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/EnumArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/EnumArgument.kt");
                 }
                 
                 @TestMetadata("Function.kt")
                 public void testFunction() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Function.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Function.kt");
                 }
                 
                 @TestMetadata("Getter.kt")
                 public void testGetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Getter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Getter.kt");
                 }
                 
                 @TestMetadata("PropertyField.kt")
                 public void testPropertyField() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/PropertyField.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/PropertyField.kt");
                 }
                 
                 @TestMetadata("Setter.kt")
                 public void testSetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Setter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classMembers/Setter.kt");
                 }
                 
             }
@@ -97,72 +97,72 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("AnnotationInClassObject.kt")
                 public void testAnnotationInClassObject() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/AnnotationInClassObject.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/AnnotationInClassObject.kt");
                 }
                 
                 @TestMetadata("ClassInClassObject.kt")
                 public void testClassInClassObject() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassInClassObject.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassInClassObject.kt");
                 }
                 
                 @TestMetadata("ClassObject.kt")
                 public void testClassObject() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassObject.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassObject.kt");
                 }
                 
                 @TestMetadata("ClassObjectInStaticNestedClass.kt")
                 public void testClassObjectInStaticNestedClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassObjectInStaticNestedClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/ClassObjectInStaticNestedClass.kt");
                 }
                 
                 @TestMetadata("Deprecated.kt")
                 public void testDeprecated() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/Deprecated.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/Deprecated.kt");
                 }
                 
                 @TestMetadata("DollarsInAnnotationName.kt")
                 public void testDollarsInAnnotationName() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/DollarsInAnnotationName.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/DollarsInAnnotationName.kt");
                 }
                 
                 @TestMetadata("EnumArgument.kt")
                 public void testEnumArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/EnumArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/EnumArgument.kt");
                 }
                 
                 @TestMetadata("MultipleAnnotations.kt")
                 public void testMultipleAnnotations() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/MultipleAnnotations.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/MultipleAnnotations.kt");
                 }
                 
                 @TestMetadata("NestedAnnotation.kt")
                 public void testNestedAnnotation() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/NestedAnnotation.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/NestedAnnotation.kt");
                 }
                 
                 @TestMetadata("NestedClass.kt")
                 public void testNestedClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/NestedClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/NestedClass.kt");
                 }
                 
                 @TestMetadata("Retention.kt")
                 public void testRetention() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/Retention.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/Retention.kt");
                 }
                 
                 @TestMetadata("Simple.kt")
                 public void testSimple() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/Simple.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/Simple.kt");
                 }
                 
                 @TestMetadata("WithArgument.kt")
                 public void testWithArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/WithArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/WithArgument.kt");
                 }
                 
                 @TestMetadata("WithMultipleArguments.kt")
                 public void testWithMultipleArguments() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/classes/WithMultipleArguments.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/classes/WithMultipleArguments.kt");
                 }
                 
             }
@@ -175,42 +175,42 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("DelegatedProperty.kt")
                 public void testDelegatedProperty() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/DelegatedProperty.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/DelegatedProperty.kt");
                 }
                 
                 @TestMetadata("EnumArgument.kt")
                 public void testEnumArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/EnumArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/EnumArgument.kt");
                 }
                 
                 @TestMetadata("EnumArrayArgument.kt")
                 public void testEnumArrayArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/EnumArrayArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/EnumArrayArgument.kt");
                 }
                 
                 @TestMetadata("Function.kt")
                 public void testFunction() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Function.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Function.kt");
                 }
                 
                 @TestMetadata("Getter.kt")
                 public void testGetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Getter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Getter.kt");
                 }
                 
                 @TestMetadata("PropertyField.kt")
                 public void testPropertyField() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/PropertyField.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/PropertyField.kt");
                 }
                 
                 @TestMetadata("Setter.kt")
                 public void testSetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Setter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/Setter.kt");
                 }
                 
                 @TestMetadata("StringArrayArgument.kt")
                 public void testStringArrayArgument() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/StringArrayArgument.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/packageMembers/StringArrayArgument.kt");
                 }
                 
             }
@@ -223,57 +223,57 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("Constructor.kt")
                 public void testConstructor() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/Constructor.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/Constructor.kt");
                 }
                 
                 @TestMetadata("EnumConstructor.kt")
                 public void testEnumConstructor() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/EnumConstructor.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/EnumConstructor.kt");
                 }
                 
                 @TestMetadata("ExtensionFunction.kt")
                 public void testExtensionFunction() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionFunction.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionFunction.kt");
                 }
                 
                 @TestMetadata("ExtensionFunctionInClass.kt")
                 public void testExtensionFunctionInClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionFunctionInClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionFunctionInClass.kt");
                 }
                 
                 @TestMetadata("ExtensionPropertySetter.kt")
                 public void testExtensionPropertySetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionPropertySetter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ExtensionPropertySetter.kt");
                 }
                 
                 @TestMetadata("FunctionInClass.kt")
                 public void testFunctionInClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/FunctionInClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/FunctionInClass.kt");
                 }
                 
                 @TestMetadata("FunctionInTrait.kt")
                 public void testFunctionInTrait() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/FunctionInTrait.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/FunctionInTrait.kt");
                 }
                 
                 @TestMetadata("ManyAnnotations.kt")
                 public void testManyAnnotations() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ManyAnnotations.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/ManyAnnotations.kt");
                 }
                 
                 @TestMetadata("PropertySetterInClass.kt")
                 public void testPropertySetterInClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/PropertySetterInClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/PropertySetterInClass.kt");
                 }
                 
                 @TestMetadata("TopLevelFunction.kt")
                 public void testTopLevelFunction() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/TopLevelFunction.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/TopLevelFunction.kt");
                 }
                 
                 @TestMetadata("TopLevelPropertySetter.kt")
                 public void testTopLevelPropertySetter() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/parameters/TopLevelPropertySetter.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/parameters/TopLevelPropertySetter.kt");
                 }
                 
             }
@@ -286,42 +286,42 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("Class.kt")
                 public void testClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/Class.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/Class.kt");
                 }
                 
                 @TestMetadata("ClassObject.kt")
                 public void testClassObject() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ClassObject.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ClassObject.kt");
                 }
                 
                 @TestMetadata("ExtensionsWithSameNameClass.kt")
                 public void testExtensionsWithSameNameClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ExtensionsWithSameNameClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ExtensionsWithSameNameClass.kt");
                 }
                 
                 @TestMetadata("ExtensionsWithSameNamePackage.kt")
                 public void testExtensionsWithSameNamePackage() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ExtensionsWithSameNamePackage.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/ExtensionsWithSameNamePackage.kt");
                 }
                 
                 @TestMetadata("NestedTrait.kt")
                 public void testNestedTrait() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/NestedTrait.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/NestedTrait.kt");
                 }
                 
                 @TestMetadata("TopLevel.kt")
                 public void testTopLevel() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/TopLevel.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/TopLevel.kt");
                 }
                 
                 @TestMetadata("Trait.kt")
                 public void testTrait() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/Trait.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/Trait.kt");
                 }
                 
                 @TestMetadata("TraitClassObject.kt")
                 public void testTraitClassObject() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/TraitClassObject.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/annotations/propertiesWithoutBackingFields/TraitClassObject.kt");
                 }
                 
             }
@@ -346,167 +346,167 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("Class.kt")
             public void testClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/Class.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/Class.kt");
             }
             
             @TestMetadata("ClassInParam.kt")
             public void testClassInParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassInParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassInParam.kt");
             }
             
             @TestMetadata("ClassInnerClass.kt")
             public void testClassInnerClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassInnerClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassInnerClass.kt");
             }
             
             @TestMetadata("ClassMemberConflict.kt")
             public void testClassMemberConflict() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassMemberConflict.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassMemberConflict.kt");
             }
             
             @TestMetadata("ClassOutParam.kt")
             public void testClassOutParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassOutParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassOutParam.kt");
             }
             
             @TestMetadata("ClassParam.kt")
             public void testClassParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParam.kt");
             }
             
             @TestMetadata("ClassParamReferencesParam.kt")
             public void testClassParamReferencesParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesParam.kt");
             }
             
             @TestMetadata("ClassParamReferencesParam2.kt")
             public void testClassParamReferencesParam2() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesParam2.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesParam2.kt");
             }
             
             @TestMetadata("ClassParamReferencesSelf.kt")
             public void testClassParamReferencesSelf() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesSelf.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamReferencesSelf.kt");
             }
             
             @TestMetadata("ClassParamUpperClassBound.kt")
             public void testClassParamUpperClassBound() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperClassBound.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperClassBound.kt");
             }
             
             @TestMetadata("ClassParamUpperClassInterfaceBound.kt")
             public void testClassParamUpperClassInterfaceBound() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperClassInterfaceBound.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperClassInterfaceBound.kt");
             }
             
             @TestMetadata("ClassParamUpperInterfaceBound.kt")
             public void testClassParamUpperInterfaceBound() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperInterfaceBound.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassParamUpperInterfaceBound.kt");
             }
             
             @TestMetadata("ClassTwoParams.kt")
             public void testClassTwoParams() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassTwoParams.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassTwoParams.kt");
             }
             
             @TestMetadata("ClassTwoParams2.kt")
             public void testClassTwoParams2() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/ClassTwoParams2.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/ClassTwoParams2.kt");
             }
             
             @TestMetadata("EnumWithGenericConstructorParameter.kt")
             public void testEnumWithGenericConstructorParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/EnumWithGenericConstructorParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/EnumWithGenericConstructorParameter.kt");
             }
             
             @TestMetadata("EnumWithPrimitiveConstructorParameter.kt")
             public void testEnumWithPrimitiveConstructorParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/EnumWithPrimitiveConstructorParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/EnumWithPrimitiveConstructorParameter.kt");
             }
             
             @TestMetadata("InheritClassSimple.kt")
             public void testInheritClassSimple() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InheritClassSimple.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InheritClassSimple.kt");
             }
             
             @TestMetadata("InheritClassWithParam.kt")
             public void testInheritClassWithParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InheritClassWithParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InheritClassWithParam.kt");
             }
             
             @TestMetadata("InheritSubstitutedMethod.kt")
             public void testInheritSubstitutedMethod() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InheritSubstitutedMethod.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InheritSubstitutedMethod.kt");
             }
             
             @TestMetadata("InheritTraitWithFunctionParam.kt")
             public void testInheritTraitWithFunctionParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InheritTraitWithFunctionParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InheritTraitWithFunctionParam.kt");
             }
             
             @TestMetadata("InheritTraitWithParam.kt")
             public void testInheritTraitWithParam() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InheritTraitWithParam.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InheritTraitWithParam.kt");
             }
             
             @TestMetadata("InnerClassExtendInnerClass.kt")
             public void testInnerClassExtendInnerClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InnerClassExtendInnerClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InnerClassExtendInnerClass.kt");
             }
             
             @TestMetadata("InnerGenericClass.kt")
             public void testInnerGenericClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/InnerGenericClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/InnerGenericClass.kt");
             }
             
             @TestMetadata("NamedObject.kt")
             public void testNamedObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NamedObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NamedObject.kt");
             }
             
             @TestMetadata("NamedObjectInClass.kt")
             public void testNamedObjectInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInClass.kt");
             }
             
             @TestMetadata("NamedObjectInClassObject.kt")
             public void testNamedObjectInClassObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInClassObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInClassObject.kt");
             }
             
             @TestMetadata("NamedObjectInNamedObject.kt")
             public void testNamedObjectInNamedObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInNamedObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NamedObjectInNamedObject.kt");
             }
             
             @TestMetadata("NamedObjectWithAnotherTopLevelProperty.kt")
             public void testNamedObjectWithAnotherTopLevelProperty() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NamedObjectWithAnotherTopLevelProperty.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NamedObjectWithAnotherTopLevelProperty.kt");
             }
             
             @TestMetadata("NestedClass.kt")
             public void testNestedClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NestedClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NestedClass.kt");
             }
             
             @TestMetadata("NestedClassExtendNestedClass.kt")
             public void testNestedClassExtendNestedClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NestedClassExtendNestedClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NestedClassExtendNestedClass.kt");
             }
             
             @TestMetadata("NestedGenericClass.kt")
             public void testNestedGenericClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/NestedGenericClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/NestedGenericClass.kt");
             }
             
             @TestMetadata("SingleAbstractMethod.kt")
             public void testSingleAbstractMethod() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/SingleAbstractMethod.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/SingleAbstractMethod.kt");
             }
             
             @TestMetadata("Trait.kt")
             public void testTrait() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/class/Trait.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/class/Trait.kt");
             }
             
         }
@@ -519,32 +519,32 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ClassInParamUsedInFun.kt")
             public void testClassInParamUsedInFun() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/ClassInParamUsedInFun.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/ClassInParamUsedInFun.kt");
             }
             
             @TestMetadata("ClassParamUsedInFun.kt")
             public void testClassParamUsedInFun() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/ClassParamUsedInFun.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/ClassParamUsedInFun.kt");
             }
             
             @TestMetadata("FunDelegationToTraitImpl.kt")
             public void testFunDelegationToTraitImpl() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/FunDelegationToTraitImpl.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/FunDelegationToTraitImpl.kt");
             }
             
             @TestMetadata("FunInParamSuper.kt")
             public void testFunInParamSuper() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/FunInParamSuper.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/FunInParamSuper.kt");
             }
             
             @TestMetadata("TraitFinalFun.kt")
             public void testTraitFinalFun() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/TraitFinalFun.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/TraitFinalFun.kt");
             }
             
             @TestMetadata("TraitOpenFun.kt")
             public void testTraitOpenFun() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classFun/TraitOpenFun.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classFun/TraitOpenFun.kt");
             }
             
         }
@@ -557,62 +557,62 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ClassObjectDeclaresVal.kt")
             public void testClassObjectDeclaresVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDeclaresVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDeclaresVal.kt");
             }
             
             @TestMetadata("ClassObjectDeclaresVar.kt")
             public void testClassObjectDeclaresVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDeclaresVar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDeclaresVar.kt");
             }
             
             @TestMetadata("ClassObjectDefaultVisibility.kt")
             public void testClassObjectDefaultVisibility() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDefaultVisibility.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectDefaultVisibility.kt");
             }
             
             @TestMetadata("ClassObjectExplicitVisibility.kt")
             public void testClassObjectExplicitVisibility() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExplicitVisibility.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExplicitVisibility.kt");
             }
             
             @TestMetadata("ClassObjectExtendsTrait.kt")
             public void testClassObjectExtendsTrait() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExtendsTrait.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExtendsTrait.kt");
             }
             
             @TestMetadata("ClassObjectExtendsTraitWithTP.kt")
             public void testClassObjectExtendsTraitWithTP() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExtendsTraitWithTP.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectExtendsTraitWithTP.kt");
             }
             
             @TestMetadata("classObjectInClassStaticFields.kt")
             public void testClassObjectInClassStaticFields() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/classObjectInClassStaticFields.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/classObjectInClassStaticFields.kt");
             }
             
             @TestMetadata("classObjectInTraitStaticFields.kt")
             public void testClassObjectInTraitStaticFields() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/classObjectInTraitStaticFields.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/classObjectInTraitStaticFields.kt");
             }
             
             @TestMetadata("ClassObjectPropertyInClass.kt")
             public void testClassObjectPropertyInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectPropertyInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/ClassObjectPropertyInClass.kt");
             }
             
             @TestMetadata("Delegation.kt")
             public void testDelegation() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/Delegation.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/Delegation.kt");
             }
             
             @TestMetadata("InnerClassInClassObject.kt")
             public void testInnerClassInClassObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/InnerClassInClassObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/InnerClassInClassObject.kt");
             }
             
             @TestMetadata("SimpleClassObject.kt")
             public void testSimpleClassObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/classObject/SimpleClassObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/classObject/SimpleClassObject.kt");
             }
             
         }
@@ -626,67 +626,67 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("Constructor0.kt")
             public void testConstructor0() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/Constructor0.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/Constructor0.kt");
             }
             
             @TestMetadata("Constructor1.kt")
             public void testConstructor1() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/Constructor1.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/Constructor1.kt");
             }
             
             @TestMetadata("Constructor1WithParamDefaultValue.kt")
             public void testConstructor1WithParamDefaultValue() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/Constructor1WithParamDefaultValue.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/Constructor1WithParamDefaultValue.kt");
             }
             
             @TestMetadata("Constructor2WithOneParamDefaultValue.kt")
             public void testConstructor2WithOneParamDefaultValue() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/Constructor2WithOneParamDefaultValue.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/Constructor2WithOneParamDefaultValue.kt");
             }
             
             @TestMetadata("ConstructorCollectionParameter.kt")
             public void testConstructorCollectionParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorCollectionParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorCollectionParameter.kt");
             }
             
             @TestMetadata("ConstructorWithTwoDefArgs.kt")
             public void testConstructorWithTwoDefArgs() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoDefArgs.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoDefArgs.kt");
             }
             
             @TestMetadata("ConstructorWithTwoTypeParameters.kt")
             public void testConstructorWithTwoTypeParameters() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParameters.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParameters.kt");
             }
             
             @TestMetadata("ConstructorWithTwoTypeParametersAndOneIntValueParameter.kt")
             public void testConstructorWithTwoTypeParametersAndOneIntValueParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParametersAndOneIntValueParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParametersAndOneIntValueParameter.kt");
             }
             
             @TestMetadata("ConstructorWithTwoTypeParametersAndOnePValueParameter.kt")
             public void testConstructorWithTwoTypeParametersAndOnePValueParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParametersAndOnePValueParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTwoTypeParametersAndOnePValueParameter.kt");
             }
             
             @TestMetadata("ConstructorWithTypeParameter.kt")
             public void testConstructorWithTypeParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTypeParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTypeParameter.kt");
             }
             
             @TestMetadata("ConstructorWithTypeParametersEAndOnePValueParameter.kt")
             public void testConstructorWithTypeParametersEAndOnePValueParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTypeParametersEAndOnePValueParameter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorWithTypeParametersEAndOnePValueParameter.kt");
             }
             
             @TestMetadata("InnerClassConstructorWithDefArgs.kt")
             public void testInnerClassConstructorWithDefArgs() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/InnerClassConstructorWithDefArgs.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/InnerClassConstructorWithDefArgs.kt");
             }
             
             @TestMetadata("PrivateConstructor1WithParamDefaultValue.kt")
             public void testPrivateConstructor1WithParamDefaultValue() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/PrivateConstructor1WithParamDefaultValue.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/constructor/PrivateConstructor1WithParamDefaultValue.kt");
             }
             
             @TestMetadata("compiler/testData/loadJava/compiledKotlin/constructor/vararg")
@@ -697,12 +697,12 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("ConstructorNonLastVararg.kt")
                 public void testConstructorNonLastVararg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/vararg/ConstructorNonLastVararg.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/constructor/vararg/ConstructorNonLastVararg.kt");
                 }
                 
                 @TestMetadata("ConstructorVararg.kt")
                 public void testConstructorVararg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/constructor/vararg/ConstructorVararg.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/constructor/vararg/ConstructorVararg.kt");
                 }
                 
             }
@@ -723,37 +723,37 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("MixedComponents.kt")
             public void testMixedComponents() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/MixedComponents.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/MixedComponents.kt");
             }
             
             @TestMetadata("NoComponents.kt")
             public void testNoComponents() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/NoComponents.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/NoComponents.kt");
             }
             
             @TestMetadata("OneVal.kt")
             public void testOneVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/OneVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/OneVal.kt");
             }
             
             @TestMetadata("OpenDataClass.kt")
             public void testOpenDataClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/OpenDataClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/OpenDataClass.kt");
             }
             
             @TestMetadata("OpenPropertyFinalComponent.kt")
             public void testOpenPropertyFinalComponent() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/OpenPropertyFinalComponent.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/OpenPropertyFinalComponent.kt");
             }
             
             @TestMetadata("TwoVals.kt")
             public void testTwoVals() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/TwoVals.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/TwoVals.kt");
             }
             
             @TestMetadata("TwoVars.kt")
             public void testTwoVars() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/dataClass/TwoVars.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/dataClass/TwoVars.kt");
             }
             
         }
@@ -766,27 +766,27 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("enumVisibility.kt")
             public void testEnumVisibility() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/enum/enumVisibility.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/enum/enumVisibility.kt");
             }
             
             @TestMetadata("enumWithConstuctor.kt")
             public void testEnumWithConstuctor() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/enum/enumWithConstuctor.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/enum/enumWithConstuctor.kt");
             }
             
             @TestMetadata("innerEnum.kt")
             public void testInnerEnum() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/enum/innerEnum.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/enum/innerEnum.kt");
             }
             
             @TestMetadata("innerEnumExistingClassObject.kt")
             public void testInnerEnumExistingClassObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/enum/innerEnumExistingClassObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/enum/innerEnumExistingClassObject.kt");
             }
             
             @TestMetadata("simpleEnum.kt")
             public void testSimpleEnum() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/enum/simpleEnum.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/enum/simpleEnum.kt");
             }
             
         }
@@ -800,52 +800,52 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("Assert.kt")
             public void testAssert() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/Assert.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/Assert.kt");
             }
             
             @TestMetadata("DeclaredMemberOverridesDelegated.kt")
             public void testDeclaredMemberOverridesDelegated() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/DeclaredMemberOverridesDelegated.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/DeclaredMemberOverridesDelegated.kt");
             }
             
             @TestMetadata("InheritMethodsDifferentReturnTypesAndVisibilities.kt")
             public void testInheritMethodsDifferentReturnTypesAndVisibilities() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/InheritMethodsDifferentReturnTypesAndVisibilities.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/InheritMethodsDifferentReturnTypesAndVisibilities.kt");
             }
             
             @TestMetadata("InheritValAndVar.kt")
             public void testInheritValAndVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/InheritValAndVar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/InheritValAndVar.kt");
             }
             
             @TestMetadata("InheritValsDifferentTypes.kt")
             public void testInheritValsDifferentTypes() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/InheritValsDifferentTypes.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/InheritValsDifferentTypes.kt");
             }
             
             @TestMetadata("NoDelegationForFunctionInheritedFromTraitSuperClass.kt")
             public void testNoDelegationForFunctionInheritedFromTraitSuperClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/NoDelegationForFunctionInheritedFromTraitSuperClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/NoDelegationForFunctionInheritedFromTraitSuperClass.kt");
             }
             
             @TestMetadata("NoSamAdapter.kt")
             public void testNoSamAdapter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/NoSamAdapter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/NoSamAdapter.kt");
             }
             
             @TestMetadata("NoSamConstructor.kt")
             public void testNoSamConstructor() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/NoSamConstructor.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/NoSamConstructor.kt");
             }
             
             @TestMetadata("PropagateDeepSubclass.kt")
             public void testPropagateDeepSubclass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/PropagateDeepSubclass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/PropagateDeepSubclass.kt");
             }
             
             @TestMetadata("PropagateSubclassOfComparable.kt")
             public void testPropagateSubclassOfComparable() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/PropagateSubclassOfComparable.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/fun/PropagateSubclassOfComparable.kt");
             }
             
             @TestMetadata("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables")
@@ -856,52 +856,52 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("FunGenericParam.kt")
                 public void testFunGenericParam() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunGenericParam.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunGenericParam.kt");
                 }
                 
                 @TestMetadata("FunParamParam.kt")
                 public void testFunParamParam() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamParam.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamParam.kt");
                 }
                 
                 @TestMetadata("FunParamParamErased.kt")
                 public void testFunParamParamErased() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamParamErased.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamParamErased.kt");
                 }
                 
                 @TestMetadata("FunParamReferencesParam.kt")
                 public void testFunParamReferencesParam() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamReferencesParam.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamReferencesParam.kt");
                 }
                 
                 @TestMetadata("FunParamTwoUpperBounds.kt")
                 public void testFunParamTwoUpperBounds() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamTwoUpperBounds.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamTwoUpperBounds.kt");
                 }
                 
                 @TestMetadata("FunParamUpperClassBound.kt")
                 public void testFunParamUpperClassBound() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperClassBound.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperClassBound.kt");
                 }
                 
                 @TestMetadata("FunParamUpperClassInterfaceBound.kt")
                 public void testFunParamUpperClassInterfaceBound() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperClassInterfaceBound.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperClassInterfaceBound.kt");
                 }
                 
                 @TestMetadata("FunParamUpperInterfaceBound.kt")
                 public void testFunParamUpperInterfaceBound() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperInterfaceBound.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamUpperInterfaceBound.kt");
                 }
                 
                 @TestMetadata("FunParamVaragParam.kt")
                 public void testFunParamVaragParam() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamVaragParam.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunParamVaragParam.kt");
                 }
                 
                 @TestMetadata("FunTwoTypeParams.kt")
                 public void testFunTwoTypeParams() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunTwoTypeParams.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithTypeVariables/FunTwoTypeParams.kt");
                 }
                 
             }
@@ -914,27 +914,27 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("FunClassParamNotNull.kt")
                 public void testFunClassParamNotNull() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunClassParamNotNull.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunClassParamNotNull.kt");
                 }
                 
                 @TestMetadata("FunClassParamNullable.kt")
                 public void testFunClassParamNullable() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunClassParamNullable.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunClassParamNullable.kt");
                 }
                 
                 @TestMetadata("FunParamNullable.kt")
                 public void testFunParamNullable() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunParamNullable.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/FunParamNullable.kt");
                 }
                 
                 @TestMetadata("ReturnTypeClassParamNotNull.kt")
                 public void testReturnTypeClassParamNotNull() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/ReturnTypeClassParamNotNull.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/ReturnTypeClassParamNotNull.kt");
                 }
                 
                 @TestMetadata("ReturnTypeClassParamNullable.kt")
                 public void testReturnTypeClassParamNullable() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/ReturnTypeClassParamNullable.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/genericWithoutTypeVariables/ReturnTypeClassParamNullable.kt");
                 }
                 
             }
@@ -947,82 +947,82 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("ClassFun.kt")
                 public void testClassFun() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFun.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFun.kt");
                 }
                 
                 @TestMetadata("ClassFunGetFoo.kt")
                 public void testClassFunGetFoo() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunGetFoo.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunGetFoo.kt");
                 }
                 
                 @TestMetadata("ClassFunGetFooSetFoo.kt")
                 public void testClassFunGetFooSetFoo() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunGetFooSetFoo.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunGetFooSetFoo.kt");
                 }
                 
                 @TestMetadata("ClassFunSetFoo.kt")
                 public void testClassFunSetFoo() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunSetFoo.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ClassFunSetFoo.kt");
                 }
                 
                 @TestMetadata("ExtFun.kt")
                 public void testExtFun() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ExtFun.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ExtFun.kt");
                 }
                 
                 @TestMetadata("ExtFunInClass.kt")
                 public void testExtFunInClass() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ExtFunInClass.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ExtFunInClass.kt");
                 }
                 
                 @TestMetadata("FunDefaultArg.kt")
                 public void testFunDefaultArg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunDefaultArg.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunDefaultArg.kt");
                 }
                 
                 @TestMetadata("FunParamNotNull.kt")
                 public void testFunParamNotNull() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunParamNotNull.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunParamNotNull.kt");
                 }
                 
                 @TestMetadata("FunVarargInt.kt")
                 public void testFunVarargInt() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunVarargInt.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunVarargInt.kt");
                 }
                 
                 @TestMetadata("FunVarargInteger.kt")
                 public void testFunVarargInteger() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunVarargInteger.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/FunVarargInteger.kt");
                 }
                 
                 @TestMetadata("ModifierAbstract.kt")
                 public void testModifierAbstract() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ModifierAbstract.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ModifierAbstract.kt");
                 }
                 
                 @TestMetadata("ModifierOpen.kt")
                 public void testModifierOpen() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ModifierOpen.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ModifierOpen.kt");
                 }
                 
                 @TestMetadata("NsFun.kt")
                 public void testNsFun() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/NsFun.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/NsFun.kt");
                 }
                 
                 @TestMetadata("NsFunGetFoo.kt")
                 public void testNsFunGetFoo() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/NsFunGetFoo.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/NsFunGetFoo.kt");
                 }
                 
                 @TestMetadata("ReturnTypeNotNull.kt")
                 public void testReturnTypeNotNull() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ReturnTypeNotNull.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ReturnTypeNotNull.kt");
                 }
                 
                 @TestMetadata("ReturnTypeNullable.kt")
                 public void testReturnTypeNullable() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ReturnTypeNullable.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/nonGeneric/ReturnTypeNullable.kt");
                 }
                 
             }
@@ -1035,7 +1035,7 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("nonLastVararg.kt")
                 public void testNonLastVararg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/fun/vararg/nonLastVararg.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/fun/vararg/nonLastVararg.kt");
                 }
                 
             }
@@ -1059,7 +1059,7 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("inlineFunction.kt")
             public void testInlineFunction() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/inline/inlineFunction.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/inline/inlineFunction.kt");
             }
             
         }
@@ -1073,162 +1073,162 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ClassVal.kt")
             public void testClassVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ClassVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ClassVal.kt");
             }
             
             @TestMetadata("ClassValAbstract.kt")
             public void testClassValAbstract() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ClassValAbstract.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ClassValAbstract.kt");
             }
             
             @TestMetadata("ClassVar.kt")
             public void testClassVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ClassVar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ClassVar.kt");
             }
             
             @TestMetadata("CollectionSize.kt")
             public void testCollectionSize() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/CollectionSize.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/CollectionSize.kt");
             }
             
             @TestMetadata("Constants.kt")
             public void testConstants() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/Constants.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/Constants.kt");
             }
             
             @TestMetadata("ExtValClass.kt")
             public void testExtValClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValClass.kt");
             }
             
             @TestMetadata("ExtValInClass.kt")
             public void testExtValInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValInClass.kt");
             }
             
             @TestMetadata("ExtValInt.kt")
             public void testExtValInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValInt.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValInt.kt");
             }
             
             @TestMetadata("ExtValIntCharSequence.kt")
             public void testExtValIntCharSequence() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntCharSequence.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntCharSequence.kt");
             }
             
             @TestMetadata("ExtValIntCharSequenceQ.kt")
             public void testExtValIntCharSequenceQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntCharSequenceQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntCharSequenceQ.kt");
             }
             
             @TestMetadata("ExtValIntListQOfIntInClass.kt")
             public void testExtValIntListQOfIntInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntListQOfIntInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntListQOfIntInClass.kt");
             }
             
             @TestMetadata("ExtValIntTInClass.kt")
             public void testExtValIntTInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntTInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntTInClass.kt");
             }
             
             @TestMetadata("ExtValIntTQInClass.kt")
             public void testExtValIntTQInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntTQInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValIntTQInClass.kt");
             }
             
             @TestMetadata("ExtValTIntInClass.kt")
             public void testExtValTIntInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtValTIntInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtValTIntInClass.kt");
             }
             
             @TestMetadata("ExtVarClass.kt")
             public void testExtVarClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarClass.kt");
             }
             
             @TestMetadata("ExtVarInClass.kt")
             public void testExtVarInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarInClass.kt");
             }
             
             @TestMetadata("ExtVarInt.kt")
             public void testExtVarInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarInt.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarInt.kt");
             }
             
             @TestMetadata("ExtVarIntTInClass.kt")
             public void testExtVarIntTInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarIntTInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarIntTInClass.kt");
             }
             
             @TestMetadata("ExtVarIntTQInClass.kt")
             public void testExtVarIntTQInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarIntTQInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarIntTQInClass.kt");
             }
             
             @TestMetadata("ExtVarMapPQInt.kt")
             public void testExtVarMapPQInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarMapPQInt.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarMapPQInt.kt");
             }
             
             @TestMetadata("ExtVarTIntInClass.kt")
             public void testExtVarTIntInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarTIntInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarTIntInClass.kt");
             }
             
             @TestMetadata("ExtVarTQIntInClass.kt")
             public void testExtVarTQIntInClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarTQIntInClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarTQIntInClass.kt");
             }
             
             @TestMetadata("ExtVarl.kt")
             public void testExtVarl() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/ExtVarl.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/ExtVarl.kt");
             }
             
             @TestMetadata("NsVal.kt")
             public void testNsVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/NsVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/NsVal.kt");
             }
             
             @TestMetadata("NsVar.kt")
             public void testNsVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/NsVar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/NsVar.kt");
             }
             
             @TestMetadata("OverrideClassVal.kt")
             public void testOverrideClassVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/OverrideClassVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/OverrideClassVal.kt");
             }
             
             @TestMetadata("OverrideTraitVal.kt")
             public void testOverrideTraitVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/OverrideTraitVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/OverrideTraitVal.kt");
             }
             
             @TestMetadata("PropFromSuperclass.kt")
             public void testPropFromSuperclass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/PropFromSuperclass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/PropFromSuperclass.kt");
             }
             
             @TestMetadata("TraitFinalVar.kt")
             public void testTraitFinalVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/TraitFinalVar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/TraitFinalVar.kt");
             }
             
             @TestMetadata("TraitOpenVal.kt")
             public void testTraitOpenVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/TraitOpenVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/TraitOpenVal.kt");
             }
             
             @TestMetadata("VarDelegationToTraitImpl.kt")
             public void testVarDelegationToTraitImpl() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/VarDelegationToTraitImpl.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/VarDelegationToTraitImpl.kt");
             }
             
             @TestMetadata("VarWithDelegated.kt")
             public void testVarWithDelegated() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/VarWithDelegated.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/prop/VarWithDelegated.kt");
             }
             
             @TestMetadata("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors")
@@ -1239,52 +1239,52 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("ClassVal.kt")
                 public void testClassVal() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVal.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVal.kt");
                 }
                 
                 @TestMetadata("ClassValParams.kt")
                 public void testClassValParams() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassValParams.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassValParams.kt");
                 }
                 
                 @TestMetadata("ClassValWithGet.kt")
                 public void testClassValWithGet() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassValWithGet.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassValWithGet.kt");
                 }
                 
                 @TestMetadata("ClassVar.kt")
                 public void testClassVar() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVar.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVar.kt");
                 }
                 
                 @TestMetadata("ClassVarModality.kt")
                 public void testClassVarModality() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarModality.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarModality.kt");
                 }
                 
                 @TestMetadata("ClassVarParams.kt")
                 public void testClassVarParams() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarParams.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarParams.kt");
                 }
                 
                 @TestMetadata("ClassVarWithGet.kt")
                 public void testClassVarWithGet() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarWithGet.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarWithGet.kt");
                 }
                 
                 @TestMetadata("ClassVarWithSet.kt")
                 public void testClassVarWithSet() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarWithSet.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ClassVarWithSet.kt");
                 }
                 
                 @TestMetadata("ExtValLong.kt")
                 public void testExtValLong() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ExtValLong.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ExtValLong.kt");
                 }
                 
                 @TestMetadata("ExtVarLong.kt")
                 public void testExtVarLong() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ExtVarLong.kt");
+                    doTest("compiler/testData/loadJava/compiledKotlin/prop/defaultAccessors/ExtVarLong.kt");
                 }
                 
             }
@@ -1305,147 +1305,147 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("Any.kt")
             public void testAny() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/Any.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/Any.kt");
             }
             
             @TestMetadata("AnyQ.kt")
             public void testAnyQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/AnyQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/AnyQ.kt");
             }
             
             @TestMetadata("ArrayOfInNumber.kt")
             public void testArrayOfInNumber() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInNumber.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInNumber.kt");
             }
             
             @TestMetadata("ArrayOfInt.kt")
             public void testArrayOfInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInt.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInt.kt");
             }
             
             @TestMetadata("ArrayOfInteger.kt")
             public void testArrayOfInteger() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInteger.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfInteger.kt");
             }
             
             @TestMetadata("ArrayOfOutNumber.kt")
             public void testArrayOfOutNumber() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfOutNumber.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfOutNumber.kt");
             }
             
             @TestMetadata("ArrayOfOutT.kt")
             public void testArrayOfOutT() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfOutT.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfOutT.kt");
             }
             
             @TestMetadata("ArrayOfString.kt")
             public void testArrayOfString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ArrayOfString.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ArrayOfString.kt");
             }
             
             @TestMetadata("Function1IntString.kt")
             public void testFunction1IntString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/Function1IntString.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/Function1IntString.kt");
             }
             
             @TestMetadata("Int.kt")
             public void testInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/Int.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/Int.kt");
             }
             
             @TestMetadata("IntArray.kt")
             public void testIntArray() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/IntArray.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/IntArray.kt");
             }
             
             @TestMetadata("IntQ.kt")
             public void testIntQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/IntQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/IntQ.kt");
             }
             
             @TestMetadata("jlInteger.kt")
             public void testJlInteger() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlInteger.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlInteger.kt");
             }
             
             @TestMetadata("jlIntegerQ.kt")
             public void testJlIntegerQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlIntegerQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlIntegerQ.kt");
             }
             
             @TestMetadata("jlNumber.kt")
             public void testJlNumber() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlNumber.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlNumber.kt");
             }
             
             @TestMetadata("jlObject.kt")
             public void testJlObject() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlObject.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlObject.kt");
             }
             
             @TestMetadata("jlObjectQ.kt")
             public void testJlObjectQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlObjectQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlObjectQ.kt");
             }
             
             @TestMetadata("jlString.kt")
             public void testJlString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlString.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlString.kt");
             }
             
             @TestMetadata("jlStringQ.kt")
             public void testJlStringQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/jlStringQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/jlStringQ.kt");
             }
             
             @TestMetadata("ListOfAny.kt")
             public void testListOfAny() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ListOfAny.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ListOfAny.kt");
             }
             
             @TestMetadata("ListOfAnyQ.kt")
             public void testListOfAnyQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ListOfAnyQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ListOfAnyQ.kt");
             }
             
             @TestMetadata("ListOfStar.kt")
             public void testListOfStar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ListOfStar.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ListOfStar.kt");
             }
             
             @TestMetadata("ListOfString.kt")
             public void testListOfString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ListOfString.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ListOfString.kt");
             }
             
             @TestMetadata("ListOfjlString.kt")
             public void testListOfjlString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/ListOfjlString.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/ListOfjlString.kt");
             }
             
             @TestMetadata("Nothing.kt")
             public void testNothing() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/Nothing.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/Nothing.kt");
             }
             
             @TestMetadata("NothingQ.kt")
             public void testNothingQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/NothingQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/NothingQ.kt");
             }
             
             @TestMetadata("String.kt")
             public void testString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/String.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/String.kt");
             }
             
             @TestMetadata("StringQ.kt")
             public void testStringQ() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/StringQ.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/StringQ.kt");
             }
             
             @TestMetadata("Unit.kt")
             public void testUnit() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/type/Unit.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/type/Unit.kt");
             }
             
         }
@@ -1458,67 +1458,67 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("InternalAbstractTraitMembersOverridden.kt")
             public void testInternalAbstractTraitMembersOverridden() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalAbstractTraitMembersOverridden.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalAbstractTraitMembersOverridden.kt");
             }
             
             @TestMetadata("InternalClass.kt")
             public void testInternalClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalClass.kt");
             }
             
             @TestMetadata("InternalConstructor.kt")
             public void testInternalConstructor() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalConstructor.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalConstructor.kt");
             }
             
             @TestMetadata("InternalTopLevelMembers.kt")
             public void testInternalTopLevelMembers() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalTopLevelMembers.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalTopLevelMembers.kt");
             }
             
             @TestMetadata("InternalTraitMembers.kt")
             public void testInternalTraitMembers() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalTraitMembers.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalTraitMembers.kt");
             }
             
             @TestMetadata("InternalTraitMembersInherited.kt")
             public void testInternalTraitMembersInherited() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/InternalTraitMembersInherited.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/InternalTraitMembersInherited.kt");
             }
             
             @TestMetadata("PrivateClass.kt")
             public void testPrivateClass() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PrivateClass.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PrivateClass.kt");
             }
             
             @TestMetadata("PrivateClassMembers.kt")
             public void testPrivateClassMembers() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PrivateClassMembers.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PrivateClassMembers.kt");
             }
             
             @TestMetadata("PrivateTopLevelFun.kt")
             public void testPrivateTopLevelFun() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PrivateTopLevelFun.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PrivateTopLevelFun.kt");
             }
             
             @TestMetadata("PrivateTopLevelVal.kt")
             public void testPrivateTopLevelVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PrivateTopLevelVal.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PrivateTopLevelVal.kt");
             }
             
             @TestMetadata("PropertyInConstructor.kt")
             public void testPropertyInConstructor() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PropertyInConstructor.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PropertyInConstructor.kt");
             }
             
             @TestMetadata("PropertyInConstructorExplicitVisibility.kt")
             public void testPropertyInConstructorExplicitVisibility() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/PropertyInConstructorExplicitVisibility.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/PropertyInConstructorExplicitVisibility.kt");
             }
             
             @TestMetadata("TopLevelVarWithPrivateSetter.kt")
             public void testTopLevelVarWithPrivateSetter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/loadJava/compiledKotlin/visibility/TopLevelVarWithPrivateSetter.kt");
+                doTest("compiler/testData/loadJava/compiledKotlin/visibility/TopLevelVarWithPrivateSetter.kt");
             }
             
         }
@@ -1551,192 +1551,192 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
         
         @TestMetadata("ArrayTypeVariance.kt")
         public void testArrayTypeVariance() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ArrayTypeVariance.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ArrayTypeVariance.kt");
         }
         
         @TestMetadata("ClassDoesNotOverrideMethod.kt")
         public void testClassDoesNotOverrideMethod() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassDoesNotOverrideMethod.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassDoesNotOverrideMethod.kt");
         }
         
         @TestMetadata("ClassObject.kt")
         public void testClassObject() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassObject.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassObject.kt");
         }
         
         @TestMetadata("classObjectAnnotation.kt")
         public void testClassObjectAnnotation() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/classObjectAnnotation.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/classObjectAnnotation.kt");
         }
         
         @TestMetadata("ClassWithConstVal.kt")
         public void testClassWithConstVal() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithConstVal.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithConstVal.kt");
         }
         
         @TestMetadata("ClassWithTypeP.kt")
         public void testClassWithTypeP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypeP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypeP.kt");
         }
         
         @TestMetadata("ClassWithTypePExtendsIterableP.kt")
         public void testClassWithTypePExtendsIterableP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypePExtendsIterableP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypePExtendsIterableP.kt");
         }
         
         @TestMetadata("ClassWithTypePP.kt")
         public void testClassWithTypePP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypePP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypePP.kt");
         }
         
         @TestMetadata("ClassWithTypePRefNext.kt")
         public void testClassWithTypePRefNext() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefNext.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefNext.kt");
         }
         
         @TestMetadata("ClassWithTypePRefSelf.kt")
         public void testClassWithTypePRefSelf() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefSelf.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefSelf.kt");
         }
         
         @TestMetadata("ClassWithTypePRefSelfAndClass.kt")
         public void testClassWithTypePRefSelfAndClass() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefSelfAndClass.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/ClassWithTypePRefSelfAndClass.kt");
         }
         
         @TestMetadata("CyclicHierarchy.kt")
         public void testCyclicHierarchy() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/CyclicHierarchy.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/CyclicHierarchy.kt");
         }
         
         @TestMetadata("enum.kt")
         public void testEnum() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/enum.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/enum.kt");
         }
         
         @TestMetadata("FieldAsVar.kt")
         public void testFieldAsVar() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/FieldAsVar.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/FieldAsVar.kt");
         }
         
         @TestMetadata("FieldOfArrayType.kt")
         public void testFieldOfArrayType() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/FieldOfArrayType.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/FieldOfArrayType.kt");
         }
         
         @TestMetadata("FinalFieldAsVal.kt")
         public void testFinalFieldAsVal() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/FinalFieldAsVal.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/FinalFieldAsVal.kt");
         }
         
         @TestMetadata("genericFunction.kt")
         public void testGenericFunction() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/genericFunction.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/genericFunction.kt");
         }
         
         @TestMetadata("InheritMethodsDifferentReturnTypes.kt")
         public void testInheritMethodsDifferentReturnTypes() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/InheritMethodsDifferentReturnTypes.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/InheritMethodsDifferentReturnTypes.kt");
         }
         
         @TestMetadata("InheritMethodsDifferentReturnTypesGeneric.kt")
         public void testInheritMethodsDifferentReturnTypesGeneric() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/InheritMethodsDifferentReturnTypesGeneric.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/InheritMethodsDifferentReturnTypesGeneric.kt");
         }
         
         @TestMetadata("InnerClass.kt")
         public void testInnerClass() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/InnerClass.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/InnerClass.kt");
         }
         
         @TestMetadata("InnerClassReferencesOuterTP.kt")
         public void testInnerClassReferencesOuterTP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/InnerClassReferencesOuterTP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/InnerClassReferencesOuterTP.kt");
         }
         
         @TestMetadata("InnerClassesInGeneric.kt")
         public void testInnerClassesInGeneric() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/InnerClassesInGeneric.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/InnerClassesInGeneric.kt");
         }
         
         @TestMetadata("MethodReferencesOuterClassTP.kt")
         public void testMethodReferencesOuterClassTP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodReferencesOuterClassTP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodReferencesOuterClassTP.kt");
         }
         
         @TestMetadata("MethodTypePOneUpperBound.kt")
         public void testMethodTypePOneUpperBound() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodTypePOneUpperBound.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodTypePOneUpperBound.kt");
         }
         
         @TestMetadata("MethodTypePTwoUpperBounds.kt")
         public void testMethodTypePTwoUpperBounds() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodTypePTwoUpperBounds.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodTypePTwoUpperBounds.kt");
         }
         
         @TestMetadata("MethodWithTypeP.kt")
         public void testMethodWithTypeP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodWithTypeP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodWithTypeP.kt");
         }
         
         @TestMetadata("MethodWithTypePP.kt")
         public void testMethodWithTypePP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodWithTypePP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodWithTypePP.kt");
         }
         
         @TestMetadata("MethodWithTypePRefClassP.kt")
         public void testMethodWithTypePRefClassP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethodWithTypePRefClassP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethodWithTypePRefClassP.kt");
         }
         
         @TestMetadata("MethosWithPRefTP.kt")
         public void testMethosWithPRefTP() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MethosWithPRefTP.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MethosWithPRefTP.kt");
         }
         
         @TestMetadata("MyException.kt")
         public void testMyException() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/MyException.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/MyException.kt");
         }
         
         @TestMetadata("NestedClass.kt")
         public void testNestedClass() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/NestedClass.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/NestedClass.kt");
         }
         
         @TestMetadata("objectInClass.kt")
         public void testObjectInClass() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/objectInClass.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/objectInClass.kt");
         }
         
         @TestMetadata("objectMembers.kt")
         public void testObjectMembers() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/objectMembers.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/objectMembers.kt");
         }
         
         @TestMetadata("packageLevelObject.kt")
         public void testPackageLevelObject() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/packageLevelObject.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/packageLevelObject.kt");
         }
         
         @TestMetadata("RemoveRedundantProjectionKind.kt")
         public void testRemoveRedundantProjectionKind() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/RemoveRedundantProjectionKind.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/RemoveRedundantProjectionKind.kt");
         }
         
         @TestMetadata("Simple.kt")
         public void testSimple() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/Simple.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/Simple.kt");
         }
         
         @TestMetadata("TwoFields.kt")
         public void testTwoFields() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/TwoFields.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/TwoFields.kt");
         }
         
         @TestMetadata("UnboundWildcard.kt")
         public void testUnboundWildcard() throws Exception {
-            doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/UnboundWildcard.kt");
+            doTest("compiler/testData/lazyResolve/forStubs/UnboundWildcard.kt");
         }
         
         @TestMetadata("compiler/testData/lazyResolve/forStubs/annotation")
@@ -1747,17 +1747,17 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("AnnotatedAnnotation.kt")
             public void testAnnotatedAnnotation() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/annotation/AnnotatedAnnotation.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/annotation/AnnotatedAnnotation.kt");
             }
             
             @TestMetadata("AnnotatedMethod.kt")
             public void testAnnotatedMethod() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/annotation/AnnotatedMethod.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/annotation/AnnotatedMethod.kt");
             }
             
             @TestMetadata("SimpleAnnotation.kt")
             public void testSimpleAnnotation() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/annotation/SimpleAnnotation.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/annotation/SimpleAnnotation.kt");
             }
             
         }
@@ -1770,17 +1770,17 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ConstructorGenericDeep.kt")
             public void testConstructorGenericDeep() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericDeep.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericDeep.kt");
             }
             
             @TestMetadata("ConstructorGenericSimple.kt")
             public void testConstructorGenericSimple() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericSimple.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericSimple.kt");
             }
             
             @TestMetadata("ConstructorGenericUpperBound.kt")
             public void testConstructorGenericUpperBound() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericUpperBound.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/constructor/ConstructorGenericUpperBound.kt");
             }
             
         }
@@ -1793,32 +1793,32 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("DifferentGetterAndSetter.kt")
             public void testDifferentGetterAndSetter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/DifferentGetterAndSetter.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/DifferentGetterAndSetter.kt");
             }
             
             @TestMetadata("JavaBeanAbstractGetter.kt")
             public void testJavaBeanAbstractGetter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanAbstractGetter.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanAbstractGetter.kt");
             }
             
             @TestMetadata("JavaBeanVal.kt")
             public void testJavaBeanVal() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVal.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVal.kt");
             }
             
             @TestMetadata("JavaBeanVar.kt")
             public void testJavaBeanVar() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVar.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVar.kt");
             }
             
             @TestMetadata("JavaBeanVarOfGenericType.kt")
             public void testJavaBeanVarOfGenericType() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVarOfGenericType.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/JavaBeanVarOfGenericType.kt");
             }
             
             @TestMetadata("TwoSetters.kt")
             public void testTwoSetters() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/javaBean/TwoSetters.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/javaBean/TwoSetters.kt");
             }
             
         }
@@ -1828,7 +1828,7 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
         public static class KotlinSignature extends AbstractLazyResolveRecursiveComparingTest {
             @TestMetadata("AllBoundsInWhen.kt")
             public void testAllBoundsInWhen() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/AllBoundsInWhen.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/AllBoundsInWhen.kt");
             }
             
             public void testAllFilesPresentInKotlinSignature() throws Exception {
@@ -1837,84 +1837,84 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ArrayType.kt")
             public void testArrayType() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/ArrayType.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/ArrayType.kt");
             }
             
             @TestMetadata("ConstructorWithNewTypeParams.kt")
             public void testConstructorWithNewTypeParams() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithNewTypeParams.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithNewTypeParams.kt");
             }
             
             @TestMetadata("ConstructorWithParentTypeParams.kt")
             public void testConstructorWithParentTypeParams() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithParentTypeParams.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithParentTypeParams.kt");
             }
             
             @TestMetadata("ConstructorWithSeveralParams.kt")
             public void testConstructorWithSeveralParams() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithSeveralParams.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithSeveralParams.kt");
             }
             
             @TestMetadata("ConstructorWithoutParams.kt")
             public void testConstructorWithoutParams() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithoutParams.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/ConstructorWithoutParams.kt");
             }
             
             @TestMetadata("CustomProjectionKind.kt")
             public void testCustomProjectionKind() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/CustomProjectionKind.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/CustomProjectionKind.kt");
             }
             
             @TestMetadata("MethodWithFunctionTypes.kt")
             public void testMethodWithFunctionTypes() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithFunctionTypes.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithFunctionTypes.kt");
             }
             
             @TestMetadata("MethodWithGenerics.kt")
             public void testMethodWithGenerics() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithGenerics.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithGenerics.kt");
             }
             
             @TestMetadata("MethodWithMappedClasses.kt")
             public void testMethodWithMappedClasses() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithMappedClasses.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithMappedClasses.kt");
             }
             
             @TestMetadata("MethodWithTypeParameters.kt")
             public void testMethodWithTypeParameters() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithTypeParameters.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithTypeParameters.kt");
             }
             
             @TestMetadata("MethodWithVararg.kt")
             public void testMethodWithVararg() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithVararg.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/MethodWithVararg.kt");
             }
             
             @TestMetadata("PropertyArrayTypes.kt")
             public void testPropertyArrayTypes() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertyArrayTypes.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertyArrayTypes.kt");
             }
             
             @TestMetadata("PropertyComplexTypes.kt")
             public void testPropertyComplexTypes() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertyComplexTypes.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertyComplexTypes.kt");
             }
             
             @TestMetadata("PropertySimpleType.kt")
             public void testPropertySimpleType() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertySimpleType.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/PropertySimpleType.kt");
             }
             
             @TestMetadata("StarProjection.kt")
             public void testStarProjection() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/StarProjection.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/StarProjection.kt");
             }
             
             @TestMetadata("compiler/testData/lazyResolve/forStubs/kotlinSignature/error")
             public static class Error extends AbstractLazyResolveRecursiveComparingTest {
                 @TestMetadata("AddingNullability.kt")
                 public void testAddingNullability() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/AddingNullability.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/AddingNullability.kt");
                 }
                 
                 public void testAllFilesPresentInError() throws Exception {
@@ -1923,132 +1923,132 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("ConflictingProjectionKind.kt")
                 public void testConflictingProjectionKind() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ConflictingProjectionKind.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ConflictingProjectionKind.kt");
                 }
                 
                 @TestMetadata("ExplicitFieldGettersAndSetters.kt")
                 public void testExplicitFieldGettersAndSetters() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ExplicitFieldGettersAndSetters.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ExplicitFieldGettersAndSetters.kt");
                 }
                 
                 @TestMetadata("ExtraUpperBound.kt")
                 public void testExtraUpperBound() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ExtraUpperBound.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ExtraUpperBound.kt");
                 }
                 
                 @TestMetadata("MissingUpperBound.kt")
                 public void testMissingUpperBound() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/MissingUpperBound.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/MissingUpperBound.kt");
                 }
                 
                 @TestMetadata("NoFieldTypeRef.kt")
                 public void testNoFieldTypeRef() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/NoFieldTypeRef.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/NoFieldTypeRef.kt");
                 }
                 
                 @TestMetadata("NotVarargReplacedWithVararg.kt")
                 public void testNotVarargReplacedWithVararg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/NotVarargReplacedWithVararg.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/NotVarargReplacedWithVararg.kt");
                 }
                 
                 @TestMetadata("RedundantProjectionKind.kt")
                 public void testRedundantProjectionKind() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/RedundantProjectionKind.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/RedundantProjectionKind.kt");
                 }
                 
                 @TestMetadata("ReturnTypeMissing.kt")
                 public void testReturnTypeMissing() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ReturnTypeMissing.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/ReturnTypeMissing.kt");
                 }
                 
                 @TestMetadata("SyntaxError.kt")
                 public void testSyntaxError() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/SyntaxError.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/SyntaxError.kt");
                 }
                 
                 @TestMetadata("SyntaxErrorInFieldAnnotation.kt")
                 public void testSyntaxErrorInFieldAnnotation() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/SyntaxErrorInFieldAnnotation.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/SyntaxErrorInFieldAnnotation.kt");
                 }
                 
                 @TestMetadata("VarargReplacedWithNotVararg.kt")
                 public void testVarargReplacedWithNotVararg() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/VarargReplacedWithNotVararg.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/VarargReplacedWithNotVararg.kt");
                 }
                 
                 @TestMetadata("WrongFieldInitializer.kt")
                 public void testWrongFieldInitializer() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldInitializer.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldInitializer.kt");
                 }
                 
                 @TestMetadata("WrongFieldMutability.kt")
                 public void testWrongFieldMutability() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldMutability.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldMutability.kt");
                 }
                 
                 @TestMetadata("WrongFieldName.kt")
                 public void testWrongFieldName() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldName.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongFieldName.kt");
                 }
                 
                 @TestMetadata("WrongMethodName.kt")
                 public void testWrongMethodName() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongMethodName.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongMethodName.kt");
                 }
                 
                 @TestMetadata("WrongProjectionKind.kt")
                 public void testWrongProjectionKind() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongProjectionKind.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongProjectionKind.kt");
                 }
                 
                 @TestMetadata("WrongReturnTypeStructure.kt")
                 public void testWrongReturnTypeStructure() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongReturnTypeStructure.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongReturnTypeStructure.kt");
                 }
                 
                 @TestMetadata("WrongTypeName1.kt")
                 public void testWrongTypeName1() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName1.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName1.kt");
                 }
                 
                 @TestMetadata("WrongTypeName2.kt")
                 public void testWrongTypeName2() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName2.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName2.kt");
                 }
                 
                 @TestMetadata("WrongTypeName3.kt")
                 public void testWrongTypeName3() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName3.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeName3.kt");
                 }
                 
                 @TestMetadata("WrongTypeParameterBoundStructure1.kt")
                 public void testWrongTypeParameterBoundStructure1() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParameterBoundStructure1.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParameterBoundStructure1.kt");
                 }
                 
                 @TestMetadata("WrongTypeParameterBoundStructure2.kt")
                 public void testWrongTypeParameterBoundStructure2() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParameterBoundStructure2.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParameterBoundStructure2.kt");
                 }
                 
                 @TestMetadata("WrongTypeParametersCount.kt")
                 public void testWrongTypeParametersCount() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParametersCount.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongTypeParametersCount.kt");
                 }
                 
                 @TestMetadata("WrongValueParameterStructure1.kt")
                 public void testWrongValueParameterStructure1() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParameterStructure1.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParameterStructure1.kt");
                 }
                 
                 @TestMetadata("WrongValueParameterStructure2.kt")
                 public void testWrongValueParameterStructure2() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParameterStructure2.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParameterStructure2.kt");
                 }
                 
                 @TestMetadata("WrongValueParametersCount.kt")
                 public void testWrongValueParametersCount() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParametersCount.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/error/WrongValueParametersCount.kt");
                 }
                 
             }
@@ -2062,7 +2062,7 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 
                 @TestMetadata("PropagateTypeArgumentNullable.kt")
                 public void testPropagateTypeArgumentNullable() throws Exception {
-                    doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/PropagateTypeArgumentNullable.kt");
+                    doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/PropagateTypeArgumentNullable.kt");
                 }
                 
                 @TestMetadata("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter")
@@ -2073,132 +2073,132 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                     
                     @TestMetadata("ChangeProjectionKind1.kt")
                     public void testChangeProjectionKind1() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ChangeProjectionKind1.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ChangeProjectionKind1.kt");
                     }
                     
                     @TestMetadata("ChangeProjectionKind2.kt")
                     public void testChangeProjectionKind2() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ChangeProjectionKind2.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ChangeProjectionKind2.kt");
                     }
                     
                     @TestMetadata("DeeplySubstitutedClassParameter.kt")
                     public void testDeeplySubstitutedClassParameter() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter.kt");
                     }
                     
                     @TestMetadata("DeeplySubstitutedClassParameter2.kt")
                     public void testDeeplySubstitutedClassParameter2() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter2.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter2.kt");
                     }
                     
                     @TestMetadata("InheritMutability.kt")
                     public void testInheritMutability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritMutability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritMutability.kt");
                     }
                     
                     @TestMetadata("InheritNotVararg.kt")
                     public void testInheritNotVararg() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVararg.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVararg.kt");
                     }
                     
                     @TestMetadata("InheritNotVarargInteger.kt")
                     public void testInheritNotVarargInteger() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargInteger.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargInteger.kt");
                     }
                     
                     @TestMetadata("InheritNotVarargNotNull.kt")
                     public void testInheritNotVarargNotNull() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargNotNull.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargNotNull.kt");
                     }
                     
                     @TestMetadata("InheritNotVarargPrimitive.kt")
                     public void testInheritNotVarargPrimitive() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargPrimitive.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNotVarargPrimitive.kt");
                     }
                     
                     @TestMetadata("InheritNullability.kt")
                     public void testInheritNullability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNullability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritNullability.kt");
                     }
                     
                     @TestMetadata("InheritProjectionKind.kt")
                     public void testInheritProjectionKind() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritProjectionKind.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritProjectionKind.kt");
                     }
                     
                     @TestMetadata("InheritReadOnliness.kt")
                     public void testInheritReadOnliness() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritReadOnliness.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritReadOnliness.kt");
                     }
                     
                     @TestMetadata("InheritVararg.kt")
                     public void testInheritVararg() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVararg.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVararg.kt");
                     }
                     
                     @TestMetadata("InheritVarargInteger.kt")
                     public void testInheritVarargInteger() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargInteger.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargInteger.kt");
                     }
                     
                     @TestMetadata("InheritVarargNotNull.kt")
                     public void testInheritVarargNotNull() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargNotNull.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargNotNull.kt");
                     }
                     
                     @TestMetadata("InheritVarargPrimitive.kt")
                     public void testInheritVarargPrimitive() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargPrimitive.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/InheritVarargPrimitive.kt");
                     }
                     
                     @TestMetadata("Kt3302.kt")
                     public void testKt3302() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/Kt3302.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/Kt3302.kt");
                     }
                     
                     @TestMetadata("MutableToReadOnly.kt")
                     public void testMutableToReadOnly() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/MutableToReadOnly.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/MutableToReadOnly.kt");
                     }
                     
                     @TestMetadata("NotNullToNullable.kt")
                     public void testNotNullToNullable() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NotNullToNullable.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NotNullToNullable.kt");
                     }
                     
                     @TestMetadata("NullableToNotNull.kt")
                     public void testNullableToNotNull() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NullableToNotNull.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NullableToNotNull.kt");
                     }
                     
                     @TestMetadata("NullableToNotNullKotlinSignature.kt")
                     public void testNullableToNotNullKotlinSignature() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NullableToNotNullKotlinSignature.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/NullableToNotNullKotlinSignature.kt");
                     }
                     
                     @TestMetadata("OverrideWithErasedParameter.kt")
                     public void testOverrideWithErasedParameter() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/OverrideWithErasedParameter.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/OverrideWithErasedParameter.kt");
                     }
                     
                     @TestMetadata("ReadOnlyToMutable.kt")
                     public void testReadOnlyToMutable() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ReadOnlyToMutable.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/ReadOnlyToMutable.kt");
                     }
                     
                     @TestMetadata("SubclassFromGenericAndNot.kt")
                     public void testSubclassFromGenericAndNot() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubclassFromGenericAndNot.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubclassFromGenericAndNot.kt");
                     }
                     
                     @TestMetadata("SubstitutedClassParameter.kt")
                     public void testSubstitutedClassParameter() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubstitutedClassParameter.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubstitutedClassParameter.kt");
                     }
                     
                     @TestMetadata("SubstitutedClassParameters.kt")
                     public void testSubstitutedClassParameters() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubstitutedClassParameters.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/parameter/SubstitutedClassParameters.kt");
                     }
                     
                 }
@@ -2207,32 +2207,32 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                 public static class Return extends AbstractLazyResolveRecursiveComparingTest {
                     @TestMetadata("AddNotNullJavaSubtype.kt")
                     public void testAddNotNullJavaSubtype() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNotNullJavaSubtype.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNotNullJavaSubtype.kt");
                     }
                     
                     @TestMetadata("AddNotNullSameJavaType.kt")
                     public void testAddNotNullSameJavaType() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNotNullSameJavaType.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNotNullSameJavaType.kt");
                     }
                     
                     @TestMetadata("AddNullabilityJavaSubtype.kt")
                     public void testAddNullabilityJavaSubtype() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilityJavaSubtype.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilityJavaSubtype.kt");
                     }
                     
                     @TestMetadata("AddNullabilitySameGenericType1.kt")
                     public void testAddNullabilitySameGenericType1() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameGenericType1.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameGenericType1.kt");
                     }
                     
                     @TestMetadata("AddNullabilitySameGenericType2.kt")
                     public void testAddNullabilitySameGenericType2() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameGenericType2.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameGenericType2.kt");
                     }
                     
                     @TestMetadata("AddNullabilitySameJavaType.kt")
                     public void testAddNullabilitySameJavaType() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameJavaType.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/AddNullabilitySameJavaType.kt");
                     }
                     
                     public void testAllFilesPresentInReturn() throws Exception {
@@ -2241,142 +2241,142 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                     
                     @TestMetadata("CantMakeImmutableInSubclass.kt")
                     public void testCantMakeImmutableInSubclass() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/CantMakeImmutableInSubclass.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/CantMakeImmutableInSubclass.kt");
                     }
                     
                     @TestMetadata("DeeplySubstitutedClassParameter.kt")
                     public void testDeeplySubstitutedClassParameter() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter.kt");
                     }
                     
                     @TestMetadata("DeeplySubstitutedClassParameter2.kt")
                     public void testDeeplySubstitutedClassParameter2() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter2.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter2.kt");
                     }
                     
                     @TestMetadata("HalfSubstitutedTypeParameters.kt")
                     public void testHalfSubstitutedTypeParameters() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/HalfSubstitutedTypeParameters.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/HalfSubstitutedTypeParameters.kt");
                     }
                     
                     @TestMetadata("InheritNullabilityGenericSubclassSimple.kt")
                     public void testInheritNullabilityGenericSubclassSimple() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilityGenericSubclassSimple.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilityGenericSubclassSimple.kt");
                     }
                     
                     @TestMetadata("InheritNullabilityJavaSubtype.kt")
                     public void testInheritNullabilityJavaSubtype() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilityJavaSubtype.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilityJavaSubtype.kt");
                     }
                     
                     @TestMetadata("InheritNullabilitySameGenericType.kt")
                     public void testInheritNullabilitySameGenericType() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilitySameGenericType.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilitySameGenericType.kt");
                     }
                     
                     @TestMetadata("InheritNullabilitySameJavaType.kt")
                     public void testInheritNullabilitySameJavaType() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilitySameJavaType.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritNullabilitySameJavaType.kt");
                     }
                     
                     @TestMetadata("InheritProjectionKind.kt")
                     public void testInheritProjectionKind() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritProjectionKind.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritProjectionKind.kt");
                     }
                     
                     @TestMetadata("InheritReadOnlinessOfArgument.kt")
                     public void testInheritReadOnlinessOfArgument() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessOfArgument.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessOfArgument.kt");
                     }
                     
                     @TestMetadata("InheritReadOnlinessSameClass.kt")
                     public void testInheritReadOnlinessSameClass() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessSameClass.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessSameClass.kt");
                     }
                     
                     @TestMetadata("InheritReadOnlinessSubclass.kt")
                     public void testInheritReadOnlinessSubclass() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessSubclass.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/InheritReadOnlinessSubclass.kt");
                     }
                     
                     @TestMetadata("SameProjectionKind.kt")
                     public void testSameProjectionKind() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SameProjectionKind.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SameProjectionKind.kt");
                     }
                     
                     @TestMetadata("SubclassFromGenericAndNot.kt")
                     public void testSubclassFromGenericAndNot() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassFromGenericAndNot.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassFromGenericAndNot.kt");
                     }
                     
                     @TestMetadata("SubclassOfCollection.kt")
                     public void testSubclassOfCollection() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassOfCollection.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassOfCollection.kt");
                     }
                     
                     @TestMetadata("SubclassOfMapEntry.kt")
                     public void testSubclassOfMapEntry() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassOfMapEntry.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubclassOfMapEntry.kt");
                     }
                     
                     @TestMetadata("SubstitutedClassParameter.kt")
                     public void testSubstitutedClassParameter() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubstitutedClassParameter.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubstitutedClassParameter.kt");
                     }
                     
                     @TestMetadata("SubstitutedClassParameters.kt")
                     public void testSubstitutedClassParameters() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubstitutedClassParameters.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/SubstitutedClassParameters.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesConflictingProjectionKinds.kt")
                     public void testTwoSuperclassesConflictingProjectionKinds() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesConflictingProjectionKinds.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesConflictingProjectionKinds.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesInvariantAndCovariantInferMutability.kt")
                     public void testTwoSuperclassesInvariantAndCovariantInferMutability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferMutability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferMutability.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesInvariantAndCovariantInferNullability.kt")
                     public void testTwoSuperclassesInvariantAndCovariantInferNullability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferNullability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferNullability.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesMutableAndNot.kt")
                     public void testTwoSuperclassesMutableAndNot() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesMutableAndNot.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesMutableAndNot.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesReturnJavaSubtype.kt")
                     public void testTwoSuperclassesReturnJavaSubtype() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesReturnJavaSubtype.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesReturnJavaSubtype.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesReturnSameJavaType.kt")
                     public void testTwoSuperclassesReturnSameJavaType() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesReturnSameJavaType.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesReturnSameJavaType.kt");
                     }
                     
                     @TestMetadata("TwoSuperclassesSupplementNotNull.kt")
                     public void testTwoSuperclassesSupplementNotNull() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesSupplementNotNull.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TwoSuperclassesSupplementNotNull.kt");
                     }
                     
                     @TestMetadata("TypeParamOfClass.kt")
                     public void testTypeParamOfClass() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfClass.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfClass.kt");
                     }
                     
                     @TestMetadata("TypeParamOfClassSubstituted.kt")
                     public void testTypeParamOfClassSubstituted() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfClassSubstituted.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfClassSubstituted.kt");
                     }
                     
                     @TestMetadata("TypeParamOfFun.kt")
                     public void testTypeParamOfFun() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfFun.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/return/TypeParamOfFun.kt");
                     }
                     
                 }
@@ -2389,47 +2389,47 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
                     
                     @TestMetadata("InheritMutability.kt")
                     public void testInheritMutability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritMutability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritMutability.kt");
                     }
                     
                     @TestMetadata("InheritNullability.kt")
                     public void testInheritNullability() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritNullability.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritNullability.kt");
                     }
                     
                     @TestMetadata("InheritReadOnliness.kt")
                     public void testInheritReadOnliness() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritReadOnliness.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/InheritReadOnliness.kt");
                     }
                     
                     @TestMetadata("TwoBounds.kt")
                     public void testTwoBounds() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoBounds.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoBounds.kt");
                     }
                     
                     @TestMetadata("TwoSuperclasses.kt")
                     public void testTwoSuperclasses() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoSuperclasses.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoSuperclasses.kt");
                     }
                     
                     @TestMetadata("TwoTypeParameters.kt")
                     public void testTwoTypeParameters() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoTypeParameters.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/TwoTypeParameters.kt");
                     }
                     
                     @TestMetadata("UseParameterAsUpperBound.kt")
                     public void testUseParameterAsUpperBound() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterAsUpperBound.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterAsUpperBound.kt");
                     }
                     
                     @TestMetadata("UseParameterInUpperBound.kt")
                     public void testUseParameterInUpperBound() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterInUpperBound.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterInUpperBound.kt");
                     }
                     
                     @TestMetadata("UseParameterInUpperBoundWithKotlinSignature.kt")
                     public void testUseParameterInUpperBoundWithKotlinSignature() throws Exception {
-                        doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterInUpperBoundWithKotlinSignature.kt");
+                        doTest("compiler/testData/lazyResolve/forStubs/kotlinSignature/propagation/typeParameter/UseParameterInUpperBoundWithKotlinSignature.kt");
                     }
                     
                 }
@@ -2461,17 +2461,17 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("LoadIterable.kt")
             public void testLoadIterable() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/library/LoadIterable.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/library/LoadIterable.kt");
             }
             
             @TestMetadata("LoadIterator.kt")
             public void testLoadIterator() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/library/LoadIterator.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/library/LoadIterator.kt");
             }
             
             @TestMetadata("Max.kt")
             public void testMax() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/library/Max.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/library/Max.kt");
             }
             
         }
@@ -2484,7 +2484,7 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("ModalityOfFakeOverrides.kt")
             public void testModalityOfFakeOverrides() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/modality/ModalityOfFakeOverrides.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/modality/ModalityOfFakeOverrides.kt");
             }
             
         }
@@ -2497,22 +2497,22 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("LoadIterable.kt")
             public void testLoadIterable() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/mutability/LoadIterable.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/mutability/LoadIterable.kt");
             }
             
             @TestMetadata("LoadIterableWithConflict.kt")
             public void testLoadIterableWithConflict() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithConflict.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithConflict.kt");
             }
             
             @TestMetadata("LoadIterableWithNullability.kt")
             public void testLoadIterableWithNullability() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithNullability.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithNullability.kt");
             }
             
             @TestMetadata("LoadIterableWithPropagation.kt")
             public void testLoadIterableWithPropagation() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithPropagation.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/mutability/LoadIterableWithPropagation.kt");
             }
             
         }
@@ -2525,27 +2525,27 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("NotNullField.kt")
             public void testNotNullField() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/notNull/NotNullField.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/notNull/NotNullField.kt");
             }
             
             @TestMetadata("NotNullIntArray.kt")
             public void testNotNullIntArray() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/notNull/NotNullIntArray.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/notNull/NotNullIntArray.kt");
             }
             
             @TestMetadata("NotNullMethod.kt")
             public void testNotNullMethod() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/notNull/NotNullMethod.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/notNull/NotNullMethod.kt");
             }
             
             @TestMetadata("NotNullObjectArray.kt")
             public void testNotNullObjectArray() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/notNull/NotNullObjectArray.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/notNull/NotNullObjectArray.kt");
             }
             
             @TestMetadata("NotNullParameter.kt")
             public void testNotNullParameter() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/notNull/NotNullParameter.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/notNull/NotNullParameter.kt");
             }
             
         }
@@ -2558,12 +2558,12 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
             
             @TestMetadata("VarargInt.kt")
             public void testVarargInt() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/vararg/VarargInt.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/vararg/VarargInt.kt");
             }
             
             @TestMetadata("VarargString.kt")
             public void testVarargString() throws Exception {
-                doTestCheckingPrimaryConstructorsAndAccessors("compiler/testData/lazyResolve/forStubs/vararg/VarargString.kt");
+                doTest("compiler/testData/lazyResolve/forStubs/vararg/VarargString.kt");
             }
             
         }
@@ -2592,72 +2592,72 @@ public class LazyResolveRecursiveComparingTestGenerated extends AbstractLazyReso
         
         @TestMetadata("AnnotationOnObject.kt")
         public void testAnnotationOnObject() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/AnnotationOnObject.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/AnnotationOnObject.kt");
         }
         
         @TestMetadata("classObjectHeader.kt")
         public void testClassObjectHeader() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/classObjectHeader.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/classObjectHeader.kt");
         }
         
         @TestMetadata("fileDependencyRecursion.kt")
         public void testFileDependencyRecursion() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/fileDependencyRecursion.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/fileDependencyRecursion.kt");
         }
         
         @TestMetadata("importFunctionWithAllUnderImport.kt")
         public void testImportFunctionWithAllUnderImport() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/importFunctionWithAllUnderImport.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/importFunctionWithAllUnderImport.kt");
         }
         
         @TestMetadata("importFunctionWithAllUnderImportAfterNamedImport.kt")
         public void testImportFunctionWithAllUnderImportAfterNamedImport() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/importFunctionWithAllUnderImportAfterNamedImport.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/importFunctionWithAllUnderImportAfterNamedImport.kt");
         }
         
         @TestMetadata("InnerClassNameClash.kt")
         public void testInnerClassNameClash() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/InnerClassNameClash.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/InnerClassNameClash.kt");
         }
         
         @TestMetadata("OverrideWithErrors.kt")
         public void testOverrideWithErrors() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/OverrideWithErrors.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/OverrideWithErrors.kt");
         }
         
         @TestMetadata("propertyClassFileDependencyRecursion.kt")
         public void testPropertyClassFileDependencyRecursion() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/propertyClassFileDependencyRecursion.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/propertyClassFileDependencyRecursion.kt");
         }
         
         @TestMetadata("resolveFunctionInsideClassObject.kt")
         public void testResolveFunctionInsideClassObject() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/resolveFunctionInsideClassObject.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/resolveFunctionInsideClassObject.kt");
         }
         
         @TestMetadata("sameClassNameResolve.kt")
         public void testSameClassNameResolve() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/sameClassNameResolve.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/sameClassNameResolve.kt");
         }
         
         @TestMetadata("simpleClass.kt")
         public void testSimpleClass() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/simpleClass.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/simpleClass.kt");
         }
         
         @TestMetadata("UnresolvedAnnotationOnObject.kt")
         public void testUnresolvedAnnotationOnObject() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/UnresolvedAnnotationOnObject.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/UnresolvedAnnotationOnObject.kt");
         }
         
         @TestMetadata("varargIterator.kt")
         public void testVarargIterator() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/varargIterator.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/varargIterator.kt");
         }
         
         @TestMetadata("WrongAnnotationArgsOnObject.kt")
         public void testWrongAnnotationArgsOnObject() throws Exception {
-            doTestCheckingPrimaryConstructors("compiler/testData/lazyResolve/notForStubs/WrongAnnotationArgsOnObject.kt");
+            doTest("compiler/testData/lazyResolve/notForStubs/WrongAnnotationArgsOnObject.kt");
         }
         
     }
