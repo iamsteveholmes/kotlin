@@ -18,8 +18,9 @@ package org.jetbrains.kotlin.maven;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.jetbrains.jet.cli.common.arguments.CommonCompilerArguments;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jet.cli.common.arguments.K2JVMCompilerArguments;
+import org.jetbrains.jet.cli.jvm.K2JVMCompiler;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ import java.util.List;
  * @requiresDependencyResolution test
  * @noinspection UnusedDeclaration
  */
-public class KotlinTestCompileMojo extends KotlinCompileMojoBase {
+public class KotlinTestCompileMojo extends KotlinCompileMojo {
     /**
      * Flag to allow test compilation to be skipped.
      *
@@ -44,27 +45,6 @@ public class KotlinTestCompileMojo extends KotlinCompileMojoBase {
     // but I've not figured out how to have a defaulted parameter value
     // which is also customisable inside an <execution> in a maven pom.xml
     // so for now lets just use 2 fields
-
-    /**
-     * The default source directories containing the sources to be compiled.
-     *
-     * @parameter default-value="${project.testCompileSourceRoots}"
-     * @required
-     */
-    private List<String> defaultSourceDirs;
-
-    /**
-     * The source directories containing the sources to be compiled.
-     *
-     * @parameter
-     */
-    private List<String> sourceDirs;
-
-    @Override
-    public List<String> getSources() {
-        if (sourceDirs != null && !sourceDirs.isEmpty()) return sourceDirs;
-        return defaultSourceDirs;
-    }
 
     /**
      * The source directories containing the sources to be compiled for tests.
@@ -86,11 +66,11 @@ public class KotlinTestCompileMojo extends KotlinCompileMojoBase {
     }
 
     @Override
-    protected void configureCompilerArguments(CommonCompilerArguments arguments) throws MojoExecutionException {
-        if (arguments instanceof K2JVMCompilerArguments) {
-            configureBaseCompilerArguments(
-                    getLog(), (K2JVMCompilerArguments) arguments,
-                    testModule, getSources(), testClasspath, testOutput);
-        }
+    protected void configureSpecificCompilerArguments(@NotNull K2JVMCompilerArguments arguments) throws MojoExecutionException {
+        module = testModule;
+        classpath = testClasspath;
+        output = testOutput;
+
+        super.configureSpecificCompilerArguments(arguments);
     }
 }

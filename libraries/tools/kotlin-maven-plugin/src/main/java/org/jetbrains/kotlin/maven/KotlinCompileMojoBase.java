@@ -16,10 +16,8 @@
 
 package org.jetbrains.kotlin.maven;
 
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.ArrayUtil;
 import com.sampullara.cli.Args;
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -30,24 +28,16 @@ import org.jetbrains.jet.cli.common.CLICompiler;
 import org.jetbrains.jet.cli.common.ExitCode;
 import org.jetbrains.jet.cli.common.KotlinVersion;
 import org.jetbrains.jet.cli.common.arguments.CommonCompilerArguments;
-import org.jetbrains.jet.cli.common.arguments.K2JVMCompilerArguments;
 import org.jetbrains.jet.cli.common.messages.CompilerMessageLocation;
 import org.jetbrains.jet.cli.common.messages.CompilerMessageSeverity;
 import org.jetbrains.jet.cli.common.messages.MessageCollector;
-import org.jetbrains.jet.cli.jvm.K2JVMCompiler;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.Arrays;
+import java.util.List;
 
-import static com.intellij.openapi.util.text.StringUtil.join;
-
-public abstract class KotlinCompileMojoBase extends AbstractMojo {
+public abstract class KotlinCompileMojoBase<A extends CommonCompilerArguments> extends AbstractMojo {
     // TODO it would be nice to avoid using 2 injected fields for sources
     // but I've not figured out how to have a defaulted parameter value
     // which is also customisable inside an <execution> in a maven pom.xml
@@ -73,13 +63,6 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
         return defaultSourceDirs;
     }
 
-    /**
-     * The directories used to scan for annotation.xml files for Kotlin annotations
-     *
-     * @parameter
-     */
-    public List<String> annotationPaths;
-
     // TODO not sure why this doesn't work :(
     // * @parameter default-value="$(project.basedir}/src/main/resources"
 
@@ -89,29 +72,6 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
      * @readonly
      */
     public MavenProject project;
-
-    /**
-     * @parameter default-value="true"
-     */
-    public boolean scanForAnnotations;
-
-    /**
-     * Project classpath.
-     *
-     * @parameter default-value="${project.compileClasspathElements}"
-     * @required
-     * @readonly
-     */
-    public List<String> classpath;
-
-    /**
-     * Project test classpath.
-     *
-     * @parameter default-value="${project.testClasspathElements}"
-     * @required
-     * @readonly
-     */
-    protected List<String> testClasspath;
 
     /**
      * The directory for compiled classes.
@@ -152,9 +112,12 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
      */
     public List<String> args;
 
+    protected final Log LOG = getLog();
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        getLog().info("Kotlin Compiler version " + KotlinVersion.VERSION);
+
+        LOG.info("Kotlin Compiler version " + KotlinVersion.VERSION);
 
         // Check sources
         List<String> sources = getSources();
@@ -169,18 +132,17 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
             }
 
             if (!sourcesExists) {
-                getLog().warn( "No sources found skipping Kotlin compile" );
+                LOG.warn("No sources found skipping Kotlin compile");
                 return;
             }
         }
 
-        CommonCompilerArguments arguments = createCompilerArguments();
+        A arguments = createCompilerArguments();
         configureCompilerArguments(arguments);
 
-        CLICompiler compiler = createCompiler();
+        CLICompiler<A> compiler = createCompiler();
         printCompilerArgumentsIfDebugEnabled(arguments, compiler);
 
-        final Log log = getLog();
         MessageCollector messageCollector = new MessageCollector() {
             @Override
             public void report(@NotNull CompilerMessageSeverity severity, @NotNull String message, @NotNull CompilerMessageLocation location) {
@@ -190,13 +152,13 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
                 String text = position + message;
 
                 if (CompilerMessageSeverity.VERBOSE.contains(severity)) {
-                    log.debug(text);
+                    LOG.debug(text);
                 } else if (CompilerMessageSeverity.ERRORS.contains(severity)) {
-                    log.error(text);
+                    LOG.error(text);
                 } else if (severity == CompilerMessageSeverity.INFO) {
-                    log.info(text);
+                    LOG.info(text);
                 } else {
-                    log.warn(text);
+                    LOG.warn(text);
                 }
             }
         };
@@ -205,14 +167,14 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
 
         switch (exitCode) {
             case COMPILATION_ERROR:
-                throw new MojoExecutionException("Compilation error. See log for more details");
+                throw new MojoExecutionException("Compilation error. See LOG for more details");
             case INTERNAL_ERROR:
-                throw new MojoExecutionException("Internal compiler error. See log for more details");
+                throw new MojoExecutionException("Internal compiler error. See LOG for more details");
             default:
         }
     }
 
-    private void printCompilerArgumentsIfDebugEnabled(CommonCompilerArguments arguments, CLICompiler compiler) {
+    private void printCompilerArgumentsIfDebugEnabled(@NotNull A arguments, @NotNull CLICompiler<A> compiler) {
         if (getLog().isDebugEnabled()) {
             getLog().debug("Invoking compiler " + compiler + " with arguments:");
             try {
@@ -241,22 +203,20 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
         }
     }
 
-    protected CLICompiler createCompiler() {
-        return new K2JVMCompiler();
-    }
+    @NotNull
+    protected abstract CLICompiler<A> createCompiler();
 
     /**
      * Derived classes can create custom compiler argument implementations
      * such as for KDoc
      */
-    protected CommonCompilerArguments createCompilerArguments() {
-        return new K2JVMCompilerArguments();
-    }
+    @NotNull
+    protected abstract A createCompilerArguments();
 
     @NotNull
     protected ExitCode executeCompiler(
-            @NotNull CLICompiler compiler,
-            @NotNull CommonCompilerArguments arguments,
+            @NotNull CLICompiler<A> compiler,
+            @NotNull A arguments,
             @NotNull MessageCollector messageCollector
     ) {
         return compiler.exec(messageCollector, arguments);
@@ -265,48 +225,20 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
     /**
      * Derived classes can register custom plugins or configurations
      */
-    protected abstract void configureCompilerArguments(CommonCompilerArguments arguments) throws MojoExecutionException;
+    protected abstract void configureSpecificCompilerArguments(@NotNull A arguments) throws MojoExecutionException;
 
-    protected void configureBaseCompilerArguments(Log log, K2JVMCompilerArguments arguments, String module,
-                                                  List<String> sources, List<String> classpath, String output) throws MojoExecutionException {
-        // don't include runtime, it should be in maven dependencies
-        arguments.noStdlib = true;
-
-        ArrayList<String> classpathList = new ArrayList<String>();
-
-        if (module != null) {
-            log.info("Compiling Kotlin module " + module);
-            arguments.module = module;
-        }
-        else {
-            if (sources.isEmpty())
-                throw new MojoExecutionException("No source roots to compile");
-
-            arguments.freeArgs.addAll(sources);
-            log.info("Compiling Kotlin sources from " + sources);
-
-            // TODO: Move it compiler
-            classpathList.addAll(sources);
+    private void configureCompilerArguments(@NotNull A arguments) throws MojoExecutionException {
+        if (LOG.isDebugEnabled()) {
+            arguments.verbose = true;
         }
 
-        classpathList.addAll(classpath);
-
-        if (classpathList.remove(output)) {
-            log.debug("Removed target directory from compiler classpath (" + output + ")");
+        List<String> sources = getSources();
+        if (sources == null || sources.isEmpty()) {
+            throw new MojoExecutionException("No source roots to compile");
         }
 
-        if (classpathList.size() > 0) {
-            String classPathString = join(classpathList, File.pathSeparator);
-            log.info("Classpath: " + classPathString);
-            arguments.classpath = classPathString;
-        }
-
-        log.info("Classes directory is " + output);
-        arguments.destination = output;
-
-        arguments.noJdkAnnotations = true;
-        arguments.annotations = getFullAnnotationsPath(log, annotationPaths);
-        log.info("Using kotlin annotations from " + arguments.annotations);
+        arguments.freeArgs.addAll(sources);
+        LOG.info("Compiling Kotlin sources from " + sources );
 
         try {
             Args.parse(arguments, ArrayUtil.toStringArray(args));
@@ -315,111 +247,10 @@ public abstract class KotlinCompileMojoBase extends AbstractMojo {
             throw new MojoExecutionException(e.getMessage());
         }
 
-        if (arguments.noInline) {
-            log.info("Method inlining is turned off");
-        }
-        if (arguments.noOptimize) {
-            log.info("Optimization is turned off");
-        }
-    }
+        configureSpecificCompilerArguments(arguments);
 
-    protected String getFullAnnotationsPath(Log log, List<String> annotations) {
-        String jdkAnnotation = getJdkAnnotations().getPath();
-
-        List<String> list = new ArrayList<String>();
-        list.add(jdkAnnotation);
-
-        if (annotations != null) {
-            for (String annotationPath : annotations) {
-                if (new File(annotationPath).exists()) {
-                    list.add(annotationPath);
-                } else {
-                    log.info("annotation path " + annotationPath + " does not exist");
-                }
-            }
-        }
-
-        if (scanForAnnotations) {
-            for (String path : scanAnnotations(log)) {
-                if (!list.contains(path)) {
-                    list.add(path);
-                }
-            }
-        }
-
-        return join(list, File.pathSeparator);
-    }
-
-    @NotNull
-    private static File getJdkAnnotations() {
-        ClassLoader classLoader = KotlinCompileMojoBase.class.getClassLoader();
-        if (!(classLoader instanceof URLClassLoader)) {
-            throw new RuntimeException("Kotlin plugin`s class loader is not URLClassLoader");
-        }
-
-        for (URL url : ((URLClassLoader) classLoader).getURLs()) {
-            String path = url.getPath();
-            if (StringUtil.isEmpty(path)) {
-                continue;
-            }
-
-            File file = new File(path);
-            if (file.getName().startsWith("kotlin-jdk-annotations")) {
-                return file;
-            }
-        }
-
-        throw new RuntimeException("Could not get jdk annotations from Kotlin plugin`s classpath");
-    }
-
-    private List<String> scanAnnotations(Log log) {
-        List<String> annotations = new ArrayList<String>();
-
-        Set<Artifact> artifacts = project.getArtifacts();
-        for (Artifact artifact : artifacts) {
-            File file = artifact.getFile();
-            if (containsAnnotations(file, log)) {
-                log.info("Discovered kotlin annotations in: " + file);
-                try {
-                    annotations.add(file.getCanonicalPath());
-                }
-                catch (IOException e) {
-                    log.warn("Error extracting canonical path from: " + file, e);
-                }
-            }
-        }
-
-        return annotations;
-    }
-
-    private static boolean containsAnnotations(File file, Log log) {
-        log.debug("Scanning for kotlin annotations in " + file);
-
-        ZipFile zipFile = null;
-        try {
-            zipFile = new ZipFile(file);
-
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            while (entries.hasMoreElements()) {
-                String name = entries.nextElement().getName();
-                if (name.endsWith("/annotations.xml")) {
-                    return true;
-                }
-            }
-        }
-        catch (IOException e) {
-            log.warn("Error reading contents of jar: " + file, e);
-        }
-        finally {
-            if (zipFile != null) {
-                try {
-                    zipFile.close();
-                }
-                catch (IOException e) {
-                    log.warn("Error closing: " + zipFile, e);
-                }
-            }
-        }
-        return false;
+//        if (arguments.noInline) {
+//            LOG.info("Method inlining is turned off");
+//        }
     }
 }
