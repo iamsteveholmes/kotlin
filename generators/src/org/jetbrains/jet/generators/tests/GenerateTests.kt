@@ -236,8 +236,7 @@ fun main(args: Array<String>) {
 
         testClass(javaClass<AbstractLazyResolveRecursiveComparingTest>()) {
             model("loadJava/compiledKotlin")
-            model("lazyResolve/forStubs")
-            model("lazyResolve/notForStubs")
+            model("lazyResolve/recursiveComparator")
         }
 
         testClass(javaClass<AbstractModuleXmlParserTest>()) {
@@ -596,7 +595,6 @@ fun main(args: Array<String>) {
     testGroup("idea/tests", "compiler/testData") {
         testClass(javaClass<AbstractLazyResolveByStubTest>()) {
             model("loadJava/compiledKotlin")
-            model("lazyResolve/forStubs")
         }
     }
 

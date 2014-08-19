@@ -1565,7 +1565,7 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
     }
     
     @TestMetadata("compiler/testData/loadJava/compiledKotlin")
-    @InnerTestClasses({CompiledKotlin.Annotations.class, CompiledKotlin.Class.class, CompiledKotlin.ClassFun.class, CompiledKotlin.ClassObject.class, CompiledKotlin.Constructor.class, CompiledKotlin.DataClass.class, CompiledKotlin.Enum.class, CompiledKotlin.Fun.class, CompiledKotlin.Inline.class, CompiledKotlin.Prop.class, CompiledKotlin.Type.class, CompiledKotlin.Visibility.class})
+    @InnerTestClasses({CompiledKotlin.Annotations.class, CompiledKotlin.Class.class, CompiledKotlin.ClassFun.class, CompiledKotlin.ClassObject.class, CompiledKotlin.Constructor.class, CompiledKotlin.DataClass.class, CompiledKotlin.Enum.class, CompiledKotlin.FromLoadJava.class, CompiledKotlin.Fun.class, CompiledKotlin.Inline.class, CompiledKotlin.Prop.class, CompiledKotlin.Type.class, CompiledKotlin.Visibility.class})
     public static class CompiledKotlin extends AbstractLoadJavaTest {
         public void testAllFilesPresentInCompiledKotlin() throws Exception {
             JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin"), Pattern.compile("^(.+)\\.kt$"), true);
@@ -1576,6 +1576,21 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
         public static class Annotations extends AbstractLoadJavaTest {
             public void testAllFilesPresentInAnnotations() throws Exception {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/annotations"), Pattern.compile("^(.+)\\.kt$"), true);
+            }
+            
+            @TestMetadata("AnnotatedAnnotation.kt")
+            public void testAnnotatedAnnotation() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/annotations/AnnotatedAnnotation.kt");
+            }
+            
+            @TestMetadata("AnnotatedMethod.kt")
+            public void testAnnotatedMethod() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/annotations/AnnotatedMethod.kt");
+            }
+            
+            @TestMetadata("SimpleAnnotation.kt")
+            public void testSimpleAnnotation() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/annotations/SimpleAnnotation.kt");
             }
             
             @TestMetadata("compiler/testData/loadJava/compiledKotlin/annotations/classMembers")
@@ -1871,6 +1886,7 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
         }
         
         @TestMetadata("compiler/testData/loadJava/compiledKotlin/class")
+        @InnerTestClasses({Class.JavaBean.class})
         public static class Class extends AbstractLoadJavaTest {
             public void testAllFilesPresentInClass() throws Exception {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/class"), Pattern.compile("^(.+)\\.kt$"), true);
@@ -2041,6 +2057,50 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
                 doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/Trait.kt");
             }
             
+            @TestMetadata("compiler/testData/loadJava/compiledKotlin/class/javaBean")
+            public static class JavaBean extends AbstractLoadJavaTest {
+                public void testAllFilesPresentInJavaBean() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/class/javaBean"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("DifferentGetterAndSetter.kt")
+                public void testDifferentGetterAndSetter() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/DifferentGetterAndSetter.kt");
+                }
+                
+                @TestMetadata("JavaBeanAbstractGetter.kt")
+                public void testJavaBeanAbstractGetter() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/JavaBeanAbstractGetter.kt");
+                }
+                
+                @TestMetadata("JavaBeanVal.kt")
+                public void testJavaBeanVal() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/JavaBeanVal.kt");
+                }
+                
+                @TestMetadata("JavaBeanVar.kt")
+                public void testJavaBeanVar() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/JavaBeanVar.kt");
+                }
+                
+                @TestMetadata("JavaBeanVarOfGenericType.kt")
+                public void testJavaBeanVarOfGenericType() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/JavaBeanVarOfGenericType.kt");
+                }
+                
+                @TestMetadata("TwoSetters.kt")
+                public void testTwoSetters() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/class/javaBean/TwoSetters.kt");
+                }
+                
+            }
+            
+            public static Test innerSuite() {
+                TestSuite suite = new TestSuite("Class");
+                suite.addTestSuite(Class.class);
+                suite.addTestSuite(JavaBean.class);
+                return suite;
+            }
         }
         
         @TestMetadata("compiler/testData/loadJava/compiledKotlin/classFun")
@@ -2179,6 +2239,21 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
             @TestMetadata("ConstructorCollectionParameter.kt")
             public void testConstructorCollectionParameter() throws Exception {
                 doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorCollectionParameter.kt");
+            }
+            
+            @TestMetadata("ConstructorGenericDeep.kt")
+            public void testConstructorGenericDeep() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorGenericDeep.kt");
+            }
+            
+            @TestMetadata("ConstructorGenericSimple.kt")
+            public void testConstructorGenericSimple() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorGenericSimple.kt");
+            }
+            
+            @TestMetadata("ConstructorGenericUpperBound.kt")
+            public void testConstructorGenericUpperBound() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/constructor/ConstructorGenericUpperBound.kt");
             }
             
             @TestMetadata("ConstructorWithTwoDefArgs.kt")
@@ -2321,6 +2396,893 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
                 doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/enum/simpleEnum.kt");
             }
             
+        }
+        
+        @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava")
+        @InnerTestClasses({FromLoadJava.KotlinSignature.class, FromLoadJava.Library.class, FromLoadJava.Modality.class, FromLoadJava.NotNull.class})
+        public static class FromLoadJava extends AbstractLoadJavaTest {
+            public void testAllFilesPresentInFromLoadJava() throws Exception {
+                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava"), Pattern.compile("^(.+)\\.kt$"), true);
+            }
+            
+            @TestMetadata("ArrayTypeVariance.kt")
+            public void testArrayTypeVariance() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ArrayTypeVariance.kt");
+            }
+            
+            @TestMetadata("ClassDoesNotOverrideMethod.kt")
+            public void testClassDoesNotOverrideMethod() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassDoesNotOverrideMethod.kt");
+            }
+            
+            @TestMetadata("ClassObject.kt")
+            public void testClassObject() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassObject.kt");
+            }
+            
+            @TestMetadata("classObjectAnnotation.kt")
+            public void testClassObjectAnnotation() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/classObjectAnnotation.kt");
+            }
+            
+            @TestMetadata("ClassWithConstVal.kt")
+            public void testClassWithConstVal() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithConstVal.kt");
+            }
+            
+            @TestMetadata("ClassWithTypeP.kt")
+            public void testClassWithTypeP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypeP.kt");
+            }
+            
+            @TestMetadata("ClassWithTypePExtendsIterableP.kt")
+            public void testClassWithTypePExtendsIterableP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypePExtendsIterableP.kt");
+            }
+            
+            @TestMetadata("ClassWithTypePP.kt")
+            public void testClassWithTypePP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypePP.kt");
+            }
+            
+            @TestMetadata("ClassWithTypePRefNext.kt")
+            public void testClassWithTypePRefNext() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypePRefNext.kt");
+            }
+            
+            @TestMetadata("ClassWithTypePRefSelf.kt")
+            public void testClassWithTypePRefSelf() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypePRefSelf.kt");
+            }
+            
+            @TestMetadata("ClassWithTypePRefSelfAndClass.kt")
+            public void testClassWithTypePRefSelfAndClass() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/ClassWithTypePRefSelfAndClass.kt");
+            }
+            
+            @TestMetadata("enum.kt")
+            public void testEnum() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/enum.kt");
+            }
+            
+            @TestMetadata("FieldAsVar.kt")
+            public void testFieldAsVar() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/FieldAsVar.kt");
+            }
+            
+            @TestMetadata("FieldOfArrayType.kt")
+            public void testFieldOfArrayType() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/FieldOfArrayType.kt");
+            }
+            
+            @TestMetadata("FinalFieldAsVal.kt")
+            public void testFinalFieldAsVal() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/FinalFieldAsVal.kt");
+            }
+            
+            @TestMetadata("genericFunction.kt")
+            public void testGenericFunction() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/genericFunction.kt");
+            }
+            
+            @TestMetadata("InheritMethodsDifferentReturnTypes.kt")
+            public void testInheritMethodsDifferentReturnTypes() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/InheritMethodsDifferentReturnTypes.kt");
+            }
+            
+            @TestMetadata("InheritMethodsDifferentReturnTypesGeneric.kt")
+            public void testInheritMethodsDifferentReturnTypesGeneric() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/InheritMethodsDifferentReturnTypesGeneric.kt");
+            }
+            
+            @TestMetadata("InnerClass.kt")
+            public void testInnerClass() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/InnerClass.kt");
+            }
+            
+            @TestMetadata("MethodTypePOneUpperBound.kt")
+            public void testMethodTypePOneUpperBound() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethodTypePOneUpperBound.kt");
+            }
+            
+            @TestMetadata("MethodTypePTwoUpperBounds.kt")
+            public void testMethodTypePTwoUpperBounds() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethodTypePTwoUpperBounds.kt");
+            }
+            
+            @TestMetadata("MethodWithTypeP.kt")
+            public void testMethodWithTypeP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethodWithTypeP.kt");
+            }
+            
+            @TestMetadata("MethodWithTypePP.kt")
+            public void testMethodWithTypePP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethodWithTypePP.kt");
+            }
+            
+            @TestMetadata("MethodWithTypePRefClassP.kt")
+            public void testMethodWithTypePRefClassP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethodWithTypePRefClassP.kt");
+            }
+            
+            @TestMetadata("MethosWithPRefTP.kt")
+            public void testMethosWithPRefTP() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MethosWithPRefTP.kt");
+            }
+            
+            @TestMetadata("MyException.kt")
+            public void testMyException() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/MyException.kt");
+            }
+            
+            @TestMetadata("NestedClass.kt")
+            public void testNestedClass() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/NestedClass.kt");
+            }
+            
+            @TestMetadata("objectInClass.kt")
+            public void testObjectInClass() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/objectInClass.kt");
+            }
+            
+            @TestMetadata("objectMembers.kt")
+            public void testObjectMembers() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/objectMembers.kt");
+            }
+            
+            @TestMetadata("packageLevelObject.kt")
+            public void testPackageLevelObject() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/packageLevelObject.kt");
+            }
+            
+            @TestMetadata("RemoveRedundantProjectionKind.kt")
+            public void testRemoveRedundantProjectionKind() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/RemoveRedundantProjectionKind.kt");
+            }
+            
+            @TestMetadata("Simple.kt")
+            public void testSimple() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/Simple.kt");
+            }
+            
+            @TestMetadata("TwoFields.kt")
+            public void testTwoFields() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/TwoFields.kt");
+            }
+            
+            @TestMetadata("UnboundWildcard.kt")
+            public void testUnboundWildcard() throws Exception {
+                doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/UnboundWildcard.kt");
+            }
+            
+            @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature")
+            @InnerTestClasses({KotlinSignature.Error.class, KotlinSignature.Propagation.class})
+            public static class KotlinSignature extends AbstractLoadJavaTest {
+                @TestMetadata("AllBoundsInWhen.kt")
+                public void testAllBoundsInWhen() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/AllBoundsInWhen.kt");
+                }
+                
+                public void testAllFilesPresentInKotlinSignature() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("ArrayType.kt")
+                public void testArrayType() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/ArrayType.kt");
+                }
+                
+                @TestMetadata("ConstructorWithNewTypeParams.kt")
+                public void testConstructorWithNewTypeParams() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/ConstructorWithNewTypeParams.kt");
+                }
+                
+                @TestMetadata("ConstructorWithParentTypeParams.kt")
+                public void testConstructorWithParentTypeParams() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/ConstructorWithParentTypeParams.kt");
+                }
+                
+                @TestMetadata("ConstructorWithSeveralParams.kt")
+                public void testConstructorWithSeveralParams() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/ConstructorWithSeveralParams.kt");
+                }
+                
+                @TestMetadata("ConstructorWithoutParams.kt")
+                public void testConstructorWithoutParams() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/ConstructorWithoutParams.kt");
+                }
+                
+                @TestMetadata("CustomProjectionKind.kt")
+                public void testCustomProjectionKind() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/CustomProjectionKind.kt");
+                }
+                
+                @TestMetadata("MethodWithFunctionTypes.kt")
+                public void testMethodWithFunctionTypes() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/MethodWithFunctionTypes.kt");
+                }
+                
+                @TestMetadata("MethodWithGenerics.kt")
+                public void testMethodWithGenerics() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/MethodWithGenerics.kt");
+                }
+                
+                @TestMetadata("MethodWithMappedClasses.kt")
+                public void testMethodWithMappedClasses() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/MethodWithMappedClasses.kt");
+                }
+                
+                @TestMetadata("MethodWithTypeParameters.kt")
+                public void testMethodWithTypeParameters() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/MethodWithTypeParameters.kt");
+                }
+                
+                @TestMetadata("MethodWithVararg.kt")
+                public void testMethodWithVararg() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/MethodWithVararg.kt");
+                }
+                
+                @TestMetadata("PropertyArrayTypes.kt")
+                public void testPropertyArrayTypes() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/PropertyArrayTypes.kt");
+                }
+                
+                @TestMetadata("PropertyComplexTypes.kt")
+                public void testPropertyComplexTypes() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/PropertyComplexTypes.kt");
+                }
+                
+                @TestMetadata("PropertySimpleType.kt")
+                public void testPropertySimpleType() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/PropertySimpleType.kt");
+                }
+                
+                @TestMetadata("StarProjection.kt")
+                public void testStarProjection() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/StarProjection.kt");
+                }
+                
+                @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error")
+                public static class Error extends AbstractLoadJavaTest {
+                    @TestMetadata("AddingNullability.kt")
+                    public void testAddingNullability() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/AddingNullability.kt");
+                    }
+                    
+                    public void testAllFilesPresentInError() throws Exception {
+                        JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error"), Pattern.compile("^(.+)\\.kt$"), true);
+                    }
+                    
+                    @TestMetadata("ConflictingProjectionKind.kt")
+                    public void testConflictingProjectionKind() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/ConflictingProjectionKind.kt");
+                    }
+                    
+                    @TestMetadata("ExplicitFieldGettersAndSetters.kt")
+                    public void testExplicitFieldGettersAndSetters() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/ExplicitFieldGettersAndSetters.kt");
+                    }
+                    
+                    @TestMetadata("ExtraUpperBound.kt")
+                    public void testExtraUpperBound() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/ExtraUpperBound.kt");
+                    }
+                    
+                    @TestMetadata("MissingUpperBound.kt")
+                    public void testMissingUpperBound() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/MissingUpperBound.kt");
+                    }
+                    
+                    @TestMetadata("NoFieldTypeRef.kt")
+                    public void testNoFieldTypeRef() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/NoFieldTypeRef.kt");
+                    }
+                    
+                    @TestMetadata("NotVarargReplacedWithVararg.kt")
+                    public void testNotVarargReplacedWithVararg() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/NotVarargReplacedWithVararg.kt");
+                    }
+                    
+                    @TestMetadata("RedundantProjectionKind.kt")
+                    public void testRedundantProjectionKind() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/RedundantProjectionKind.kt");
+                    }
+                    
+                    @TestMetadata("ReturnTypeMissing.kt")
+                    public void testReturnTypeMissing() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/ReturnTypeMissing.kt");
+                    }
+                    
+                    @TestMetadata("SyntaxError.kt")
+                    public void testSyntaxError() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/SyntaxError.kt");
+                    }
+                    
+                    @TestMetadata("SyntaxErrorInFieldAnnotation.kt")
+                    public void testSyntaxErrorInFieldAnnotation() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/SyntaxErrorInFieldAnnotation.kt");
+                    }
+                    
+                    @TestMetadata("VarargReplacedWithNotVararg.kt")
+                    public void testVarargReplacedWithNotVararg() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/VarargReplacedWithNotVararg.kt");
+                    }
+                    
+                    @TestMetadata("WrongFieldInitializer.kt")
+                    public void testWrongFieldInitializer() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongFieldInitializer.kt");
+                    }
+                    
+                    @TestMetadata("WrongFieldMutability.kt")
+                    public void testWrongFieldMutability() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongFieldMutability.kt");
+                    }
+                    
+                    @TestMetadata("WrongFieldName.kt")
+                    public void testWrongFieldName() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongFieldName.kt");
+                    }
+                    
+                    @TestMetadata("WrongMethodName.kt")
+                    public void testWrongMethodName() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongMethodName.kt");
+                    }
+                    
+                    @TestMetadata("WrongProjectionKind.kt")
+                    public void testWrongProjectionKind() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongProjectionKind.kt");
+                    }
+                    
+                    @TestMetadata("WrongReturnTypeStructure.kt")
+                    public void testWrongReturnTypeStructure() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongReturnTypeStructure.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeName1.kt")
+                    public void testWrongTypeName1() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeName1.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeName2.kt")
+                    public void testWrongTypeName2() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeName2.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeName3.kt")
+                    public void testWrongTypeName3() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeName3.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeParameterBoundStructure1.kt")
+                    public void testWrongTypeParameterBoundStructure1() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeParameterBoundStructure1.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeParameterBoundStructure2.kt")
+                    public void testWrongTypeParameterBoundStructure2() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeParameterBoundStructure2.kt");
+                    }
+                    
+                    @TestMetadata("WrongTypeParametersCount.kt")
+                    public void testWrongTypeParametersCount() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongTypeParametersCount.kt");
+                    }
+                    
+                    @TestMetadata("WrongValueParameterStructure1.kt")
+                    public void testWrongValueParameterStructure1() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongValueParameterStructure1.kt");
+                    }
+                    
+                    @TestMetadata("WrongValueParameterStructure2.kt")
+                    public void testWrongValueParameterStructure2() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongValueParameterStructure2.kt");
+                    }
+                    
+                    @TestMetadata("WrongValueParametersCount.kt")
+                    public void testWrongValueParametersCount() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/error/WrongValueParametersCount.kt");
+                    }
+                    
+                }
+                
+                @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation")
+                @InnerTestClasses({Propagation.Parameter.class, Propagation.Return.class, Propagation.TypeParameter.class})
+                public static class Propagation extends AbstractLoadJavaTest {
+                    public void testAllFilesPresentInPropagation() throws Exception {
+                        JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation"), Pattern.compile("^(.+)\\.kt$"), true);
+                    }
+                    
+                    @TestMetadata("PropagateTypeArgumentNullable.kt")
+                    public void testPropagateTypeArgumentNullable() throws Exception {
+                        doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/PropagateTypeArgumentNullable.kt");
+                    }
+                    
+                    @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter")
+                    public static class Parameter extends AbstractLoadJavaTest {
+                        public void testAllFilesPresentInParameter() throws Exception {
+                            JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter"), Pattern.compile("^(.+)\\.kt$"), true);
+                        }
+                        
+                        @TestMetadata("ChangeProjectionKind1.kt")
+                        public void testChangeProjectionKind1() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/ChangeProjectionKind1.kt");
+                        }
+                        
+                        @TestMetadata("ChangeProjectionKind2.kt")
+                        public void testChangeProjectionKind2() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/ChangeProjectionKind2.kt");
+                        }
+                        
+                        @TestMetadata("DeeplySubstitutedClassParameter.kt")
+                        public void testDeeplySubstitutedClassParameter() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter.kt");
+                        }
+                        
+                        @TestMetadata("DeeplySubstitutedClassParameter2.kt")
+                        public void testDeeplySubstitutedClassParameter2() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/DeeplySubstitutedClassParameter2.kt");
+                        }
+                        
+                        @TestMetadata("InheritMutability.kt")
+                        public void testInheritMutability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritMutability.kt");
+                        }
+                        
+                        @TestMetadata("InheritNotVararg.kt")
+                        public void testInheritNotVararg() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritNotVararg.kt");
+                        }
+                        
+                        @TestMetadata("InheritNotVarargInteger.kt")
+                        public void testInheritNotVarargInteger() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritNotVarargInteger.kt");
+                        }
+                        
+                        @TestMetadata("InheritNotVarargNotNull.kt")
+                        public void testInheritNotVarargNotNull() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritNotVarargNotNull.kt");
+                        }
+                        
+                        @TestMetadata("InheritNotVarargPrimitive.kt")
+                        public void testInheritNotVarargPrimitive() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritNotVarargPrimitive.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullability.kt")
+                        public void testInheritNullability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritNullability.kt");
+                        }
+                        
+                        @TestMetadata("InheritProjectionKind.kt")
+                        public void testInheritProjectionKind() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritProjectionKind.kt");
+                        }
+                        
+                        @TestMetadata("InheritReadOnliness.kt")
+                        public void testInheritReadOnliness() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritReadOnliness.kt");
+                        }
+                        
+                        @TestMetadata("InheritVararg.kt")
+                        public void testInheritVararg() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritVararg.kt");
+                        }
+                        
+                        @TestMetadata("InheritVarargInteger.kt")
+                        public void testInheritVarargInteger() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritVarargInteger.kt");
+                        }
+                        
+                        @TestMetadata("InheritVarargNotNull.kt")
+                        public void testInheritVarargNotNull() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritVarargNotNull.kt");
+                        }
+                        
+                        @TestMetadata("InheritVarargPrimitive.kt")
+                        public void testInheritVarargPrimitive() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/InheritVarargPrimitive.kt");
+                        }
+                        
+                        @TestMetadata("Kt3302.kt")
+                        public void testKt3302() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/Kt3302.kt");
+                        }
+                        
+                        @TestMetadata("MutableToReadOnly.kt")
+                        public void testMutableToReadOnly() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/MutableToReadOnly.kt");
+                        }
+                        
+                        @TestMetadata("NotNullToNullable.kt")
+                        public void testNotNullToNullable() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/NotNullToNullable.kt");
+                        }
+                        
+                        @TestMetadata("NullableToNotNull.kt")
+                        public void testNullableToNotNull() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/NullableToNotNull.kt");
+                        }
+                        
+                        @TestMetadata("NullableToNotNullKotlinSignature.kt")
+                        public void testNullableToNotNullKotlinSignature() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/NullableToNotNullKotlinSignature.kt");
+                        }
+                        
+                        @TestMetadata("OverrideWithErasedParameter.kt")
+                        public void testOverrideWithErasedParameter() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/OverrideWithErasedParameter.kt");
+                        }
+                        
+                        @TestMetadata("ReadOnlyToMutable.kt")
+                        public void testReadOnlyToMutable() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/ReadOnlyToMutable.kt");
+                        }
+                        
+                        @TestMetadata("SubclassFromGenericAndNot.kt")
+                        public void testSubclassFromGenericAndNot() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/SubclassFromGenericAndNot.kt");
+                        }
+                        
+                        @TestMetadata("SubstitutedClassParameter.kt")
+                        public void testSubstitutedClassParameter() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/SubstitutedClassParameter.kt");
+                        }
+                        
+                        @TestMetadata("SubstitutedClassParameters.kt")
+                        public void testSubstitutedClassParameters() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/parameter/SubstitutedClassParameters.kt");
+                        }
+                        
+                    }
+                    
+                    @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return")
+                    public static class Return extends AbstractLoadJavaTest {
+                        @TestMetadata("AddNotNullJavaSubtype.kt")
+                        public void testAddNotNullJavaSubtype() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNotNullJavaSubtype.kt");
+                        }
+                        
+                        @TestMetadata("AddNotNullSameJavaType.kt")
+                        public void testAddNotNullSameJavaType() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNotNullSameJavaType.kt");
+                        }
+                        
+                        @TestMetadata("AddNullabilityJavaSubtype.kt")
+                        public void testAddNullabilityJavaSubtype() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNullabilityJavaSubtype.kt");
+                        }
+                        
+                        @TestMetadata("AddNullabilitySameGenericType1.kt")
+                        public void testAddNullabilitySameGenericType1() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNullabilitySameGenericType1.kt");
+                        }
+                        
+                        @TestMetadata("AddNullabilitySameGenericType2.kt")
+                        public void testAddNullabilitySameGenericType2() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNullabilitySameGenericType2.kt");
+                        }
+                        
+                        @TestMetadata("AddNullabilitySameJavaType.kt")
+                        public void testAddNullabilitySameJavaType() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/AddNullabilitySameJavaType.kt");
+                        }
+                        
+                        public void testAllFilesPresentInReturn() throws Exception {
+                            JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return"), Pattern.compile("^(.+)\\.kt$"), true);
+                        }
+                        
+                        @TestMetadata("CantMakeImmutableInSubclass.kt")
+                        public void testCantMakeImmutableInSubclass() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/CantMakeImmutableInSubclass.kt");
+                        }
+                        
+                        @TestMetadata("DeeplySubstitutedClassParameter.kt")
+                        public void testDeeplySubstitutedClassParameter() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter.kt");
+                        }
+                        
+                        @TestMetadata("DeeplySubstitutedClassParameter2.kt")
+                        public void testDeeplySubstitutedClassParameter2() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/DeeplySubstitutedClassParameter2.kt");
+                        }
+                        
+                        @TestMetadata("HalfSubstitutedTypeParameters.kt")
+                        public void testHalfSubstitutedTypeParameters() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/HalfSubstitutedTypeParameters.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullabilityGenericSubclassSimple.kt")
+                        public void testInheritNullabilityGenericSubclassSimple() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritNullabilityGenericSubclassSimple.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullabilityJavaSubtype.kt")
+                        public void testInheritNullabilityJavaSubtype() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritNullabilityJavaSubtype.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullabilitySameGenericType.kt")
+                        public void testInheritNullabilitySameGenericType() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritNullabilitySameGenericType.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullabilitySameJavaType.kt")
+                        public void testInheritNullabilitySameJavaType() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritNullabilitySameJavaType.kt");
+                        }
+                        
+                        @TestMetadata("InheritProjectionKind.kt")
+                        public void testInheritProjectionKind() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritProjectionKind.kt");
+                        }
+                        
+                        @TestMetadata("InheritReadOnlinessOfArgument.kt")
+                        public void testInheritReadOnlinessOfArgument() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritReadOnlinessOfArgument.kt");
+                        }
+                        
+                        @TestMetadata("InheritReadOnlinessSameClass.kt")
+                        public void testInheritReadOnlinessSameClass() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritReadOnlinessSameClass.kt");
+                        }
+                        
+                        @TestMetadata("InheritReadOnlinessSubclass.kt")
+                        public void testInheritReadOnlinessSubclass() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/InheritReadOnlinessSubclass.kt");
+                        }
+                        
+                        @TestMetadata("SameProjectionKind.kt")
+                        public void testSameProjectionKind() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SameProjectionKind.kt");
+                        }
+                        
+                        @TestMetadata("SubclassFromGenericAndNot.kt")
+                        public void testSubclassFromGenericAndNot() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SubclassFromGenericAndNot.kt");
+                        }
+                        
+                        @TestMetadata("SubclassOfCollection.kt")
+                        public void testSubclassOfCollection() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SubclassOfCollection.kt");
+                        }
+                        
+                        @TestMetadata("SubclassOfMapEntry.kt")
+                        public void testSubclassOfMapEntry() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SubclassOfMapEntry.kt");
+                        }
+                        
+                        @TestMetadata("SubstitutedClassParameter.kt")
+                        public void testSubstitutedClassParameter() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SubstitutedClassParameter.kt");
+                        }
+                        
+                        @TestMetadata("SubstitutedClassParameters.kt")
+                        public void testSubstitutedClassParameters() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/SubstitutedClassParameters.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesConflictingProjectionKinds.kt")
+                        public void testTwoSuperclassesConflictingProjectionKinds() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesConflictingProjectionKinds.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesInvariantAndCovariantInferMutability.kt")
+                        public void testTwoSuperclassesInvariantAndCovariantInferMutability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferMutability.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesInvariantAndCovariantInferNullability.kt")
+                        public void testTwoSuperclassesInvariantAndCovariantInferNullability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesInvariantAndCovariantInferNullability.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesMutableAndNot.kt")
+                        public void testTwoSuperclassesMutableAndNot() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesMutableAndNot.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesReturnJavaSubtype.kt")
+                        public void testTwoSuperclassesReturnJavaSubtype() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesReturnJavaSubtype.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesReturnSameJavaType.kt")
+                        public void testTwoSuperclassesReturnSameJavaType() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesReturnSameJavaType.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclassesSupplementNotNull.kt")
+                        public void testTwoSuperclassesSupplementNotNull() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TwoSuperclassesSupplementNotNull.kt");
+                        }
+                        
+                        @TestMetadata("TypeParamOfClass.kt")
+                        public void testTypeParamOfClass() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TypeParamOfClass.kt");
+                        }
+                        
+                        @TestMetadata("TypeParamOfClassSubstituted.kt")
+                        public void testTypeParamOfClassSubstituted() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TypeParamOfClassSubstituted.kt");
+                        }
+                        
+                        @TestMetadata("TypeParamOfFun.kt")
+                        public void testTypeParamOfFun() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/return/TypeParamOfFun.kt");
+                        }
+                        
+                    }
+                    
+                    @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter")
+                    public static class TypeParameter extends AbstractLoadJavaTest {
+                        public void testAllFilesPresentInTypeParameter() throws Exception {
+                            JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter"), Pattern.compile("^(.+)\\.kt$"), true);
+                        }
+                        
+                        @TestMetadata("InheritMutability.kt")
+                        public void testInheritMutability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/InheritMutability.kt");
+                        }
+                        
+                        @TestMetadata("InheritNullability.kt")
+                        public void testInheritNullability() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/InheritNullability.kt");
+                        }
+                        
+                        @TestMetadata("InheritReadOnliness.kt")
+                        public void testInheritReadOnliness() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/InheritReadOnliness.kt");
+                        }
+                        
+                        @TestMetadata("TwoBounds.kt")
+                        public void testTwoBounds() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/TwoBounds.kt");
+                        }
+                        
+                        @TestMetadata("TwoSuperclasses.kt")
+                        public void testTwoSuperclasses() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/TwoSuperclasses.kt");
+                        }
+                        
+                        @TestMetadata("TwoTypeParameters.kt")
+                        public void testTwoTypeParameters() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/TwoTypeParameters.kt");
+                        }
+                        
+                        @TestMetadata("UseParameterAsUpperBound.kt")
+                        public void testUseParameterAsUpperBound() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/UseParameterAsUpperBound.kt");
+                        }
+                        
+                        @TestMetadata("UseParameterInUpperBound.kt")
+                        public void testUseParameterInUpperBound() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/UseParameterInUpperBound.kt");
+                        }
+                        
+                        @TestMetadata("UseParameterInUpperBoundWithKotlinSignature.kt")
+                        public void testUseParameterInUpperBoundWithKotlinSignature() throws Exception {
+                            doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/kotlinSignature/propagation/typeParameter/UseParameterInUpperBoundWithKotlinSignature.kt");
+                        }
+                        
+                    }
+                    
+                    public static Test innerSuite() {
+                        TestSuite suite = new TestSuite("Propagation");
+                        suite.addTestSuite(Propagation.class);
+                        suite.addTestSuite(Parameter.class);
+                        suite.addTestSuite(Return.class);
+                        suite.addTestSuite(TypeParameter.class);
+                        return suite;
+                    }
+                }
+                
+                public static Test innerSuite() {
+                    TestSuite suite = new TestSuite("KotlinSignature");
+                    suite.addTestSuite(KotlinSignature.class);
+                    suite.addTestSuite(Error.class);
+                    suite.addTest(Propagation.innerSuite());
+                    return suite;
+                }
+            }
+            
+            @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/library")
+            public static class Library extends AbstractLoadJavaTest {
+                public void testAllFilesPresentInLibrary() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/library"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("LoadIterable.kt")
+                public void testLoadIterable() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/library/LoadIterable.kt");
+                }
+                
+                @TestMetadata("LoadIterator.kt")
+                public void testLoadIterator() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/library/LoadIterator.kt");
+                }
+                
+                @TestMetadata("Max.kt")
+                public void testMax() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/library/Max.kt");
+                }
+                
+            }
+            
+            @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/modality")
+            public static class Modality extends AbstractLoadJavaTest {
+                public void testAllFilesPresentInModality() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/modality"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("ModalityOfFakeOverrides.kt")
+                public void testModalityOfFakeOverrides() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/modality/ModalityOfFakeOverrides.kt");
+                }
+                
+            }
+            
+            @TestMetadata("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull")
+            public static class NotNull extends AbstractLoadJavaTest {
+                public void testAllFilesPresentInNotNull() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("NotNullField.kt")
+                public void testNotNullField() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull/NotNullField.kt");
+                }
+                
+                @TestMetadata("NotNullIntArray.kt")
+                public void testNotNullIntArray() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull/NotNullIntArray.kt");
+                }
+                
+                @TestMetadata("NotNullMethod.kt")
+                public void testNotNullMethod() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull/NotNullMethod.kt");
+                }
+                
+                @TestMetadata("NotNullObjectArray.kt")
+                public void testNotNullObjectArray() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull/NotNullObjectArray.kt");
+                }
+                
+                @TestMetadata("NotNullParameter.kt")
+                public void testNotNullParameter() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fromLoadJava/notNull/NotNullParameter.kt");
+                }
+                
+            }
+            
+            public static Test innerSuite() {
+                TestSuite suite = new TestSuite("FromLoadJava");
+                suite.addTestSuite(FromLoadJava.class);
+                suite.addTest(KotlinSignature.innerSuite());
+                suite.addTestSuite(Library.class);
+                suite.addTestSuite(Modality.class);
+                suite.addTestSuite(NotNull.class);
+                return suite;
+            }
         }
         
         @TestMetadata("compiler/testData/loadJava/compiledKotlin/fun")
@@ -2568,6 +3530,16 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
                 @TestMetadata("nonLastVararg.kt")
                 public void testNonLastVararg() throws Exception {
                     doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fun/vararg/nonLastVararg.kt");
+                }
+                
+                @TestMetadata("VarargInt.kt")
+                public void testVarargInt() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fun/vararg/VarargInt.kt");
+                }
+                
+                @TestMetadata("VarargString.kt")
+                public void testVarargString() throws Exception {
+                    doTestCompiledKotlin("compiler/testData/loadJava/compiledKotlin/fun/vararg/VarargString.kt");
                 }
                 
             }
@@ -3059,12 +4031,13 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
             TestSuite suite = new TestSuite("CompiledKotlin");
             suite.addTestSuite(CompiledKotlin.class);
             suite.addTest(Annotations.innerSuite());
-            suite.addTestSuite(Class.class);
+            suite.addTest(Class.innerSuite());
             suite.addTestSuite(ClassFun.class);
             suite.addTestSuite(ClassObject.class);
             suite.addTest(Constructor.innerSuite());
             suite.addTestSuite(DataClass.class);
             suite.addTestSuite(Enum.class);
+            suite.addTest(FromLoadJava.innerSuite());
             suite.addTest(Fun.innerSuite());
             suite.addTestSuite(Inline.class);
             suite.addTest(Prop.innerSuite());
@@ -3075,10 +4048,38 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
     }
     
     @TestMetadata("compiler/testData/loadJava/compiledKotlinWithStdlib")
-    @InnerTestClasses({CompiledKotlinWithStdlib.PlatformNames.class})
+    @InnerTestClasses({CompiledKotlinWithStdlib.Mutability.class, CompiledKotlinWithStdlib.PlatformNames.class})
     public static class CompiledKotlinWithStdlib extends AbstractLoadJavaTest {
         public void testAllFilesPresentInCompiledKotlinWithStdlib() throws Exception {
             JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlinWithStdlib"), Pattern.compile("^(.+)\\.kt$"), true);
+        }
+        
+        @TestMetadata("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability")
+        public static class Mutability extends AbstractLoadJavaTest {
+            public void testAllFilesPresentInMutability() throws Exception {
+                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability"), Pattern.compile("^(.+)\\.kt$"), true);
+            }
+            
+            @TestMetadata("LoadIterable.kt")
+            public void testLoadIterable() throws Exception {
+                doTestCompiledKotlinWithStdlib("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability/LoadIterable.kt");
+            }
+            
+            @TestMetadata("LoadIterableWithConflict.kt")
+            public void testLoadIterableWithConflict() throws Exception {
+                doTestCompiledKotlinWithStdlib("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability/LoadIterableWithConflict.kt");
+            }
+            
+            @TestMetadata("LoadIterableWithNullability.kt")
+            public void testLoadIterableWithNullability() throws Exception {
+                doTestCompiledKotlinWithStdlib("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability/LoadIterableWithNullability.kt");
+            }
+            
+            @TestMetadata("LoadIterableWithPropagation.kt")
+            public void testLoadIterableWithPropagation() throws Exception {
+                doTestCompiledKotlinWithStdlib("compiler/testData/loadJava/compiledKotlinWithStdlib/mutability/LoadIterableWithPropagation.kt");
+            }
+            
         }
         
         @TestMetadata("compiler/testData/loadJava/compiledKotlinWithStdlib/platformNames")
@@ -3097,6 +4098,7 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
         public static Test innerSuite() {
             TestSuite suite = new TestSuite("CompiledKotlinWithStdlib");
             suite.addTestSuite(CompiledKotlinWithStdlib.class);
+            suite.addTestSuite(Mutability.class);
             suite.addTestSuite(PlatformNames.class);
             return suite;
         }

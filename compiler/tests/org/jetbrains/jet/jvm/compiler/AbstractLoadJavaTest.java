@@ -91,7 +91,7 @@ public abstract class AbstractLoadJavaTest extends TestCaseWithTmpdir {
     }
 
     protected void doTestCompiledKotlin(@NotNull String ktFileName) throws Exception {
-        doTestCompiledKotlin(ktFileName, ConfigurationKind.JDK_ONLY);
+        doTestCompiledKotlin(ktFileName, ConfigurationKind.JDK_AND_ANNOTATIONS);
     }
 
     protected void doTestCompiledKotlinWithStdlib(@NotNull String ktFileName) throws Exception {
