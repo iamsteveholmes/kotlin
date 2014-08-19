@@ -209,7 +209,6 @@ fun main(args: Array<String>) {
         testClass(javaClass<AbstractLoadJavaTest>()) {
             model("loadJava/compiledJava", extension = "java", testMethod = "doTestCompiledJava")
             model("loadJava/compiledJavaAndKotlin", extension = "txt", testMethod = "doTestCompiledJavaAndKotlin")
-            model("loadJava/compiledJavaCompareWithKotlin", extension = "java", testMethod = "doTestCompiledJava")
             model("loadJava/compiledJavaIncludeObjectMethods", extension = "java", testMethod = "doTestCompiledJavaIncludeObjectMethods")
             model("loadJava/compiledKotlin", testMethod = "doTestCompiledKotlin")
             model("loadJava/compiledKotlinWithStdlib", testMethod = "doTestCompiledKotlinWithStdlib")
