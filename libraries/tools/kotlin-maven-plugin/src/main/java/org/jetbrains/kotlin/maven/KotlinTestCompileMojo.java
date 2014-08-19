@@ -47,6 +47,27 @@ public class KotlinTestCompileMojo extends KotlinCompileMojo {
     // so for now lets just use 2 fields
 
     /**
+     * The default source directories containing the sources to be compiled.
+     *
+     * @parameter default-value="${project.testCompileSourceRoots}"
+     * @required
+     */
+    private List<String> defaultSourceDirs;
+
+    /**
+     * The source directories containing the sources to be compiled.
+     *
+     * @parameter
+     */
+    private List<String> sourceDirs;
+
+    @Override
+    public List<String> getSources() {
+        if (sourceDirs != null && !sourceDirs.isEmpty()) return sourceDirs;
+        return defaultSourceDirs;
+    }
+
+    /**
      * The source directories containing the sources to be compiled for tests.
      *
      * @parameter default-value="${project.testCompileSourceRoots}"
