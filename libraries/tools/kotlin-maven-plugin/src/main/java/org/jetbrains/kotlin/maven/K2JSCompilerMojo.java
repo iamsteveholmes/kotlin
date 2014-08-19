@@ -128,12 +128,14 @@ public class K2JSCompilerMojo extends KotlinCompileMojoBase<K2JSCompilerArgument
 
     private void copyJsLibraryFile(String jsLib) throws MojoExecutionException {
         try {
-            //noinspection ResultOfMethodCallIgnored
-            outputKotlinJSDir.mkdirs();
             final InputStream inputStream = MetaInfServices.loadClasspathResource(jsLib);
             if (inputStream == null) {
                 LOG.warn("Could not find " + jsLib + " on the classpath!");
             } else {
+                if (!outputKotlinJSDir.exists() && !outputKotlinJSDir.mkdirs()) {
+                    throw new MojoExecutionException("Could not create output directory '" + outputKotlinJSDir + "'.");
+                }
+
                 InputSupplier<InputStream> inputSupplier = new InputSupplier<InputStream>() {
                     @Override
                     public InputStream getInput() throws IOException {
