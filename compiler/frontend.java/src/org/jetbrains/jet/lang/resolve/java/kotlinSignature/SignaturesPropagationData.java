@@ -30,6 +30,7 @@ import org.jetbrains.jet.lang.descriptors.annotations.Annotations;
 import org.jetbrains.jet.lang.descriptors.impl.TypeParameterDescriptorImpl;
 import org.jetbrains.jet.lang.descriptors.impl.ValueParameterDescriptorImpl;
 import org.jetbrains.jet.lang.resolve.DescriptorUtils;
+import org.jetbrains.jet.lang.resolve.java.JavaPackage;
 import org.jetbrains.jet.lang.resolve.java.descriptor.JavaMethodDescriptor;
 import org.jetbrains.jet.lang.resolve.java.jvmSignature.JvmMethodSignature;
 import org.jetbrains.jet.lang.resolve.java.jvmSignature.JvmSignaturePackage;
@@ -150,6 +151,7 @@ public class SignaturesPropagationData {
     private JetType modifyReturnTypeAccordingToSuperMethods(
             @NotNull JetType autoType // type built by JavaTypeTransformer
     ) {
+        if (JavaPackage.getPLATFORM_TYPES()) return autoType;
         if (superFunctions.isEmpty()) return autoType;
         List<TypeAndVariance> typesFromSuperMethods = ContainerUtil.map(superFunctions,
                 new Function<FunctionDescriptor, TypeAndVariance>() {
@@ -163,6 +165,8 @@ public class SignaturesPropagationData {
     }
 
     private List<TypeParameterDescriptor> modifyTypeParametersAccordingToSuperMethods(List<TypeParameterDescriptor> autoTypeParameters) {
+        if (JavaPackage.getPLATFORM_TYPES()) return autoTypeParameters;
+
         if (superFunctions.isEmpty()) return autoTypeParameters;
 
         List<TypeParameterDescriptor> result = Lists.newArrayList();
@@ -404,8 +408,7 @@ public class SignaturesPropagationData {
     ) {
         if (autoType.isError()) return autoType;
 
-        List<TypeAndVariance> inflexibleSuperTypes = filterOutFlexible(typesFromSuper);
-        if (inflexibleSuperTypes.isEmpty()) return autoType;
+        if (JavaPackage.getPLATFORM_TYPES()) return autoType;
 
         boolean resultNullable = typeMustBeNullable(autoType, typesFromSuper, howThisTypeIsUsed);
         ClassifierDescriptor resultClassifier = modifyTypeClassifier(autoType, typesFromSuper);
@@ -426,17 +429,6 @@ public class SignaturesPropagationData {
 
         PropagationHeuristics.checkArrayInReturnType(this, type, typesFromSuper);
         return type;
-    }
-
-    private static List<TypeAndVariance> filterOutFlexible(@NotNull List<TypeAndVariance> types) {
-        return KotlinPackage.filter(
-                types,
-                new Function1<TypeAndVariance, Boolean>() {
-                    @Override
-                    public Boolean invoke(TypeAndVariance typeAndVariance) {
-                        return !TypesPackage.isFlexible(typeAndVariance.type);
-                    }
-                });
     }
 
     @NotNull

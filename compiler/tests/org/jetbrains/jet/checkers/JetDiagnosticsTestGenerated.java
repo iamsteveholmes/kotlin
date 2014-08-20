@@ -5076,9 +5076,19 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/j+k/cantDeclareIfSamAdapterIsInherited.kt");
             }
             
+            @TestMetadata("GenericsInSupertypes.kt")
+            public void testGenericsInSupertypes() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/j+k/GenericsInSupertypes.kt");
+            }
+            
             @TestMetadata("inheritAbstractSamAdapter.kt")
             public void testInheritAbstractSamAdapter() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/j+k/inheritAbstractSamAdapter.kt");
+            }
+            
+            @TestMetadata("InheritedGenericFunction.kt")
+            public void testInheritedGenericFunction() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/j+k/InheritedGenericFunction.kt");
             }
             
             @TestMetadata("innerNestedClassFromJava.kt")
