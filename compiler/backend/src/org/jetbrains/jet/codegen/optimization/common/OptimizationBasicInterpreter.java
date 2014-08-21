@@ -93,6 +93,12 @@ public class OptimizationBasicInterpreter extends BasicInterpreter {
             @NotNull BasicValue v, @NotNull BasicValue w
     ) {
         if (!v.equals(w)) {
+            if (v.getType() != null &&
+                w.getType() != null &&
+                v.getType().getSort() != Type.OBJECT &&
+                w.getType().getSize() != Type.OBJECT) {
+                return v;
+            }
             return MIXED_VALUE;
         }
         return v;
