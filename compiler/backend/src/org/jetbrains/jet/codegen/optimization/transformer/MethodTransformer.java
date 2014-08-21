@@ -27,7 +27,8 @@ public abstract class MethodTransformer {
         this.delegate = delegate;
     }
 
-    protected static <V extends Value> Frame<V>[] runAnalyzer(
+    @NotNull
+    public static <V extends Value> Frame<V>[] runAnalyzer(
             @NotNull Analyzer<V> analyzer,
             @NotNull String internalClassName,
             @NotNull MethodNode node
@@ -39,7 +40,9 @@ public abstract class MethodTransformer {
             throw new RuntimeException(e);
         }
     }
-    protected static <V extends Value> Frame<V>[] analyze(
+
+    @NotNull
+    public static <V extends Value> Frame<V>[] analyze(
             @NotNull String internalClassName,
             @NotNull MethodNode node,
             @NotNull Interpreter<V> interpreter

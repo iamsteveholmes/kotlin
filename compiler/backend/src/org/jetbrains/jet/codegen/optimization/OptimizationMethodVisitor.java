@@ -35,7 +35,7 @@ import java.util.List;
 public class OptimizationMethodVisitor extends MethodVisitor {
     private static final int MAX_INSTRUCTIONS_SIZE_TO_OPTIMIZE = 5000;
     private static final MethodTransformer MAIN_METHOD_TRANSFORMER = new RedundantNullCheckMethodTransformer(
-            new RedundantBoxingMethodTransformer(null)
+            new RedundantBoxingMethodTransformer(new StoreStackBeforeInlineMethodTransformer(null))
     );
 
     private final MethodNode methodNode;
