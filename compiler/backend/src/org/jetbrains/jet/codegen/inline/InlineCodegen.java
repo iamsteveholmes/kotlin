@@ -209,7 +209,7 @@ public class InlineCodegen implements CallGenerator {
         //through generation captured parameters will be added to invocationParamBuilder
         putClosureParametersOnStack();
 
-        addInlineMarker(codegen.v, true, true);
+        addInlineMarker(codegen.v, true);
 
         Parameters parameters = invocationParamBuilder.buildParameters();
 
@@ -250,7 +250,7 @@ public class InlineCodegen implements CallGenerator {
 
         adapter.accept(new InliningInstructionAdapter(codegen.v));
 
-        addInlineMarker(codegen.v, true, false);
+        addInlineMarker(codegen.v, false);
 
         return result;
     }
