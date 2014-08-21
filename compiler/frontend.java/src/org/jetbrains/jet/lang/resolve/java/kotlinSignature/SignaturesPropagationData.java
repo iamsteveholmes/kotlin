@@ -152,7 +152,7 @@ public class SignaturesPropagationData {
             @NotNull JetType autoType // type built by JavaTypeTransformer
     ) {
         if (JavaPackage.getPLATFORM_TYPES()) return autoType;
-        if (superFunctions.isEmpty()) return autoType;
+
         List<TypeAndVariance> typesFromSuperMethods = ContainerUtil.map(superFunctions,
                 new Function<FunctionDescriptor, TypeAndVariance>() {
                     @Override
@@ -166,8 +166,6 @@ public class SignaturesPropagationData {
 
     private List<TypeParameterDescriptor> modifyTypeParametersAccordingToSuperMethods(List<TypeParameterDescriptor> autoTypeParameters) {
         if (JavaPackage.getPLATFORM_TYPES()) return autoTypeParameters;
-
-        if (superFunctions.isEmpty()) return autoTypeParameters;
 
         List<TypeParameterDescriptor> result = Lists.newArrayList();
 
