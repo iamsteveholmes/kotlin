@@ -32,7 +32,7 @@ import org.jetbrains.jet.lang.resolve.java.structure.JavaElement
 import org.jetbrains.jet.lang.descriptors.DeclarationDescriptorWithSource
 
 public var PLATFORM_TYPES: Boolean = run {
-    val result = "true" == System.getProperty("platform.types")
+    val result = true//"true" == System.getProperty("platform.types")
     if ("true" == System.getProperty("print.platform.types")) {
         println(if (result) "Using platform types in JDR" else "NO platform types")
     }
