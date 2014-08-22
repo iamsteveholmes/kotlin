@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 JetBrains s.r.o.
+ * Copyright 2010-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-package org.jetbrains.jet.plugin.project;
+package org.jetbrains.jet.lang.psi
 
-import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.k2js.config.EcmaVersion;
-import org.jetbrains.k2js.config.LibrarySourcesConfig;
+import kotlin.properties.ReadWriteProperty
+import com.intellij.openapi.util.Key
 
-public final class IDEAConfig extends LibrarySourcesConfig {
-    public IDEAConfig(@NotNull Project project) {
-        super(project, "default", ProjectStructureUtil.getLibLocationForProject(project), EcmaVersion.defaultVersion(), false);
+public class UserDataProperty<T : Any>(val key: Key<T>) : ReadWriteProperty<JetFile, T?> {
+    override fun get(thisRef: JetFile, desc: kotlin.PropertyMetadata): T? {
+        return thisRef.getUserData(key)
+    }
+
+    override fun set(thisRef: JetFile, desc: kotlin.PropertyMetadata, value: T?) {
+        thisRef.putUserData(key, value)
     }
 }

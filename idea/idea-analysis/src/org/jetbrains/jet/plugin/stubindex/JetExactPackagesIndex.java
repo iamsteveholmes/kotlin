@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 JetBrains s.r.o.
+ * Copyright 2010-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,23 +25,17 @@ import org.jetbrains.jet.lang.psi.JetFile;
 
 import java.util.Collection;
 
-/**
- * Contains all packages, i.e. if a file declares
- *   package a.b.c
- *
- * Three packages "a", "a.b" and "a.b.c" will be registered in this index
- */
-public class JetAllPackagesIndex extends StringStubIndexExtension<JetFile> {
-    private static final StubIndexKey<String, JetFile> KEY = KotlinIndexUtil.createIndexKey(JetAllPackagesIndex.class);
+public class JetExactPackagesIndex extends StringStubIndexExtension<JetFile> {
+    private static final StubIndexKey<String, JetFile> KEY = KotlinIndexUtil.createIndexKey(JetExactPackagesIndex.class);
 
-    private static final JetAllPackagesIndex ourInstance = new JetAllPackagesIndex();
+    private static final JetExactPackagesIndex ourInstance = new JetExactPackagesIndex();
 
     @NotNull
-    public static JetAllPackagesIndex getInstance() {
+    public static JetExactPackagesIndex getInstance() {
         return ourInstance;
     }
 
-    private JetAllPackagesIndex() {}
+    private JetExactPackagesIndex() {}
 
     @NotNull
     @Override
@@ -51,7 +45,7 @@ public class JetAllPackagesIndex extends StringStubIndexExtension<JetFile> {
 
     @NotNull
     @Override
-    public Collection<JetFile> get(String fqName, Project project, @NotNull GlobalSearchScope scope) {
+    public Collection<JetFile> get(@NotNull String fqName, @NotNull Project project, @NotNull GlobalSearchScope scope) {
         return super.get(fqName, project, JetSourceFilterScope.kotlinSourcesAndLibraries(scope, project));
     }
 }
