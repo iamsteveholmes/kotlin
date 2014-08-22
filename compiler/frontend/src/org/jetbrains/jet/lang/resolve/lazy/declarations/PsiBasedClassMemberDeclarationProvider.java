@@ -17,9 +17,12 @@
 package org.jetbrains.jet.lang.resolve.lazy.declarations;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.jet.lang.psi.*;
-import org.jetbrains.jet.storage.StorageManager;
+import org.jetbrains.jet.lang.descriptors.ClassKind;
+import org.jetbrains.jet.lang.psi.JetClassObject;
+import org.jetbrains.jet.lang.psi.JetDeclaration;
+import org.jetbrains.jet.lang.psi.JetParameter;
 import org.jetbrains.jet.lang.resolve.lazy.data.JetClassLikeInfo;
+import org.jetbrains.jet.storage.StorageManager;
 
 public class PsiBasedClassMemberDeclarationProvider extends AbstractPsiBasedDeclarationProvider implements ClassMemberDeclarationProvider {
 
@@ -48,7 +51,7 @@ public class PsiBasedClassMemberDeclarationProvider extends AbstractPsiBasedDecl
         }
 
         for (JetParameter parameter : classInfo.getPrimaryConstructorParameters()) {
-            if (parameter.hasValOrVarNode()) {
+            if (parameter.hasValOrVarNode() || classInfo.getClassKind() == ClassKind.ANNOTATION_CLASS) {
                 index.putToIndex(parameter);
             }
         }

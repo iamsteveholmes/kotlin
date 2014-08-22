@@ -80,7 +80,7 @@ public abstract class ClassBodyCodegen extends MemberCodegen<JetClassOrObject> {
             }
         }
 
-        generatePrimaryConstructorProperties(propertyCodegen, myClass);
+        generatePrimaryConstructorProperties();
     }
 
     private static boolean shouldProcessFirst(JetDeclaration declaration) {
@@ -104,19 +104,17 @@ public abstract class ClassBodyCodegen extends MemberCodegen<JetClassOrObject> {
         }
     }
 
-    private void generatePrimaryConstructorProperties(PropertyCodegen propertyCodegen, JetClassOrObject origin) {
-        boolean isAnnotation = origin instanceof JetClass && ((JetClass) origin).isAnnotation();
-        for (JetParameter p : getPrimaryConstructorParameters()) {
-            if (p.hasValOrVarNode()) {
-                PropertyDescriptor propertyDescriptor = state.getBindingContext().get(BindingContext.PRIMARY_CONSTRUCTOR_PARAMETER, p);
-                if (propertyDescriptor != null) {
-                    if (!isAnnotation) {
-                        propertyCodegen.generatePrimaryConstructorProperty(p, propertyDescriptor);
-                    }
-                    else {
-                        propertyCodegen.generateConstructorPropertyAsMethodForAnnotationClass(p, propertyDescriptor);
-                    }
-                }
+    private void generatePrimaryConstructorProperties() {
+        boolean isAnnotation = myClass instanceof JetClass && ((JetClass) myClass).isAnnotation();
+        for (JetParameter parameter : getPrimaryConstructorParameters()) {
+            PropertyDescriptor propertyDescriptor = bindingContext.get(BindingContext.PRIMARY_CONSTRUCTOR_PARAMETER, parameter);
+            if (propertyDescriptor == null) continue;
+
+            if (isAnnotation) {
+                propertyCodegen.generateConstructorPropertyAsMethodForAnnotationClass(parameter, propertyDescriptor);
+            }
+            else if (parameter.hasValOrVarNode()) {
+                propertyCodegen.generatePrimaryConstructorProperty(parameter, propertyDescriptor);
             }
         }
     }
