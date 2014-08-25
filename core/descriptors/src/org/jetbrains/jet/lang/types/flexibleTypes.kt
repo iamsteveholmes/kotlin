@@ -24,6 +24,7 @@ public trait FlexibleType : JetType {
 }
 
 public fun JetType.isFlexible(): Boolean = this is FlexibleType
+public fun JetType.isNullableAndNotFlexible(): Boolean = this !is FlexibleType && this.isNullable()
 
 public fun JetType.lowerIfFlexible(): JetType = if (this is FlexibleType) lowerBound else this
 

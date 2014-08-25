@@ -6442,6 +6442,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                     doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/string.kt");
                 }
                 
+                @TestMetadata("visitor.kt")
+                public void testVisitor() throws Exception {
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/visitor.kt");
+                }
+                
             }
             
             public static Test innerSuite() {

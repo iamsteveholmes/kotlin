@@ -114,7 +114,7 @@ public class CastDiagnosticsUtil {
      */
     public static boolean isCastErased(@NotNull JetType supertype, @NotNull JetType subtype, @NotNull JetTypeChecker typeChecker) {
         // cast between T and T? is always OK
-        if (supertype.isNullable() || subtype.isNullable()) {
+        if (TypesPackage.isNullableAndNotFlexible(supertype) || TypesPackage.isNullableAndNotFlexible(subtype)) {
             return isCastErased(TypeUtils.makeNotNullable(supertype), TypeUtils.makeNotNullable(subtype), typeChecker);
         }
 
