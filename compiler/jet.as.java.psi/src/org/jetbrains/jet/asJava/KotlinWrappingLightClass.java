@@ -24,15 +24,19 @@ import com.intellij.psi.PsiMethod;
 import com.intellij.psi.impl.PsiClassImplUtil;
 import com.intellij.psi.impl.light.AbstractLightClass;
 import com.intellij.psi.impl.light.LightField;
-import org.jetbrains.jet.asJava.light.KotlinLightField;
 import com.intellij.psi.impl.light.LightMethod;
 import com.intellij.psi.impl.source.ClassInnerStuffCache;
 import com.intellij.psi.impl.source.PsiExtensibleClass;
+import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.Function;
 import com.intellij.util.containers.ContainerUtil;
+import kotlin.KotlinPackage;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.jet.asJava.light.KotlinLightField;
+import org.jetbrains.jet.lang.psi.JetClassOrObject;
 import org.jetbrains.jet.lang.psi.JetDeclaration;
 import org.jetbrains.jet.lang.psi.JetProperty;
+import org.jetbrains.jet.lang.psi.JetPsiUtil;
 
 import java.util.List;
 
@@ -122,14 +126,26 @@ public abstract class KotlinWrappingLightClass extends AbstractLightClass implem
     @NotNull
     @Override
     public List<PsiMethod> getOwnMethods() {
-        return ContainerUtil.map(getDelegate().getMethods(), new Function<PsiMethod, PsiMethod>() {
+        return KotlinPackage.filterNotNull(ContainerUtil.map(getDelegate().getMethods(), new Function<PsiMethod, PsiMethod>() {
             @Override
             public PsiMethod fun(PsiMethod method) {
                 JetDeclaration declaration = ClsWrapperStubPsiFactory.getOriginalDeclaration(method);
-                return declaration != null
-                       ? new KotlinLightMethodForDeclaration(myManager, method, declaration, KotlinWrappingLightClass.this)
-                       : new LightMethod(myManager, method, KotlinWrappingLightClass.this);
+
+                if (declaration != null) {
+                    return !isMethodFromTrait(declaration) ?
+                           new KotlinLightMethodForDeclaration(myManager, method, declaration, KotlinWrappingLightClass.this) :
+                           new KotlinLightMethodFromTraitImpl(myManager, method, declaration, KotlinWrappingLightClass.this);
+                }
+
+                return new LightMethod(myManager, method, KotlinWrappingLightClass.this);
             }
-        });
+        }));
+    }
+
+    private boolean isMethodFromTrait(@NotNull JetDeclaration declaration) {
+        if (getOrigin() == declaration) return false;
+
+        JetClassOrObject parentDeclaration = PsiTreeUtil.getParentOfType(declaration, JetClassOrObject.class);
+        return (parentDeclaration != null && getOrigin() != parentDeclaration && JetPsiUtil.isTrait(parentDeclaration));
     }
 }
