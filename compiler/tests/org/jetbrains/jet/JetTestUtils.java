@@ -638,6 +638,25 @@ public class JetTestUtils {
         }
     }
 
+    public static List<String> getLastBlockCommentsInFile(JetFile file) {
+        PsiElement lastChild = file.getLastChild();
+        if (lastChild != null && lastChild.getNode().getElementType().equals(JetTokens.WHITE_SPACE)) {
+            lastChild = lastChild.getPrevSibling();
+        }
+        assert lastChild != null;
+
+        ArrayList<String> blockComments = ContainerUtil.newArrayList();
+
+        while (lastChild.getNode().getElementType().equals(JetTokens.BLOCK_COMMENT)) {
+            String lastChildText = lastChild.getText();
+            blockComments.add(lastChildText.substring(2, lastChildText.length() - 2).trim());
+
+            lastChild = lastChild.getPrevSibling();
+        }
+
+        return blockComments;
+    }
+
     public static void compileJavaFiles(@NotNull Collection<File> files, List<String> options) throws IOException {
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
         DiagnosticCollector<JavaFileObject> diagnosticCollector = new DiagnosticCollector<JavaFileObject>();
