@@ -6348,7 +6348,7 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
         @InnerTestClasses({PlatformTypes.MethodCall.class})
         public static class PlatformTypes extends AbstractJetDiagnosticsTest {
             public void testAllFilesPresentInPlatformTypes() throws Exception {
-                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/diagnostics/tests/platformTypes"), Pattern.compile("^(.+)\\.kt$"), true);
+                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes"), Pattern.compile("^(.+)\\.kt$"), true);
             }
             
             @TestMetadata("dereference.kt")
@@ -6384,7 +6384,7 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("compiler/testData/diagnostics/tests/platformTypes/methodCall")
             public static class MethodCall extends AbstractJetDiagnosticsTest {
                 public void testAllFilesPresentInMethodCall() throws Exception {
-                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/diagnostics/tests/platformTypes/methodCall"), Pattern.compile("^(.+)\\.kt$"), true);
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes/methodCall"), Pattern.compile("^(.+)\\.kt$"), true);
                 }
                 
                 @TestMetadata("inferenceWithBound.kt")

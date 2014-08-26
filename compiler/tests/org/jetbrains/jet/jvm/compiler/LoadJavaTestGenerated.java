@@ -1176,7 +1176,7 @@ public class LoadJavaTestGenerated extends AbstractLoadJavaTest {
         @TestMetadata("compiler/testData/loadJava/compiledJava/rendering")
         public static class Rendering extends AbstractLoadJavaTest {
             public void testAllFilesPresentInRendering() throws Exception {
-                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), "org.jetbrains.jet.generators.tests.TestsPackage", new File("compiler/testData/loadJava/compiledJava/rendering"), Pattern.compile("^(.+)\\.java$"), true);
+                JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/loadJava/compiledJava/rendering"), Pattern.compile("^(.+)\\.java$"), true);
             }
             
             @TestMetadata("Rendering.java")
