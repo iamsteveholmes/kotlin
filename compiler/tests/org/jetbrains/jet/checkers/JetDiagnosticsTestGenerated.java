@@ -6345,7 +6345,7 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
         }
         
         @TestMetadata("compiler/testData/diagnostics/tests/platformTypes")
-        @InnerTestClasses({PlatformTypes.MethodCall.class})
+        @InnerTestClasses({PlatformTypes.CommonSupertype.class, PlatformTypes.MethodCall.class})
         public static class PlatformTypes extends AbstractJetDiagnosticsTest {
             public void testAllFilesPresentInPlatformTypes() throws Exception {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes"), Pattern.compile("^(.+)\\.kt$"), true);
@@ -6381,15 +6381,33 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/platformTypes/safeCall.kt");
             }
             
-            @TestMetadata("compiler/testData/diagnostics/tests/platformTypes/methodCall")
-            public static class MethodCall extends AbstractJetDiagnosticsTest {
-                public void testAllFilesPresentInMethodCall() throws Exception {
-                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes/methodCall"), Pattern.compile("^(.+)\\.kt$"), true);
+            @TestMetadata("compiler/testData/diagnostics/tests/platformTypes/commonSupertype")
+            public static class CommonSupertype extends AbstractJetDiagnosticsTest {
+                public void testAllFilesPresentInCommonSupertype() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes/commonSupertype"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("collectionOrNull.kt")
+                public void testCollectionOrNull() throws Exception {
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/commonSupertype/collectionOrNull.kt");
                 }
                 
                 @TestMetadata("inferenceWithBound.kt")
                 public void testInferenceWithBound() throws Exception {
-                    doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/inferenceWithBound.kt");
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/commonSupertype/inferenceWithBound.kt");
+                }
+                
+                @TestMetadata("stringOrNull.kt")
+                public void testStringOrNull() throws Exception {
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/commonSupertype/stringOrNull.kt");
+                }
+                
+            }
+            
+            @TestMetadata("compiler/testData/diagnostics/tests/platformTypes/methodCall")
+            public static class MethodCall extends AbstractJetDiagnosticsTest {
+                public void testAllFilesPresentInMethodCall() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/platformTypes/methodCall"), Pattern.compile("^(.+)\\.kt$"), true);
                 }
                 
                 @TestMetadata("int.kt")
@@ -6452,6 +6470,7 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             public static Test innerSuite() {
                 TestSuite suite = new TestSuite("PlatformTypes");
                 suite.addTestSuite(PlatformTypes.class);
+                suite.addTestSuite(CommonSupertype.class);
                 suite.addTestSuite(MethodCall.class);
                 return suite;
             }
