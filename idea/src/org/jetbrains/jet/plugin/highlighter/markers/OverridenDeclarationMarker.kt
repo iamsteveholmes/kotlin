@@ -88,18 +88,18 @@ public fun getOverriddenMethodTooltip(method: PsiMethod): String? {
     return GutterIconTooltipHelper.composeText(overridingJavaMethods, start, "&nbsp;&nbsp;&nbsp;&nbsp;{1}")
 }
 
-public fun navigateToOverriddenMethod(e: MouseEvent, method: PsiMethod) {
+public fun navigateToOverriddenMethod(e: MouseEvent?, method: PsiMethod) {
     if (DumbService.isDumb(method.getProject())) {
         DumbService.getInstance(method.getProject())?.showDumbModeNotification("Navigation to overriding classes is not possible during index update")
         return
     }
 
     val processor = PsiElementProcessor.CollectElementsWithLimit<PsiMethod>(2, THashSet<PsiMethod>())
-    if (!ProgressManager.getInstance()!!.runProcessWithProgressSynchronously(object : Runnable {
-        override fun run() {
-            OverridingMethodsSearch.search(method, true).forEach(PsiElementProcessorAdapter(processor))
-        }
-    }, "Searching for overriding declarations", true, method.getProject(), e.getComponent() as JComponent)) {
+    if (!ProgressManager.getInstance()!!.runProcessWithProgressSynchronously(
+            {
+                OverridingMethodsSearch.search(method, true).forEach(PsiElementProcessorAdapter(processor))
+            },
+            "Searching for overriding declarations", true, method.getProject(), e?.getComponent() as JComponent?)) {
         return
     }
 
