@@ -3633,6 +3633,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/generics/RawTypeInIsPattern.kt");
             }
             
+            @TestMetadata("recursive.kt")
+            public void testRecursive() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/generics/recursive.kt");
+            }
+            
             @TestMetadata("RecursiveUpperBoundCheck.kt")
             public void testRecursiveUpperBoundCheck() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/generics/RecursiveUpperBoundCheck.kt");
@@ -6395,6 +6400,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 @TestMetadata("inferenceWithBound.kt")
                 public void testInferenceWithBound() throws Exception {
                     doTest("compiler/testData/diagnostics/tests/platformTypes/commonSupertype/inferenceWithBound.kt");
+                }
+                
+                @TestMetadata("recursiveGeneric.kt")
+                public void testRecursiveGeneric() throws Exception {
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/commonSupertype/recursiveGeneric.kt");
                 }
                 
                 @TestMetadata("stringOrNull.kt")
