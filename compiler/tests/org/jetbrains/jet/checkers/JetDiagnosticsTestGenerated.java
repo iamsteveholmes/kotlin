@@ -6465,6 +6465,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                     doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/objectArray.kt");
                 }
                 
+                @TestMetadata("sam.kt")
+                public void testSam() throws Exception {
+                    doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/sam.kt");
+                }
+                
                 @TestMetadata("singleton.kt")
                 public void testSingleton() throws Exception {
                     doTest("compiler/testData/diagnostics/tests/platformTypes/methodCall/singleton.kt");
