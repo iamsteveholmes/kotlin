@@ -559,7 +559,7 @@ public class MethodInliner {
     }
 
     @NotNull
-    //process local and global returns (local substituted with goto end-label gloabal keeped unchanged)
+    //process local and global returns (local substituted with goto end-label global kept unchanged)
     public static List<ExternalFinallyBlockInfo> processReturns(@NotNull MethodNode node, @NotNull LabelOwner labelOwner, boolean remapReturn, Label endLabel) {
         if (!remapReturn) {
             return Collections.emptyList();

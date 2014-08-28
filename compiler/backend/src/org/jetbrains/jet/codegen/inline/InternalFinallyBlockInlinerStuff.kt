@@ -19,6 +19,24 @@ package org.jetbrains.jet.codegen.inline
 import java.util.ArrayList
 import org.jetbrains.org.objectweb.asm.tree.TryCatchBlockNode
 import org.jetbrains.org.objectweb.asm.tree.LabelNode
+import org.jetbrains.org.objectweb.asm.tree.AbstractInsnNode
+
+data class TryBlockInterval(val startLabel: LabelNode, val endLabel: LabelNode)
+
+enum class TryCatchPosition {
+    START
+    END
+    INNER
+}
+
+class TryCatchBlockNodeInfo(
+        val node: TryCatchBlockNode,
+        val start: AbstractInsnNode,
+        val end: AbstractInsnNode,
+        val onlyCopyNotProcess: Boolean
+)
+
+class TryCatchBlockNodePosition(val nodeInfo: TryCatchBlockNodeInfo, var position: TryCatchPosition)
 
 public class TryBlockCluster(val tryBlockInterval: TryBlockInterval) {
 

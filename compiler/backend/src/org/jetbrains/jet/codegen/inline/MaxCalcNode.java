@@ -17,6 +17,7 @@
 package org.jetbrains.jet.codegen.inline;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.org.objectweb.asm.MethodVisitor;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 import org.jetbrains.org.objectweb.asm.Type;
@@ -32,27 +33,17 @@ public class MaxCalcNode extends MethodVisitor {
     private final MethodNode node;
 
     public MaxCalcNode(@NotNull MethodNode node) {
-        super(InlineCodegenUtil.API, node);
-        this.node = node;
-        int paramsSize = (node.access & Opcodes.ACC_STATIC) == 0 ? 1 : 0;
-
-        Type[] types = Type.getArgumentTypes(node.desc);
-        for (Type type : types) {
-            paramsSize += type.getSize();
-        }
-        maxLocal = paramsSize;
+        this(node.desc, node, (node.access & Opcodes.ACC_STATIC) != 0);
     }
 
-    public MaxCalcNode(String desc, boolean isStatic) {
-        super(InlineCodegenUtil.API, null);
-        node = null;
+    public MaxCalcNode(@NotNull String desc, boolean isStatic) {
+        this(desc, null, isStatic);
+    }
 
-        int paramsSize = isStatic ? 1 : 0;
-        Type[] types = Type.getArgumentTypes(desc);
-        for (Type type : types) {
-            paramsSize += type.getSize();
-        }
-        maxLocal = paramsSize;
+    private MaxCalcNode(@NotNull String desc, @Nullable MethodNode node, boolean isStatic) {
+        super(InlineCodegenUtil.API, node);
+        this.node = node;
+        maxLocal = (Type.getArgumentsAndReturnSizes(desc) >> 2) - (isStatic ? 1 : 0);
     }
 
     @Override

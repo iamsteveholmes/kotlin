@@ -692,15 +692,6 @@ public class AsmUtil {
         return expectedType;
     }
 
-    public static void pop(@NotNull InstructionAdapter v, @NotNull Type type) {
-        if (type.getSize() == 2) {
-            v.pop2();
-        }
-        else {
-            v.pop();
-        }
-    }
-
     public static void pop(@NotNull MethodVisitor v, @NotNull Type type) {
         if (type.getSize() == 2) {
             v.visitInsn(Opcodes.POP2);
