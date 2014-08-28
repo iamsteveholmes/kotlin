@@ -18,12 +18,11 @@ package org.jetbrains.jet.lang.resolve.java.lazy.descriptors
 
 import org.jetbrains.jet.lang.descriptors.*
 import org.jetbrains.jet.lang.resolve.DescriptorUtils
-import org.jetbrains.jet.lang.resolve.name.Name
+import org.jetbrains.jet.lang.resolve.name.*
 import java.util.Collections
 import org.jetbrains.jet.lang.resolve.java.lazy.LazyJavaResolverContext
 import org.jetbrains.jet.lang.resolve.java.lazy.withTypes
 import org.jetbrains.jet.lang.resolve.java.structure.JavaPackage
-import org.jetbrains.jet.lang.resolve.name.FqName
 import org.jetbrains.jet.lang.resolve.java.structure.JavaClass
 import org.jetbrains.kotlin.util.inn
 import org.jetbrains.jet.lang.resolve.java.lazy.findClassInJava
@@ -34,9 +33,9 @@ import org.jetbrains.jet.lang.resolve.java.structure.JavaMethod
 import org.jetbrains.jet.lang.types.JetType
 import org.jetbrains.jet.lang.resolve.java.lazy.descriptors.LazyJavaMemberScope.MethodSignatureData
 import org.jetbrains.jet.lang.resolve.java.descriptor.SamConstructorDescriptor
-import org.jetbrains.jet.lang.resolve.name.SpecialNames
 import org.jetbrains.jet.lang.resolve.kotlin.KotlinJvmBinaryClass
 import org.jetbrains.jet.lang.resolve.DescriptorFactory.*
+import org.jetbrains.jet.descriptors.serialization.ClassId
 
 public abstract class LazyJavaStaticScope(
         c: LazyJavaResolverContext,
@@ -49,7 +48,7 @@ public abstract class LazyJavaStaticScope(
 
     protected fun computeMemberIndexForSamConstructors(delegate: MemberIndex): MemberIndex = object : MemberIndex by delegate {
         override fun getAllMethodNames(): Collection<Name> {
-            val jClass = c.findClassInJava(fqName).jClass
+            val jClass = if (fqName.isRoot()) null else c.findClassInJava(ClassId.topLevel(fqName)).jClass
             return delegate.getAllMethodNames() +
                    // For SAM-constructors
                    getAllClassNames() +
@@ -107,8 +106,8 @@ public class LazyPackageFragmentScopeForJavaPackage(
 
     private val classes = c.storageManager.createMemoizedFunctionWithNullableValues<Name, ClassDescriptor> {
         name ->
-        val fqName = fqName.child(SpecialNames.safeIdentifier(name))
-        val (jClass, kClass) = c.findClassInJava(fqName)
+        val classId = ClassId(fqName, FqNameUnsafe.topLevel(SpecialNames.safeIdentifier(name)))
+        val (jClass, kClass) = c.findClassInJava(classId)
         if (kClass != null)
             kClass
         else if (jClass == null)
