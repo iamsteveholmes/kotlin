@@ -309,9 +309,14 @@ public class TypedHandlerTest extends LightCodeInsightTestCase {
     }
 
     private void doCharTypeTest(char ch, String beforeText, String afterText) {
-        configureFromFileText("a.kt", beforeText);
-        EditorTestUtil.performTypingAction(getEditor(), ch);
-        checkResultByText(afterText);
+        try {
+            configureFromFileText("a.kt", beforeText);
+            EditorTestUtil.performTypingAction(getEditor(), ch);
+            checkResultByText(afterText);
+        }
+        catch (IOException e) {
+            throw UtilsPackage.rethrow(e);
+        }
     }
 
     private void doLtGtTestNoAutoClose(String initText) throws Exception {

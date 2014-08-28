@@ -27,7 +27,7 @@ import com.intellij.openapi.roots.ui.configuration.libraryEditor.NewLibraryEdito
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
+import com.intellij.openapi.vfs.newvfs.impl.VirtualDirectoryImpl;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -44,9 +44,7 @@ import org.jetbrains.jet.lang.resolve.java.PackageClassUtils;
 import org.jetbrains.jet.lang.resolve.name.FqName;
 import org.jetbrains.jet.plugin.PluginTestCaseBase;
 import org.jetbrains.jet.plugin.ProjectDescriptorWithStdlibSources;
-import org.jetbrains.jet.plugin.framework.JavaRuntimeLibraryDescription;
 import org.jetbrains.jet.testing.ConfigLibraryUtil;
-import org.jetbrains.jet.utils.PathUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -76,7 +74,7 @@ public abstract class KotlinDebuggerTestCase extends DescriptorTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        VfsRootAccess.allowRootAccess(JetTestCaseBuilder.getHomeDirectory());
+        VirtualDirectoryImpl.allowRootAccess(JetTestCaseBuilder.getHomeDirectory());
 
         UsefulTestCase.edt(new Runnable() {
             @Override
@@ -114,7 +112,7 @@ public abstract class KotlinDebuggerTestCase extends DescriptorTestCase {
 
     @Override
     protected void tearDown() throws Exception {
-        VfsRootAccess.allowRootAccess(JetTestCaseBuilder.getHomeDirectory());
+        VirtualDirectoryImpl.allowRootAccess(JetTestCaseBuilder.getHomeDirectory());
         super.tearDown();
     }
 
