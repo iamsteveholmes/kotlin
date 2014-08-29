@@ -162,6 +162,11 @@ public class CompileKotlinAgainstInlineKotlinTestGenerated extends AbstractCompi
             doBoxTestWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/defaultMethod.1.kt");
         }
         
+        @TestMetadata("defaultMethodInClass.1.kt")
+        public void testDefaultMethodInClass() throws Exception {
+            doBoxTestWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/defaultMethodInClass.1.kt");
+        }
+        
         @TestMetadata("inlineInDefaultParameter.1.kt")
         public void testInlineInDefaultParameter() throws Exception {
             doBoxTestWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/inlineInDefaultParameter.1.kt");

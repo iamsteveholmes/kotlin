@@ -162,6 +162,11 @@ public class BlackBoxInlineCodegenTestGenerated extends AbstractBlackBoxCodegenT
             doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/defaultMethod.1.kt");
         }
         
+        @TestMetadata("defaultMethodInClass.1.kt")
+        public void testDefaultMethodInClass() throws Exception {
+            doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/defaultMethodInClass.1.kt");
+        }
+        
         @TestMetadata("inlineInDefaultParameter.1.kt")
         public void testInlineInDefaultParameter() throws Exception {
             doTestMultiFileWithInlineCheck("compiler/testData/codegen/boxInline/defaultValues/inlineInDefaultParameter.1.kt");
