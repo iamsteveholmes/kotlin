@@ -124,8 +124,8 @@ public class JavaClassImpl extends JavaClassifierImpl<PsiClass> implements JavaC
 
     @Override
     @NotNull
-    public Collection<JavaMethod> getConstructors() {
-        return methods(getPsi().getConstructors());
+    public Collection<JavaConstructor> getConstructors() {
+        return constructors(getPsi().getConstructors());
     }
 
     @Override

@@ -28,6 +28,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import static kotlin.KotlinPackage.filterNot;
+
 public class JavaElementCollectionFromPsiArrayUtil {
     private JavaElementCollectionFromPsiArrayUtil() {
     }
@@ -59,6 +61,14 @@ public class JavaElementCollectionFromPsiArrayUtil {
             @Override
             public JavaMethod create(@NotNull PsiMethod psiMethod) {
                 return new JavaMethodImpl(psiMethod);
+            }
+        };
+
+        private static final Factory<PsiMethod, JavaConstructor> CONSTRUCTORS = new Factory<PsiMethod, JavaConstructor>() {
+            @NotNull
+            @Override
+            public JavaConstructor create(@NotNull PsiMethod psiMethod) {
+                return new JavaConstructorImpl(psiMethod);
             }
         };
 
@@ -162,7 +172,17 @@ public class JavaElementCollectionFromPsiArrayUtil {
 
     @NotNull
     public static Collection<JavaMethod> methods(@NotNull PsiMethod[] methods) {
-        return convert(methods, Factories.METHODS);
+        return convert(filterNot(methods, new Function1<PsiMethod, Boolean>() {
+            @Override
+            public Boolean invoke(PsiMethod method) {
+                return method.isConstructor();
+            }
+        }), Factories.METHODS);
+    }
+
+    @NotNull
+    public static Collection<JavaConstructor> constructors(@NotNull PsiMethod[] methods) {
+        return convert(methods, Factories.CONSTRUCTORS);
     }
 
     @NotNull
