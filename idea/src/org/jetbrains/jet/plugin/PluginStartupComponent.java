@@ -19,22 +19,25 @@ package org.jetbrains.jet.plugin;
 import com.intellij.openapi.application.PathMacros;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.jet.plugin.debugger.filter.FilterPackage;
 import org.jetbrains.jet.plugin.quickfix.QuickFixRegistrar;
 import org.jetbrains.jet.utils.PathUtil;
 
-public class PluginBundledRegistrar implements ApplicationComponent {
+public class PluginStartupComponent implements ApplicationComponent {
     private static final String KOTLIN_BUNDLED = "KOTLIN_BUNDLED";
 
     @Override
     @NotNull
     public String getComponentName() {
-        return PluginBundledRegistrar.class.getName();
+        return PluginStartupComponent.class.getName();
     }
 
     @Override
     public void initComponent() {
         registerPathVariable();
         QuickFixRegistrar.registerQuickFixes();
+
+        FilterPackage.addKotlinStdlibDebugFilterIfNeeded();
     }
 
     private static void registerPathVariable() {
