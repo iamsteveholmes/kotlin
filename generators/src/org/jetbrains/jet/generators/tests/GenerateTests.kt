@@ -118,6 +118,7 @@ import org.jetbrains.jet.asJava.AbstractKotlinLightClassTest
 import org.jetbrains.jet.lang.resolve.java.AbstractJavaTypeSubstitutorTest
 import org.jetbrains.jet.plugin.intentions.declarations.AbstractJoinLinesTest
 import org.jetbrains.jet.codegen.AbstractScriptCodegenTest
+import org.jetbrains.jet.plugin.parameterInfo.AbstractFunctionParameterInfoTest
 
 fun main(args: Array<String>) {
     System.setProperty("java.awt.headless", "true")
@@ -128,6 +129,7 @@ fun main(args: Array<String>) {
             model("diagnostics/tests")
             model("diagnostics/tests/script", extension = "kts")
             model("codegen/box/functions/tailRecursion")
+            model("codegen/box/functions/invoke/onObjects")
         }
 
         testClass(javaClass<AbstractJetDiagnosticsTestWithStdLib>()) {
@@ -352,6 +354,10 @@ fun main(args: Array<String>) {
 
         testClass(javaClass<AbstractGotoSuperTest>()) {
             model("navigation/gotoSuper", extension = "test")
+        }
+
+        testClass(javaClass<AbstractFunctionParameterInfoTest>()) {
+            model("parameterInfo/functionParameterInfo")
         }
 
         testClass(javaClass<AbstractKotlinGotoTest>()) {
