@@ -106,20 +106,8 @@ public class JavaClassImpl extends JavaClassifierImpl<PsiClass> implements JavaC
 
     @Override
     @NotNull
-    public Collection<JavaMethod> getAllMethods() {
-        return methods(getPsi().getAllMethods());
-    }
-
-    @Override
-    @NotNull
     public Collection<JavaField> getFields() {
         return fields(getPsi().getFields());
-    }
-
-    @Override
-    @NotNull
-    public Collection<JavaField> getAllFields() {
-        return fields(getPsi().getAllFields());
     }
 
     @Override
