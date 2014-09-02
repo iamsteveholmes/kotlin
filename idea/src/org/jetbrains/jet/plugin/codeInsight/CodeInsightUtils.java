@@ -134,6 +134,45 @@ public class CodeInsightUtils {
     }
 
     @Nullable
+    public static PsiElement[] findElementsOfClassInRange(@NotNull PsiFile file, int startOffset, int endOffset, Class<? extends PsiElement> aClass) {
+        PsiElement element1 = getElementAtOffsetIgnoreWhitespaceBefore(file, startOffset);
+        PsiElement element2 = getElementAtOffsetIgnoreWhitespaceAfter(file, endOffset);
+
+        if (element1 == null || element2 == null) return PsiElement.EMPTY_ARRAY;
+
+        startOffset = element1.getTextRange().getStartOffset();
+        endOffset = element2.getTextRange().getEndOffset();
+
+        PsiElement parent = PsiTreeUtil.findCommonParent(element1, element2);
+        if (parent == null) return PsiElement.EMPTY_ARRAY;
+
+        if (!parent.equals(element1)) {
+            while (!parent.equals(element1.getParent())) {
+                element1 = element1.getParent();
+            }
+        }
+        if (startOffset != element1.getTextRange().getStartOffset()) return PsiElement.EMPTY_ARRAY;
+
+        if (!parent.equals(element2)) {
+            while (!parent.equals(element2.getParent())) {
+                element2 = element2.getParent();
+            }
+        }
+        if (endOffset != element2.getTextRange().getEndOffset()) return PsiElement.EMPTY_ARRAY;
+
+        PsiElement stopElement = element2.getNextSibling();
+        List<PsiElement> array = new ArrayList<PsiElement>();
+        for (PsiElement currentElement = element1; currentElement != stopElement; currentElement = currentElement.getNextSibling()) {
+            if (aClass.isInstance(currentElement)) {
+                array.add(currentElement);
+            }
+            array.addAll(PsiTreeUtil.findChildrenOfType(currentElement, aClass));
+        }
+
+        return PsiUtilCore.toPsiElementArray(array);
+    }
+
+    @Nullable
     public static PsiElement getElementAtOffsetIgnoreWhitespaceBefore(@NotNull PsiFile file, int offset) {
         PsiElement element = file.findElementAt(offset);
         if (element instanceof PsiWhiteSpace) {
@@ -204,6 +243,15 @@ public class CodeInsightUtils {
 
         int lineStartOffset = document.getLineStartOffset(line);
         return CharArrayUtil.shiftForward(document.getCharsSequence(), lineStartOffset, " \t");
+    }
+
+    @Nullable
+    public static Integer getEndLineOffset(@NotNull PsiFile file, int line) {
+        Document document = PsiDocumentManager.getInstance(file.getProject()).getDocument(file);
+        if (document == null) return null;
+
+        int lineStartOffset = document.getLineEndOffset(line);
+        return CharArrayUtil.shiftBackward(document.getCharsSequence(), lineStartOffset, " \t");
     }
 
     @Nullable
