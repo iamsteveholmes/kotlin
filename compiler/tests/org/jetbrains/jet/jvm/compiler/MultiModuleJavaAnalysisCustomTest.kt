@@ -44,6 +44,7 @@ import java.util.HashMap
 import org.jetbrains.jet.lang.descriptors.ClassifierDescriptor
 import org.jetbrains.jet.lang.descriptors.ModuleDescriptor
 import org.jetbrains.jet.analyzer.ModuleContent
+import org.jetbrains.jet.lang.types.ErrorUtils
 
 public class MultiModuleJavaAnalysisCustomTest : UsefulTestCase() {
 
@@ -153,6 +154,10 @@ public class MultiModuleJavaAnalysisCustomTest : UsefulTestCase() {
     }
 
     private fun checkDescriptor(referencedDescriptor: ClassifierDescriptor, context: DeclarationDescriptor) {
+        if (DescriptorUtils.getFqName(referencedDescriptor).asString().startsWith("kotlin.")) return
+
+        assert(!ErrorUtils.isError(referencedDescriptor), "Error descriptor: $referencedDescriptor")
+
         val descriptorName = referencedDescriptor.getName().asString()
         val expectedModuleName = "<${descriptorName.toLowerCase().first().toString()}>"
         val moduleName = DescriptorUtils.getContainingModule(referencedDescriptor).getName().asString()
