@@ -695,6 +695,12 @@
         });
     };
 
+    Kotlin.longArrayOfSize = function (size) {
+        return Kotlin.arrayFromFun(size, function () {
+            return Kotlin.Long.fromInt(0);
+        });
+    };
+
     Kotlin.arrayFromFun = function (size, initFun) {
         var result = new Array(size);
         for (var i = 0; i < size; i++) {

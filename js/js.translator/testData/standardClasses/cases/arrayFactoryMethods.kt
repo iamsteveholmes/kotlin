@@ -16,7 +16,7 @@ fun box(): String {
         test("byteArray", byteArray(0, 1, 2, 3, 4), "0, 1, 2, 3, 4")
         test("shortArray", shortArray(0, 1, 2, 3, 4), "0, 1, 2, 3, 4")
         test("intArray,", intArray(0, 1, 2, 3, 4), "0, 1, 2, 3, 4")
-        test("longArray", longArray(0, 1, 2, 3, 4), "0, 1, 2, 3, 4")
+        test("longArray", longArray(0, 1, 2, 3, 4), "Kotlin.Long.fromInt(0), Kotlin.Long.fromInt(1), Kotlin.Long.fromInt(2), Kotlin.Long.fromInt(3), Kotlin.Long.fromInt(4)")
         test("floatArray", floatArray(0.0.toFloat(), 1.0.toFloat(), 2.0.toFloat(), 3.0.toFloat(), 4.0.toFloat()), "0.0, 1.0, 2.0, 3.0, 4.0")
         test("doubleArray", doubleArray(0.0, 1.1, 2.2, 3.3, 4.4), "0.0, 1.1, 2.2, 3.3, 4.4")
     }

@@ -81,4 +81,8 @@ public final class NumberTest extends SingleFileTranslationTest {
     public void testLongEqualsIntrinsic() throws Exception {
         checkFooBoxIsOk();
     }
+
+    public void testLongArray() throws Exception {
+        checkFooBoxIsOk();
+    }
 }
