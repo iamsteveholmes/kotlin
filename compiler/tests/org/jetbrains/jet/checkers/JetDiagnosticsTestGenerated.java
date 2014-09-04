@@ -1789,6 +1789,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/dataClasses/multiDeclarationFor.kt");
             }
             
+            @TestMetadata("noConstructor.kt")
+            public void testNoConstructor() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/dataClasses/noConstructor.kt");
+            }
+            
             @TestMetadata("notADataClass.kt")
             public void testNotADataClass() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/dataClasses/notADataClass.kt");
