@@ -75,6 +75,6 @@ public final class EqualsIntrinsic implements BinaryOperationIntrinsic {
         JetExpression left = expression.getLeft();
         assert left != null : "No left-hand side: " + expression.getText();
         Name typeName = JsDescriptorUtils.getNameIfStandardType(left, context);
-        return typeName != null && NamePredicate.PRIMITIVE_NUMBERS.apply(typeName);
+        return typeName != null && NamePredicate.PRIMITIVE_NUMBERS_MAPPED_TO_PRIMITIVE_JS.apply(typeName);
     }
 }

@@ -138,6 +138,27 @@ public final class JsAstUtils {
         return new JsInvocation(new JsNameRef(OperatorConventions.COMPARE_TO.getIdentifier(), Namer.KOTLIN_OBJECT_REF), left, right);
     }
 
+    public static JsExpression newLong(long value, @NotNull TranslationContext context) {
+        if (value < Integer.MIN_VALUE || value > Integer.MAX_VALUE) {
+            int low = (int) value;
+            int high = (int) (value >> 32);
+            JsNameRef longClassNameRef = new JsNameRef("Long", Namer.KOTLIN_OBJECT_REF);
+            List<JsExpression> args = new SmartList<JsExpression>();
+            args.add(context.program().getNumberLiteral(low));
+            args.add(context.program().getNumberLiteral(high));
+            return new JsNew(longClassNameRef, args);
+        }
+        else {
+            return toLongFromInt(context.program().getNumberLiteral((int) value));
+        }
+    }
+
+    @NotNull
+    public static JsExpression toLongFromInt(@NotNull JsExpression expression) {
+        JsExpression fun = new JsNameRef("Long.fromInt", Namer.KOTLIN_OBJECT_REF);
+        return new JsInvocation(fun, expression);
+    }
+
     @NotNull
     public static JsPrefixOperation negated(@NotNull JsExpression expression) {
         return new JsPrefixOperation(JsUnaryOperator.NOT, expression);

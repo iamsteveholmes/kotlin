@@ -77,4 +77,8 @@ public final class NumberTest extends SingleFileTranslationTest {
     public void testConversionsWithTruncation() throws Exception {
         checkFooBoxIsOk();
     }
+
+    public void testLongEqualsIntrinsic() throws Exception {
+        checkFooBoxIsOk();
+    }
 }

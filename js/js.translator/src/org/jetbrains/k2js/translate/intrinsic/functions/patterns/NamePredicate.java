@@ -18,6 +18,7 @@ package org.jetbrains.k2js.translate.intrinsic.functions.patterns;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
+import com.intellij.openapi.util.Condition;
 import com.intellij.util.Function;
 import com.intellij.util.containers.ContainerUtil;
 import org.jetbrains.annotations.NotNull;
@@ -33,12 +34,29 @@ public final class NamePredicate implements Predicate<Name> {
 
     @NotNull
     public static final NamePredicate PRIMITIVE_NUMBERS = new NamePredicate(
-            ContainerUtil.map(PrimitiveType.NUMBER_TYPES, new Function<PrimitiveType, String>() {
-        @Override
-        public String fun(PrimitiveType type) {
-            return type.getTypeName().asString();
-        }
-    }));
+            ContainerUtil.map(PrimitiveType.NUMBER_TYPES,
+                              new Function<PrimitiveType, String>() {
+                                  @Override
+                                  public String fun(PrimitiveType type) {
+                                      return type.getTypeName().asString();
+                                  }
+                              }));
+
+    @NotNull
+    public static final NamePredicate PRIMITIVE_NUMBERS_MAPPED_TO_PRIMITIVE_JS = new NamePredicate(
+            ContainerUtil.map(ContainerUtil.filter(PrimitiveType.NUMBER_TYPES,
+                                                   new Condition<PrimitiveType>() {
+                                                       @Override
+                                                       public boolean value(PrimitiveType type) {
+                                                           return type != PrimitiveType.LONG;
+                                                       }
+                                                   }),
+                              new Function<PrimitiveType, String>() {
+                                  @Override
+                                  public String fun(PrimitiveType type) {
+                                      return type.getTypeName().asString();
+                                  }
+                              }));
 
     @NotNull
     public static final NamePredicate STRING = new NamePredicate("String");

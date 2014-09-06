@@ -30,6 +30,7 @@ public final class BinaryOperationIntrinsics {
     private final List<BinaryOperationIntrinsic> intrinsics = Lists.newArrayList();
 
     {
+        intrinsics.add(LONG_EQUALS_ANY_INTRINSIC.INSTANCE$);
         intrinsics.add(new EqualsIntrinsic());
         intrinsics.add(new CompareToInstrinsic());
     }
