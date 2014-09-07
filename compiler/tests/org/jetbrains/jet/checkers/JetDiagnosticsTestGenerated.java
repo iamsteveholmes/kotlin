@@ -1814,6 +1814,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/dataClasses/overrideInvisibleMember.kt");
             }
             
+            @TestMetadata("paramNameSameToField.kt")
+            public void testParamNameSameToField() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/dataClasses/paramNameSameToField.kt");
+            }
+            
             @TestMetadata("secondParamIsVal.kt")
             public void testSecondParamIsVal() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/dataClasses/secondParamIsVal.kt");
