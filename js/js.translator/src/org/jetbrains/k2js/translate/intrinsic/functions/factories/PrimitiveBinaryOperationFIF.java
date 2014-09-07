@@ -54,11 +54,8 @@ public enum PrimitiveBinaryOperationFIF implements FunctionIntrinsicFactory {
             assert arguments.size() == 1 : "RangeTo must have one argument.";
             assert rangeStart != null;
             JsExpression rangeEnd = arguments.get(0);
-            JsNameRef expr = new JsNameRef("NumberRange", "Kotlin");
-            HasArguments numberRangeConstructorInvocation = new JsNew(expr);
             //TODO: add tests and correct expression for reversed ranges.
-            setArguments(numberRangeConstructorInvocation, rangeStart, rangeEnd);
-            return numberRangeConstructorInvocation;
+            return JsAstUtils.rangeTo(rangeStart, rangeEnd);
         }
     };
 
@@ -93,9 +90,11 @@ public enum PrimitiveBinaryOperationFIF implements FunctionIntrinsicFactory {
 
     @NotNull
     private static final NamePredicate BINARY_OPERATIONS = new NamePredicate(OperatorConventions.BINARY_OPERATION_NAMES.values());
-    private static final DescriptorPredicate PRIMITIVE_NUMBERS_BINARY_OPERATIONS = pattern(NamePredicate.PRIMITIVE_NUMBERS, BINARY_OPERATIONS);
+    private static final DescriptorPredicate PRIMITIVE_NUMBERS_BINARY_OPERATIONS =
+            pattern(NamePredicate.PRIMITIVE_NUMBERS_MAPPED_TO_PRIMITIVE_JS, BINARY_OPERATIONS);
+
     private static final DescriptorPredicate PRIMITIVE_NUMBERS_COMPARE_TO_OPERATIONS =
-            pattern(NamePredicate.PRIMITIVE_NUMBERS, "compareTo");
+            pattern(NamePredicate.PRIMITIVE_NUMBERS_MAPPED_TO_PRIMITIVE_JS, "compareTo");
     private static final DescriptorPredicate INT_WITH_BIT_OPERATIONS = pattern("Int.or|and|xor|shl|shr|ushr");
     private static final DescriptorPredicate BOOLEAN_OPERATIONS = pattern("Boolean.or|and|xor");
     private static final DescriptorPredicate STRING_PLUS = pattern("String.plus");

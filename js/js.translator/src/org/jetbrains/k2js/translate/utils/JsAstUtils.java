@@ -134,29 +134,21 @@ public final class JsAstUtils {
     }
 
     @NotNull
+    public static JsExpression toLong(@NotNull JsExpression expression) {
+        return new JsInvocation(new JsNameRef(OperatorConventions.LONG.getIdentifier(), Namer.KOTLIN_OBJECT_REF), expression);
+    }
+
+    @NotNull
     public static JsExpression compareTo(@NotNull JsExpression left, @NotNull JsExpression right) {
         return new JsInvocation(new JsNameRef(OperatorConventions.COMPARE_TO.getIdentifier(), Namer.KOTLIN_OBJECT_REF), left, right);
     }
 
-    public static JsExpression newLong(long value, @NotNull TranslationContext context) {
-        if (value < Integer.MIN_VALUE || value > Integer.MAX_VALUE) {
-            int low = (int) value;
-            int high = (int) (value >> 32);
-            JsNameRef longClassNameRef = new JsNameRef("Long", Namer.KOTLIN_OBJECT_REF);
-            List<JsExpression> args = new SmartList<JsExpression>();
-            args.add(context.program().getNumberLiteral(low));
-            args.add(context.program().getNumberLiteral(high));
-            return new JsNew(longClassNameRef, args);
-        }
-        else {
-            return toLongFromInt(context.program().getNumberLiteral((int) value));
-        }
-    }
-
     @NotNull
-    public static JsExpression toLongFromInt(@NotNull JsExpression expression) {
-        JsExpression fun = new JsNameRef("Long.fromInt", Namer.KOTLIN_OBJECT_REF);
-        return new JsInvocation(fun, expression);
+    public static JsExpression rangeTo(@NotNull JsExpression rangeStart, @NotNull JsExpression rangeEnd) {
+        JsNameRef expr = new JsNameRef("NumberRange", Namer.KOTLIN_NAME);
+        JsNew numberRangeConstructorInvocation = new JsNew(expr);
+        JsAstUtils.setArguments(numberRangeConstructorInvocation, rangeStart, rangeEnd);
+        return numberRangeConstructorInvocation;
     }
 
     @NotNull
@@ -172,6 +164,11 @@ public final class JsAstUtils {
     @NotNull
     public static JsBinaryOperation or(@NotNull JsExpression op1, @NotNull JsExpression op2) {
         return new JsBinaryOperation(JsBinaryOperator.OR, op1, op2);
+    }
+
+    @NotNull
+    public static JsBinaryOperation instanceOf(@NotNull JsExpression op1, @NotNull JsExpression op2) {
+        return new JsBinaryOperation(JsBinaryOperator.INSTANCEOF, op1, op2);
     }
 
     public static void setQualifier(@NotNull JsExpression selector, @Nullable JsExpression receiver) {
@@ -241,6 +238,16 @@ public final class JsAstUtils {
     @NotNull
     public static JsBinaryOperation mul(@NotNull JsExpression left, @NotNull JsExpression right) {
         return new JsBinaryOperation(JsBinaryOperator.MUL, left, right);
+    }
+
+    @NotNull
+    public static JsBinaryOperation div(@NotNull JsExpression left, @NotNull JsExpression right) {
+        return new JsBinaryOperation(JsBinaryOperator.DIV, left, right);
+    }
+
+    @NotNull
+    public static JsBinaryOperation mod(@NotNull JsExpression left, @NotNull JsExpression right) {
+        return new JsBinaryOperation(JsBinaryOperator.MOD, left, right);
     }
 
     @NotNull

@@ -89,16 +89,40 @@
         return "[" + a.join(", ") + "]";
     };
 
-    Kotlin.compareTo = function(a, b) {
+    Kotlin.compareTo = function (a, b) {
         return a < b ? -1 : a > b ? 1 : 0;
     };
 
-    Kotlin.toShort = function(a) {
+    Kotlin.toInt = function (a) {
+        return a | 0;
+    };
+
+    Kotlin.toShort = function (a) {
         return (a & 0xFFFF) << 16 >> 16;
     };
 
-    Kotlin.toByte = function(a) {
+    Kotlin.toByte = function (a) {
         return (a & 0xFF) << 24 >> 24;
+    };
+
+    Kotlin.numberToLong = function (a) {
+        return a instanceof Kotlin.Long ? a : Kotlin.Long.fromNumber(a);
+    };
+
+    Kotlin.numberToInt = function (a) {
+        return a instanceof Kotlin.Long ? a.toInt() : (a | 0);
+    };
+
+    Kotlin.numberToShort = function (a) {
+        return Kotlin.toShort(Kotlin.numberToInt(a));
+    };
+
+    Kotlin.numberToByte = function (a) {
+        return Kotlin.toByte(Kotlin.numberToInt(a));
+    };
+
+    Kotlin.numberToDouble = function (a) {
+        return a instanceof Kotlin.Long ? a.toNumber() : a;
     };
 
     Kotlin.intUpto = function (from, to) {
@@ -557,6 +581,63 @@
             return this.increment > 0 ? this.start > this.end : this.start < this.end;
         }
     });
+
+    Kotlin.LongRangeIterator = Kotlin.createClassNow(Kotlin.Iterator,
+                                                 function (start, end, increment) {
+                                                     this.start = start;
+                                                     this.end = end;
+                                                     this.increment = increment;
+                                                     this.i = start;
+                                                 }, {
+                                                     next: function () {
+                                                         var value = this.i;
+                                                         this.i = this.i.add(this.increment);
+                                                         return value;
+                                                     },
+                                                     hasNext: function () {
+                                                         if (this.increment.isNegative())
+                                                             return this.i.greaterThanOrEqual(this.end);
+                                                         else
+                                                             return this.i.lessThanOrEqual(this.end);
+                                                     }
+                                                 });
+
+    Kotlin.LongRange = Kotlin.createClassNow(null,
+                                               function (start, end) {
+                                                   this.start = start;
+                                                   this.end = end;
+                                                   this.increment = Kotlin.Long.ONE;
+                                               }, {
+                                                   contains: function (number) {
+                                                       return this.start.lessThanOrEqual(number) && number.lessThanOrEqual(this.end);
+                                                   },
+                                                   iterator: function () {
+                                                       return new Kotlin.LongRangeIterator(this.start, this.end, this.increment);
+                                                   },
+                                                   isEmpty: function () {
+                                                       return this.start.greaterThan(this.end);
+                                                   },
+                                                   equals_za3rmp$: function(other) {
+                                                       if (other == null)
+                                                           return false;
+                                                       return this.start.equals(other.start) &&
+                                                              this.end.equals(other.end) && this.increment.equals(other.increment);
+                                                   }
+                                               });
+
+    Kotlin.LongProgression = Kotlin.createClassNow(null,
+                                                     function (start, end, increment) {
+                                                         this.start = start;
+                                                         this.end = end;
+                                                         this.increment = increment;
+                                                     }, {
+                                                         iterator: function () {
+                                                             return new Kotlin.LongRangeIterator(this.start, this.end, this.increment);
+                                                         },
+                                                         isEmpty: function() {
+                                                             return this.increment.isNegative() ? this.start.lessThan(this.end) : this.start.greaterThan(this.end);
+                                                         }
+                                                     });
 
     /**
      * @interface
@@ -1530,5 +1611,13 @@
     // Support for Kotlin
     Kotlin.Long.prototype.equalsSafe = function (other) {
         return other instanceof Kotlin.Long && this.equals(other);
+    };
+
+    Kotlin.Long.prototype.inc = function() {
+        return this.add(Kotlin.Long.ONE);
+    };
+
+    Kotlin.Long.prototype.dec = function() {
+        return this.add(Kotlin.Long.NEG_ONE);
     };
 })();

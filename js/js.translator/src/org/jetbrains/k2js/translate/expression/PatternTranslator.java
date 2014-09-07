@@ -31,6 +31,7 @@ import org.jetbrains.k2js.translate.general.AbstractTranslator;
 import org.jetbrains.k2js.translate.general.Translation;
 import org.jetbrains.k2js.translate.intrinsic.functions.patterns.NamePredicate;
 import org.jetbrains.k2js.translate.utils.BindingUtils;
+import org.jetbrains.k2js.translate.utils.LongUtils;
 import org.jetbrains.k2js.translate.utils.TranslationUtils;
 
 import static org.jetbrains.k2js.translate.utils.BindingUtils.getTypeByReference;
@@ -92,7 +93,10 @@ public final class PatternTranslator extends AbstractTranslator {
         if (NamePredicate.STRING.apply(typeName)) {
             jsSTypeName = "string";
         }
-        else if (NamePredicate.PRIMITIVE_NUMBERS.apply(typeName)) {
+        else if (NamePredicate.LONG.apply(typeName)) {
+            return LongUtils.jsInstanceOfLong(expressionToMatch);
+        }
+        else if (NamePredicate.PRIMITIVE_NUMBERS_MAPPED_TO_PRIMITIVE_JS.apply(typeName)) {
             jsSTypeName = "number";
         }
         else {

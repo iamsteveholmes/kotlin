@@ -32,6 +32,11 @@ public final class BinaryOperationIntrinsics {
     {
         intrinsics.add(LONG_EQUALS_ANY_INTRINSIC.INSTANCE$);
         intrinsics.add(new EqualsIntrinsic());
+        intrinsics.add(FLOATING_POINT_COMPARE_TO_LONG.INSTANCE$);
+        intrinsics.add(LONG_COMPARE_TO_FLOATING_POINT.INSTANCE$);
+        intrinsics.add(INTEGER_COMPARE_TO_LONG.INSTANCE$);
+        intrinsics.add(LONG_COMPARE_TO_INTEGER.INSTANCE$);
+        intrinsics.add(LONG_COMPARE_TO_LONG.INSTANCE$);
         intrinsics.add(new CompareToInstrinsic());
     }
 

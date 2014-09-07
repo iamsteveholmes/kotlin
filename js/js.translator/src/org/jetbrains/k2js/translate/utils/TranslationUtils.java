@@ -30,6 +30,7 @@ import org.jetbrains.jet.lang.resolve.OverrideResolver;
 import org.jetbrains.jet.lang.resolve.name.FqName;
 import org.jetbrains.jet.lang.resolve.scopes.JetScope;
 import org.jetbrains.jet.lang.types.JetType;
+import org.jetbrains.jet.lang.types.lang.KotlinBuiltIns;
 import org.jetbrains.k2js.translate.context.TemporaryConstVariable;
 import org.jetbrains.k2js.translate.context.TranslationContext;
 import org.jetbrains.k2js.translate.general.Translation;
@@ -385,6 +386,10 @@ public final class TranslationUtils {
         CallableDescriptor operationDescriptor = getCallableDescriptorForOperationExpression(context.bindingContext(), expression);
 
         if (operationDescriptor == null || !(operationDescriptor instanceof FunctionDescriptor)) return true;
+
+        JetType returnType = operationDescriptor.getReturnType();
+        if (returnType != null && returnType.equals(KotlinBuiltIns.getInstance().getLongType())) return false;
+
         if (context.intrinsics().getFunctionIntrinsics().getIntrinsic((FunctionDescriptor) operationDescriptor).exists()) return true;
 
         return false;

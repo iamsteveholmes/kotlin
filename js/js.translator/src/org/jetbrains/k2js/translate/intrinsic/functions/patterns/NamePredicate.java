@@ -62,6 +62,9 @@ public final class NamePredicate implements Predicate<Name> {
     public static final NamePredicate STRING = new NamePredicate("String");
 
     @NotNull
+    public static final NamePredicate LONG = new NamePredicate("Long");
+
+    @NotNull
     private final List<Name> validNames = Lists.newArrayList();
 
     public NamePredicate(@NotNull String... validNames) {

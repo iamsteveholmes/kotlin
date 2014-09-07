@@ -24,10 +24,11 @@ import org.jetbrains.jet.lexer.JetToken
 import org.jetbrains.jet.lexer.JetTokens
 import org.jetbrains.k2js.translate.context.TranslationContext
 import org.jetbrains.k2js.translate.intrinsic.functions.patterns.DescriptorPredicate
-import org.jetbrains.k2js.translate.intrinsic.functions.patterns.PatternBuilder
+import org.jetbrains.k2js.translate.operation.OperatorTable
 import org.jetbrains.k2js.translate.utils.BindingUtils
 import org.jetbrains.k2js.translate.utils.JsAstUtils
 import org.jetbrains.k2js.translate.utils.JsDescriptorUtils
+import org.jetbrains.k2js.translate.utils.LongUtils
 import org.jetbrains.k2js.translate.utils.PsiUtils.getOperationToken
 
 private abstract class BinaryOperationIntrinsicImpl(private val operationTokens: Set<JetToken>, private val predicate: DescriptorPredicate) : BinaryOperationIntrinsic {
@@ -48,12 +49,64 @@ private abstract class BinaryOperationIntrinsicImpl(private val operationTokens:
 
 public object LONG_EQUALS_ANY_INTRINSIC : BinaryOperationIntrinsicImpl(
         OperatorConventions.EQUALS_OPERATIONS,
-        PatternBuilder.pattern("Long.equals")
+        LongUtils.LONG_EQUALS_ANY
 ) {
     override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
         val isNegated = getOperationToken(expression) == JetTokens.EXCLEQ
-        // Note: explicit type annotation, see KT-5569 IllegalAccessError for common non-public ancestor
-        val invokeEquals: JsExpression = JsInvocation(JsNameRef("equalsSafe", left), right)
+        val invokeEquals = LongUtils.equalsSafe(left, right)
         return if (isNegated) JsAstUtils.not(invokeEquals) else invokeEquals
+    }
+}
+
+public object FLOATING_POINT_COMPARE_TO_LONG : BinaryOperationIntrinsicImpl(
+        OperatorConventions.COMPARISON_OPERATIONS,
+        LongUtils.FLOATING_POINT_COMPARE_TO_LONG
+) {
+    override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
+        val operator = OperatorTable.getBinaryOperator(getOperationToken(expression))
+        return JsBinaryOperation(operator, left, LongUtils.toNumber(right))
+    }
+}
+
+public object LONG_COMPARE_TO_FLOATING_POINT : BinaryOperationIntrinsicImpl(
+        OperatorConventions.COMPARISON_OPERATIONS,
+        LongUtils.LONG_COMPARE_TO_FLOATING_POINT
+) {
+    override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
+        val operator = OperatorTable.getBinaryOperator(getOperationToken(expression))
+        return JsBinaryOperation(operator, LongUtils.toNumber(left), right)
+    }
+}
+
+public object INTEGER_COMPARE_TO_LONG : BinaryOperationIntrinsicImpl(
+        OperatorConventions.COMPARISON_OPERATIONS,
+        LongUtils.INTEGER_COMPARE_TO_LONG
+) {
+    override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
+        val correspondingOperator = OperatorTable.getBinaryOperator(getOperationToken(expression))
+        val compareInvocation = LongUtils.compare(LongUtils.fromInt(left), right)
+        return JsBinaryOperation(correspondingOperator, compareInvocation, context.program().getNumberLiteral(0))
+    }
+}
+
+public object LONG_COMPARE_TO_INTEGER : BinaryOperationIntrinsicImpl(
+        OperatorConventions.COMPARISON_OPERATIONS,
+        LongUtils.LONG_COMPARE_TO_INTEGER
+) {
+    override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
+        val correspondingOperator = OperatorTable.getBinaryOperator(getOperationToken(expression))
+        val compareInvocation = LongUtils.compare(left, LongUtils.fromInt(right))
+        return JsBinaryOperation(correspondingOperator, compareInvocation, context.program().getNumberLiteral(0))
+    }
+}
+
+public object LONG_COMPARE_TO_LONG : BinaryOperationIntrinsicImpl(
+        OperatorConventions.COMPARISON_OPERATIONS,
+        LongUtils.LONG_COMPARE_TO_LONG
+) {
+    override fun apply(expression: JetBinaryExpression, left: JsExpression, right: JsExpression, context: TranslationContext): JsExpression {
+        val correspondingOperator = OperatorTable.getBinaryOperator(getOperationToken(expression))
+        val compareInvocation = LongUtils.compare(left, right)
+        return JsBinaryOperation(correspondingOperator, compareInvocation, context.program().getNumberLiteral(0))
     }
 }

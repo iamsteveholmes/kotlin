@@ -41,6 +41,7 @@ import org.jetbrains.k2js.translate.operation.BinaryOperationTranslator;
 import org.jetbrains.k2js.translate.operation.UnaryOperationTranslator;
 import org.jetbrains.k2js.translate.reference.*;
 import org.jetbrains.k2js.translate.utils.JsAstUtils;
+import org.jetbrains.k2js.translate.utils.LongUtils;
 import org.jetbrains.k2js.translate.utils.TranslationUtils;
 
 import java.util.List;
@@ -78,7 +79,7 @@ public final class ExpressionVisitor extends TranslatorVisitor<JsNode> {
             return context.program().getNumberLiteral(((Number) value).intValue());
         }
         else if (value instanceof Long) {
-            return JsAstUtils.newLong((Long) value, context);
+            return LongUtils.newLong((Long) value, context);
         }
         else if (value instanceof Number) {
             return context.program().getNumberLiteral(((Number) value).doubleValue());
