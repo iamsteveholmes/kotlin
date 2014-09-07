@@ -1202,6 +1202,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest("compiler/testData/diagnostics/tests/controlFlowAnalysis/backingFieldInsideGetter.kt");
             }
             
+            @TestMetadata("breakOrContinueInLoopCondition.kt")
+            public void testBreakOrContinueInLoopCondition() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/controlFlowAnalysis/breakOrContinueInLoopCondition.kt");
+            }
+            
             @TestMetadata("checkInnerLocalDeclarations.kt")
             public void testCheckInnerLocalDeclarations() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/controlFlowAnalysis/checkInnerLocalDeclarations.kt");
@@ -3774,6 +3779,11 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("checkNothingIsSubtype.kt")
             public void testCheckNothingIsSubtype() throws Exception {
                 doTest("compiler/testData/diagnostics/tests/incompleteCode/checkNothingIsSubtype.kt");
+            }
+            
+            @TestMetadata("controlStructuresErrors.kt")
+            public void testControlStructuresErrors() throws Exception {
+                doTest("compiler/testData/diagnostics/tests/incompleteCode/controlStructuresErrors.kt");
             }
             
             @TestMetadata("inExpr.kt")
