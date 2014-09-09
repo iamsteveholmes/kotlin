@@ -20,6 +20,7 @@ import com.google.dart.compiler.backend.js.ast.*;
 import com.intellij.util.SmartList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.jet.lang.types.expressions.OperatorConventions;
 import org.jetbrains.k2js.translate.context.Namer;
 import org.jetbrains.k2js.translate.context.TranslationContext;
 
@@ -118,6 +119,26 @@ public final class JsAstUtils {
     }
 
     @NotNull
+    public static JsExpression toInt32(@NotNull JsExpression expression, @NotNull TranslationContext context) {
+        return new JsBinaryOperation(JsBinaryOperator.BIT_OR, expression, context.program().getNumberLiteral(0));
+    }
+
+    @NotNull
+    public static JsExpression toShort(@NotNull JsExpression expression) {
+        return new JsInvocation(new JsNameRef(OperatorConventions.SHORT.getIdentifier(), Namer.KOTLIN_OBJECT_REF), expression);
+    }
+
+    @NotNull
+    public static JsExpression toByte(@NotNull JsExpression expression) {
+        return new JsInvocation(new JsNameRef(OperatorConventions.BYTE.getIdentifier(), Namer.KOTLIN_OBJECT_REF), expression);
+    }
+
+    @NotNull
+    public static JsExpression compareTo(@NotNull JsExpression left, @NotNull JsExpression right) {
+        return new JsInvocation(new JsNameRef(OperatorConventions.COMPARE_TO.getIdentifier(), Namer.KOTLIN_OBJECT_REF), left, right);
+    }
+
+    @NotNull
     public static JsPrefixOperation negated(@NotNull JsExpression expression) {
         return new JsPrefixOperation(JsUnaryOperator.NOT, expression);
     }
@@ -164,6 +185,16 @@ public final class JsAstUtils {
     @NotNull
     public static JsBinaryOperation lessThanEq(@NotNull JsExpression arg1, @NotNull JsExpression arg2) {
         return new JsBinaryOperation(JsBinaryOperator.LTE, arg1, arg2);
+    }
+
+    @NotNull
+    public static JsBinaryOperation lessThan(@NotNull JsExpression arg1, @NotNull JsExpression arg2) {
+        return new JsBinaryOperation(JsBinaryOperator.LT, arg1, arg2);
+    }
+
+    @NotNull
+    public static JsBinaryOperation greaterThan(@NotNull JsExpression arg1, @NotNull JsExpression arg2) {
+        return new JsBinaryOperation(JsBinaryOperator.GT, arg1, arg2);
     }
 
     @NotNull
