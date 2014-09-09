@@ -30,12 +30,12 @@ import org.jetbrains.jet.lang.descriptors.*;
 import org.jetbrains.jet.lang.descriptors.annotations.Annotations;
 import org.jetbrains.jet.lang.descriptors.impl.AbstractClassDescriptor;
 import org.jetbrains.jet.lang.descriptors.impl.ConstructorDescriptorImpl;
-import org.jetbrains.jet.lang.descriptors.impl.EnumClassObjectDescriptor;
 import org.jetbrains.jet.lang.descriptors.impl.EnumEntrySyntheticClassDescriptor;
 import org.jetbrains.jet.lang.resolve.DescriptorFactory;
 import org.jetbrains.jet.lang.resolve.OverridingUtil;
 import org.jetbrains.jet.lang.resolve.name.Name;
 import org.jetbrains.jet.lang.resolve.scopes.JetScope;
+import org.jetbrains.jet.lang.resolve.scopes.StaticScopeForKotlinClass;
 import org.jetbrains.jet.lang.types.AbstractClassTypeConstructor;
 import org.jetbrains.jet.lang.types.ErrorUtils;
 import org.jetbrains.jet.lang.types.JetType;
@@ -61,8 +61,8 @@ public class DeserializedClassDescriptor extends AbstractClassDescriptor impleme
     private final NotNullLazyValue<Annotations> annotations;
 
     private final NullableLazyValue<ClassDescriptor> classObjectDescriptor;
-
     private final NestedClassDescriptors nestedClasses;
+    private final JetScope staticScope = new StaticScopeForKotlinClass(this);
 
     private final NotNullLazyValue<DeclarationDescriptor> containingDeclaration;
     private final DeserializedClassTypeConstructor typeConstructor;
@@ -194,6 +194,12 @@ public class DeserializedClassDescriptor extends AbstractClassDescriptor impleme
         return memberScope;
     }
 
+    @NotNull
+    @Override
+    public JetScope getStaticScope() {
+        return staticScope;
+    }
+
     @Nullable
     private ConstructorDescriptor computePrimaryConstructor() {
         if (!classProto.hasPrimaryConstructor()) return null;
@@ -229,10 +235,6 @@ public class DeserializedClassDescriptor extends AbstractClassDescriptor impleme
     private ClassDescriptor computeClassObjectDescriptor() {
         if (!classProto.hasClassObject()) {
             return null;
-        }
-
-        if (getKind() == ClassKind.ENUM_CLASS) {
-            return new EnumClassObjectDescriptor(context.getStorageManager(), this);
         }
 
         if (getKind() == ClassKind.OBJECT) {

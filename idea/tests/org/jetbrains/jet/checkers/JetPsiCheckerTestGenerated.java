@@ -95,6 +95,12 @@ public class JetPsiCheckerTestGenerated extends AbstractJetPsiCheckerTest {
             doTest(fileName);
         }
         
+        @TestMetadata("ClassObjectInEnum.kt")
+        public void testClassObjectInEnum() throws Exception {
+            String fileName = JetTestUtils.navigationMetadata("idea/testData/checker/ClassObjectInEnum.kt");
+            doTest(fileName);
+        }
+        
         @TestMetadata("ClassObjects.kt")
         public void testClassObjects() throws Exception {
             String fileName = JetTestUtils.navigationMetadata("idea/testData/checker/ClassObjects.kt");

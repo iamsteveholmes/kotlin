@@ -24,9 +24,7 @@ import org.jetbrains.jet.lang.resolve.java.lazy.descriptors.LazyJavaTypeParamete
 import org.jetbrains.jet.lang.descriptors.DeclarationDescriptor
 import org.jetbrains.jet.lang.resolve.name.FqName
 import org.jetbrains.jet.lang.resolve.kotlin.header.KotlinClassHeader
-import org.jetbrains.jet.lang.resolve.java.resolver.DescriptorResolverUtils
 import org.jetbrains.jet.lang.resolve.kotlin.KotlinJvmBinaryClass
-import org.jetbrains.jet.lang.resolve.resolveTopLevelClass
 
 //TODO: (module refactoring) usages of this interface should be replaced by ModuleClassResolver
 trait LazyJavaClassResolver {
@@ -64,8 +62,6 @@ class LazyJavaTypeParameterResolver(
         return resolve(javaTypeParameter) ?: c.typeParameterResolver.resolveTypeParameter(javaTypeParameter)
     }
 }
-
-fun LazyJavaResolverContext.findJavaClass(fqName: FqName): JavaClass? = findClassInJava(fqName).jClass
 
 data class JavaClassLookupResult(val jClass: JavaClass? = null, val kClass: ClassDescriptor? = null)
 
@@ -108,8 +104,4 @@ private fun LazyJavaResolverContext.resolveBinaryClass(kotlinClass: KotlinJvmBin
     }
 
     return null
-}
-
-fun LazyJavaResolverContext.resolveTopLevelClassInModule(fqName: FqName): ClassDescriptor? {
-    return packageFragmentProvider.getModule().resolveTopLevelClass(fqName)
 }

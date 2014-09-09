@@ -3178,7 +3178,7 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
         
         @TestMetadata("compiler/testData/diagnostics/tests/duplicateJvmSignature")
         @TestDataPath("$PROJECT_ROOT")
-        @InnerTestClasses({DuplicateJvmSignature.AccidentalOverrides.class, DuplicateJvmSignature.Bridges.class, DuplicateJvmSignature.Erasure.class, DuplicateJvmSignature.FunctionAndProperty.class, DuplicateJvmSignature.SpecialNames.class, DuplicateJvmSignature.TraitImpl.class})
+        @InnerTestClasses({DuplicateJvmSignature.AccidentalOverrides.class, DuplicateJvmSignature.Bridges.class, DuplicateJvmSignature.Erasure.class, DuplicateJvmSignature.FunctionAndProperty.class, DuplicateJvmSignature.SpecialNames.class, DuplicateJvmSignature.Synthesized.class, DuplicateJvmSignature.TraitImpl.class})
         @RunWith(org.jetbrains.jet.JUnit3RunnerWithInners.class)
         public static class DuplicateJvmSignature extends AbstractJetDiagnosticsTest {
             public void testAllFilesPresentInDuplicateJvmSignature() throws Exception {
@@ -3625,6 +3625,22 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 
             }
             
+            @TestMetadata("compiler/testData/diagnostics/tests/duplicateJvmSignature/synthesized")
+            @TestDataPath("$PROJECT_ROOT")
+            @RunWith(org.jetbrains.jet.JUnit3RunnerWithInners.class)
+            public static class Synthesized extends AbstractJetDiagnosticsTest {
+                public void testAllFilesPresentInSynthesized() throws Exception {
+                    JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/duplicateJvmSignature/synthesized"), Pattern.compile("^(.+)\\.kt$"), true);
+                }
+                
+                @TestMetadata("enumValuesValueOf.kt")
+                public void testEnumValuesValueOf() throws Exception {
+                    String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/duplicateJvmSignature/synthesized/enumValuesValueOf.kt");
+                    doTest(fileName);
+                }
+                
+            }
+            
             @TestMetadata("compiler/testData/diagnostics/tests/duplicateJvmSignature/traitImpl")
             @TestDataPath("$PROJECT_ROOT")
             @RunWith(org.jetbrains.jet.JUnit3RunnerWithInners.class)
@@ -3670,9 +3686,15 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 JetTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/enum"), Pattern.compile("^(.+)\\.kt$"), true);
             }
             
-            @TestMetadata("classObjectOfPrivateEnum.kt")
-            public void testClassObjectOfPrivateEnum() throws Exception {
-                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/enum/classObjectOfPrivateEnum.kt");
+            @TestMetadata("classObjectInEnum.kt")
+            public void testClassObjectInEnum() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/enum/classObjectInEnum.kt");
+                doTest(fileName);
+            }
+            
+            @TestMetadata("classObjectInEnumPrivate.kt")
+            public void testClassObjectInEnumPrivate() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/enum/classObjectInEnumPrivate.kt");
                 doTest(fileName);
             }
             
@@ -3799,6 +3821,12 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("starImportNestedClassAndEntries.kt")
             public void testStarImportNestedClassAndEntries() throws Exception {
                 String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/enum/starImportNestedClassAndEntries.kt");
+                doTest(fileName);
+            }
+            
+            @TestMetadata("valuesValueOfAndEntriesAccessibility.kt")
+            public void testValuesValueOfAndEntriesAccessibility() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/enum/valuesValueOfAndEntriesAccessibility.kt");
                 doTest(fileName);
             }
             
@@ -6140,9 +6168,21 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest(fileName);
             }
             
+            @TestMetadata("packagePrivateClassStaticMember.kt")
+            public void testPackagePrivateClassStaticMember() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/j+k/packagePrivateClassStaticMember.kt");
+                doTest(fileName);
+            }
+            
             @TestMetadata("packageVisibility.kt")
             public void testPackageVisibility() throws Exception {
                 String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/j+k/packageVisibility.kt");
+                doTest(fileName);
+            }
+            
+            @TestMetadata("privateNestedClassStaticMember.kt")
+            public void testPrivateNestedClassStaticMember() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/j+k/privateNestedClassStaticMember.kt");
                 doTest(fileName);
             }
             
@@ -7602,6 +7642,12 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("ConflictingExtensionProperties.kt")
             public void testConflictingExtensionProperties() throws Exception {
                 String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/redeclarations/ConflictingExtensionProperties.kt");
+                doTest(fileName);
+            }
+            
+            @TestMetadata("EnumEntriesAndClassObjectMembers.kt")
+            public void testEnumEntriesAndClassObjectMembers() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/redeclarations/EnumEntriesAndClassObjectMembers.kt");
                 doTest(fileName);
             }
             
