@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package kotlin
+package org.jetbrains.jet.codegen;
 
-public annotation class data
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.jet.lang.descriptors.CallableDescriptor;
+import org.jetbrains.jet.lang.descriptors.CallableMemberDescriptor;
 
-public annotation class deprecated(val value: String)
+public interface AccessorForCallableDescriptor<T extends CallableMemberDescriptor> {
 
-public annotation class suppress(vararg val names: String)
-
-public annotation class tailRecursive
-
-public annotation class platformStatic
+    @NotNull
+    T getCalleeDescriptor();
+}
