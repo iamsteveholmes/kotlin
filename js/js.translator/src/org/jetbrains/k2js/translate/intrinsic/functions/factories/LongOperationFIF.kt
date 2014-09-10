@@ -25,7 +25,7 @@ import org.jetbrains.k2js.translate.utils.JsAstUtils
 import org.jetbrains.k2js.translate.utils.LongUtils
 import org.jetbrains.k2js.translate.utils.LongUtils.*
 
-public object LongIntrinsicFIF : FunctionIntrinsicFactory {
+public object LongOperationFIF : FunctionIntrinsicFactory {
 
     private val longUnaryOperations: Map<String, (receiver: JsExpression, context: TranslationContext) -> JsExpression> =
             mapOf(

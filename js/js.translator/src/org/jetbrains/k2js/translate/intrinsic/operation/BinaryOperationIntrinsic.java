@@ -21,11 +21,31 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jet.lang.psi.JetBinaryExpression;
 import org.jetbrains.k2js.translate.context.TranslationContext;
 
-public interface BinaryOperationIntrinsic {
+public abstract class BinaryOperationIntrinsic {
 
-    boolean isApplicable(@NotNull JetBinaryExpression expression, @NotNull TranslationContext context);
+    public static final BinaryOperationIntrinsic NO_INTRINSIC = new BinaryOperationIntrinsic() {
+        @Override
+        public boolean exists() {
+            return false;
+        }
+
+        @NotNull
+        @Override
+        public JsExpression apply(
+                @NotNull JetBinaryExpression expression,
+                @NotNull JsExpression left,
+                @NotNull JsExpression right,
+                @NotNull TranslationContext context
+        ) {
+            throw new UnsupportedOperationException("BinaryOperationIntrinsic#NO_INTRINSIC_#apply");
+        }
+    };
 
     @NotNull
-    JsExpression apply(@NotNull JetBinaryExpression expression, @NotNull JsExpression left,
+    public abstract JsExpression apply(@NotNull JetBinaryExpression expression, @NotNull JsExpression left,
             @NotNull JsExpression right, @NotNull TranslationContext context);
+
+    public boolean exists() {
+        return true;
+    }
 }
