@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 JetBrains s.r.o.
+ * Copyright 2010-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.jetbrains.jet.asJava;
+package org.jetbrains.jet.asJava
 
-import com.intellij.psi.PsiClass;
-import org.jetbrains.jet.lang.resolve.name.FqName;
-import org.jetbrains.jet.lang.psi.JetClassOrObject
+import org.jetbrains.jet.lang.psi.JetDeclaration
+import com.intellij.psi.PsiElement
 
-public trait KotlinLightClass : PsiClass, KotlinLightElement<JetClassOrObject, PsiClass> {
-    val fqName: FqName
+public trait KotlinLightElement<T : JetDeclaration, D : PsiElement> {
+    public val origin: T?
+    public val delegate: D
 }

@@ -14,10 +14,16 @@
  * limitations under the License.
  */
 
-package org.jetbrains.jet.lang.resolve.java.jetAsJava;
+package org.jetbrains.jet.asJava
 
-import com.intellij.psi.PsiMethod;
-import org.jetbrains.jet.lang.psi.JetDeclaration;
+import com.intellij.psi.*
+import org.jetbrains.jet.lang.psi.JetProperty
 
-/** Java method created for Kotlin declaration to make it resolvable in Java */
-public trait KotlinLightMethod: PsiMethod, KotlinLightElement<JetDeclaration, PsiMethod>
+class KotlinLightFieldForDeclaration(
+        manager: PsiManager,
+        origin: JetProperty,
+        field: PsiField,
+        containingClass: PsiClass
+) : KotlinLightField<JetProperty, PsiField>(manager, origin, field, containingClass) {
+    override fun copy() = KotlinLightFieldForDeclaration(getManager()!!, getOrigin(), getDelegate(), getContainingClass()!!)
+}
