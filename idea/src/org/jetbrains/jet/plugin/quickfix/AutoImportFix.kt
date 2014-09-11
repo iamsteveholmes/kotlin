@@ -22,7 +22,6 @@ import com.intellij.codeInsight.intention.HighPriorityAction
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.command.CommandProcessor
 import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.module.ModuleUtilCore
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFile
 import com.intellij.psi.search.GlobalSearchScope
@@ -35,7 +34,6 @@ import org.jetbrains.jet.lang.psi.JetSimpleNameExpression
 import org.jetbrains.jet.lang.psi.psiUtil.*
 import org.jetbrains.jet.lang.resolve.DescriptorUtils
 import org.jetbrains.jet.lang.resolve.ImportPath
-import org.jetbrains.jet.lang.resolve.lazy.KotlinCodeAnalyzer
 import org.jetbrains.jet.lang.resolve.name.FqName
 import org.jetbrains.jet.plugin.JetBundle
 import org.jetbrains.jet.plugin.actions.JetAddImportAction
@@ -46,7 +44,7 @@ import org.jetbrains.jet.plugin.project.ProjectStructureUtil
 import org.jetbrains.jet.plugin.project.ResolveSessionForBodies
 import org.jetbrains.jet.plugin.util.JetPsiHeuristicsUtil
 import java.util.ArrayList
-import org.jetbrains.jet.lang.resolve.lazy.ResolveSessionUtils
+import org.jetbrains.jet.plugin.search.searchScopeForSourceElementDependencies
 
 /**
  * Check possibility and perform fix for unresolved references.
@@ -105,8 +103,7 @@ public class AutoImportFix(element: JetSimpleNameExpression) : JetHintAction<Jet
 
         val resolveSession = element.getLazyResolveSession()
 
-        val module = ModuleUtilCore.findModuleForPsiElement(file) ?: return listOf()
-        val searchScope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module)
+        val searchScope = searchScopeForSourceElementDependencies(file) ?: return listOf()
 
         val result = ArrayList<FqName>()
 
