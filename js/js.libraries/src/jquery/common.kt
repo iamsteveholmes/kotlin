@@ -54,7 +54,7 @@ open public class MouseEvent() {
 
 native
 public class MouseClickEvent() : MouseEvent() {
-    val which: Int = 0;
+    public val which: Int = 0;
 }
 
 native("$")

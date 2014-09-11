@@ -3,8 +3,8 @@ package js
 import js.library
 
 native public class Json() {
-    fun get(propertyName: String): Any? = js.noImpl
-    fun set(propertyName: String, value: Any?): Unit = js.noImpl
+    public fun get(propertyName: String): Any? = js.noImpl
+    public fun set(propertyName: String, value: Any?): Unit = js.noImpl
 }
 
 library("jsonFromTuples")
