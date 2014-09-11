@@ -27,10 +27,7 @@ import org.jetbrains.jet.backend.common.CodegenUtil;
 import org.jetbrains.jet.backend.common.DataClassMethodGenerator;
 import org.jetbrains.jet.codegen.binding.MutableClosure;
 import org.jetbrains.jet.codegen.bridges.BridgesPackage;
-import org.jetbrains.jet.codegen.context.ClassContext;
-import org.jetbrains.jet.codegen.context.ConstructorContext;
-import org.jetbrains.jet.codegen.context.FieldOwnerContext;
-import org.jetbrains.jet.codegen.context.MethodContext;
+import org.jetbrains.jet.codegen.context.*;
 import org.jetbrains.jet.codegen.signature.BothSignatureWriter;
 import org.jetbrains.jet.codegen.state.GenerationState;
 import org.jetbrains.jet.codegen.state.JetTypeMapper;
@@ -77,9 +74,7 @@ import static org.jetbrains.jet.lang.resolve.DescriptorToSourceUtils.descriptorT
 import static org.jetbrains.jet.lang.resolve.DescriptorUtils.*;
 import static org.jetbrains.jet.lang.resolve.java.AsmTypeConstants.*;
 import static org.jetbrains.jet.lang.resolve.java.JvmAnnotationNames.KotlinSyntheticClass;
-import static org.jetbrains.jet.lang.resolve.java.diagnostics.DiagnosticsPackage.DelegationToTraitImpl;
-import static org.jetbrains.jet.lang.resolve.java.diagnostics.DiagnosticsPackage.OtherOrigin;
-import static org.jetbrains.jet.lang.resolve.java.diagnostics.DiagnosticsPackage.Synthetic;
+import static org.jetbrains.jet.lang.resolve.java.diagnostics.DiagnosticsPackage.*;
 import static org.jetbrains.jet.lang.resolve.java.diagnostics.JvmDeclarationOrigin.NO_ORIGIN;
 import static org.jetbrains.org.objectweb.asm.Opcodes.*;
 
@@ -93,7 +88,8 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
 
     private List<PropertyAndDefaultValue> classObjectPropertiesToCopy;
 
-    private List<Function2<ImplementationBodyCodegen, ClassBuilder, Unit>> additionalTasks;
+    private final List<Function2<ImplementationBodyCodegen, ClassBuilder, Unit>> additionalTasks =
+            new ArrayList<Function2<ImplementationBodyCodegen, ClassBuilder, Unit>>();
 
     public ImplementationBodyCodegen(
             @NotNull JetClassOrObject aClass,
@@ -104,7 +100,6 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
     ) {
         super(aClass, context, v, state, parentCodegen);
         this.classAsmType = typeMapper.mapClass(descriptor);
-        additionalTasks = new ArrayList<Function2<ImplementationBodyCodegen, ClassBuilder, Unit>>();
     }
 
     @Override
@@ -565,7 +560,7 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
                 MethodVisitor mv = v.newMethod(NO_ORIGIN, access, name, desc, null, null);
                 if (descriptor.getKind() != ClassKind.TRAIT) {
                     mv.visitCode();
-                    genThrow(mv, "java/lang/UnsupportedOperationException", "Mutating immutable collection");
+                    genThrow(new InstructionAdapter(mv), "java/lang/UnsupportedOperationException", "Mutating immutable collection");
                     FunctionCodegen.endVisit(mv, "built-in stub for " + name + desc, null);
                 }
             }
@@ -969,7 +964,7 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
     }
 
     protected void generateSyntheticAccessors() {
-        Map<DeclarationDescriptor, DeclarationDescriptor> accessors = context.getAccessors();
+        Map<DeclarationDescriptor, DeclarationDescriptor> accessors = ((CodegenContext<?>) context).getAccessors();
         for (Map.Entry<DeclarationDescriptor, DeclarationDescriptor> entry : accessors.entrySet()) {
             generateSyntheticAccessor(entry);
         }
@@ -1096,8 +1091,16 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
 
         v.newField(OtherOrigin(original), ACC_PUBLIC | ACC_STATIC | ACC_FINAL, field.name, field.type.getDescriptor(), null, null);
 
-        if (!AsmUtil.isClassObjectWithBackingFieldsInOuter(fieldTypeDescriptor)) {
-            genInitSingleton(fieldTypeDescriptor, field);
+        if (state.getClassBuilderMode() != ClassBuilderMode.FULL) return;
+
+        if (isObject(descriptor)) {
+            // Invoke the object constructor but ignore the result because INSTANCE$ will be initialized in the first line of <init>
+            InstructionAdapter v = createOrGetClInitCodegen().v;
+            v.anew(classAsmType);
+            v.invokespecial(classAsmType.getInternalName(), "<init>", "()V", false);
+        }
+        else if (!isClassObjectWithBackingFieldsInOuter(fieldTypeDescriptor)) {
+            generateClassObjectInitializer(fieldTypeDescriptor);
         }
     }
 
@@ -1147,16 +1150,11 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
         field.store(field.type, codegen.v);
     }
 
-    protected void genInitSingleton(ClassDescriptor fieldTypeDescriptor, StackValue.Field field) {
-        if (state.getClassBuilderMode() == ClassBuilderMode.FULL) {
-            Collection<ConstructorDescriptor> constructors = fieldTypeDescriptor.getConstructors();
-            assert constructors.size() == 1 : "Class of singleton object must have only one constructor: " + constructors;
-
-            ExpressionCodegen codegen = createOrGetClInitCodegen();
-            FunctionDescriptor fd = codegen.accessibleFunctionDescriptor(constructors.iterator().next());
-            generateMethodCallTo(fd, codegen.v);
-            field.store(field.type, codegen.v);
-        }
+    private void generateClassObjectInitializer(@NotNull ClassDescriptor classObject) {
+        ExpressionCodegen codegen = createOrGetClInitCodegen();
+        FunctionDescriptor constructor = codegen.accessibleFunctionDescriptor(KotlinPackage.single(classObject.getConstructors()));
+        generateMethodCallTo(constructor, codegen.v);
+        StackValue.singleton(classObject, typeMapper).store(typeMapper.mapClass(classObject), codegen.v);
     }
 
     private void generatePrimaryConstructor(final DelegationFieldsInfo delegationFieldsInfo) {
@@ -1216,6 +1214,11 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
             generateDelegatorToConstructorCall(iv, codegen, constructorDescriptor);
         }
 
+        if (isObject(descriptor)) {
+            iv.load(0, classAsmType);
+            StackValue.singleton(descriptor, typeMapper).store(classAsmType, iv);
+        }
+
         for (JetDelegationSpecifier specifier : myClass.getDelegationSpecifiers()) {
             if (specifier instanceof JetDelegatorByExpressionSpecifier) {
                 genCallToDelegatorByExpressionSpecifier(iv, codegen, (JetDelegatorByExpressionSpecifier) specifier, fieldsInfo);
@@ -1237,18 +1240,18 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
             curParam++;
         }
 
-        boolean generateInitializerInOuter = isClassObjectWithBackingFieldsInOuter(descriptor);
-        if (generateInitializerInOuter) {
+        if (isClassObjectWithBackingFieldsInOuter(descriptor)) {
             final ImplementationBodyCodegen parentCodegen = getParentBodyCodegen(this);
             //generate OBJECT$
-            parentCodegen.genInitSingleton(descriptor, StackValue.singleton(descriptor, typeMapper));
+            parentCodegen.generateClassObjectInitializer(descriptor);
             generateInitializers(new Function0<ExpressionCodegen>() {
                 @Override
                 public ExpressionCodegen invoke() {
                     return parentCodegen.createOrGetClInitCodegen();
                 }
             });
-        } else {
+        }
+        else {
             generateInitializers(new Function0<ExpressionCodegen>() {
                 @Override
                 public ExpressionCodegen invoke() {
@@ -1349,11 +1352,6 @@ public class ImplementationBodyCodegen extends ClassBodyCodegen {
 
             fieldInfo.getStackValue().store(fieldInfo.type, iv);
         }
-    }
-
-    @Nullable
-    private PropertyDescriptor getDelegatePropertyIfAny(JetExpression expression) {
-    	return CodegenUtil.getDelegatePropertyIfAny(expression, descriptor, bindingContext);
     }
 
     private void lookupConstructorExpressionsInClosureIfPresent(final ConstructorContext constructorContext) {

@@ -1223,6 +1223,7 @@ public class ExpressionCodegen extends JetVisitor<StackValue, StackValue> implem
         CompileTimeConstant<?> compileTimeValue = bindingContext.get(COMPILE_TIME_VALUE, expression);
         if (compileTimeValue instanceof IntegerValueTypeConstant) {
             JetType expectedType = bindingContext.get(EXPRESSION_TYPE, expression);
+            assert expectedType != null : "Expression is not type checked: " + expression.getText();
             return EvaluatePackage.createCompileTimeConstantWithType((IntegerValueTypeConstant) compileTimeValue, expectedType);
         }
         return compileTimeValue;
@@ -3650,9 +3651,9 @@ The "returned" value of try expression with no finally is either the last expres
                         v.ifnonnull(nonnull);
                         JetType leftType = bindingContext.get(EXPRESSION_TYPE, left);
                         assert leftType != null;
-                        throwNewException("kotlin/TypeCastException", DescriptorRenderer.FQ_NAMES_IN_TYPES.renderType(leftType) +
-                                                                     " cannot be cast to " +
-                                                                     DescriptorRenderer.FQ_NAMES_IN_TYPES.renderType(rightType));
+                        genThrow(v, "kotlin/TypeCastException", DescriptorRenderer.FQ_NAMES_IN_TYPES.renderType(leftType) +
+                                                                " cannot be cast to " +
+                                                                DescriptorRenderer.FQ_NAMES_IN_TYPES.renderType(rightType));
                         v.mark(nonnull);
                     }
                 }
@@ -3812,7 +3813,7 @@ The "returned" value of try expression with no finally is either the last expres
     ) {
         if (Boolean.TRUE.equals(bindingContext.get(BindingContext.EXHAUSTIVE_WHEN, expression))) {
             // when() is supposed to be exhaustive
-            throwNewException("kotlin/NoWhenBranchMatchedException");
+            genThrow(v, "kotlin/NoWhenBranchMatchedException", null);
         }
         else {
             // non-exhaustive when() with no else -> Unit must be expected
@@ -3852,23 +3853,6 @@ The "returned" value of try expression with no finally is either the last expres
             }
         }
         return false;
-    }
-
-    private void throwNewException(@NotNull String className) {
-        throwNewException(className, null);
-    }
-
-    private void throwNewException(@NotNull String className, @Nullable String message) {
-        v.anew(Type.getObjectType(className));
-        v.dup();
-        if (message != null) {
-            v.visitLdcInsn(message);
-            v.invokespecial(className, "<init>", "(Ljava/lang/String;)V", false);
-        }
-        else {
-            v.invokespecial(className, "<init>", "()V", false);
-        }
-        v.athrow();
     }
 
     private Call makeFakeCall(ReceiverValue initializerAsReceiver) {
