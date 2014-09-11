@@ -1,4 +1,4 @@
-package js
+package kotlin.js
 
 import js.library
 

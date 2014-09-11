@@ -41,7 +41,7 @@ import java.util.List;
 
 public final class TopDownAnalyzerFacadeForJS {
     public static final List<ImportPath> DEFAULT_IMPORTS = ImmutableList.of(
-            new ImportPath("js.*"),
+            new ImportPath("kotlin.js.*"),
             new ImportPath("java.lang.*"),
             new ImportPath("kotlin.*")
     );

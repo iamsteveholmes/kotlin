@@ -1,4 +1,4 @@
-package js.jquery.ui
+package jquery.ui
 
 
 //jquery UI

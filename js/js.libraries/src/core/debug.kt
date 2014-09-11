@@ -1,4 +1,4 @@
-package js.debug
+package kotlin.js
 
 import js.noImpl
 

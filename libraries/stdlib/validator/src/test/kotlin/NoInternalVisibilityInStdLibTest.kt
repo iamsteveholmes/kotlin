@@ -45,7 +45,7 @@ import org.jetbrains.k2js.analyze.TopDownAnalyzerFacadeForJS
 import com.intellij.openapi.Disposable
 
 // these lists are not designed to contain all packages, they need for sanity check in case test code breaks
-private val PACKAGES_SHOULD_BE_VALIDATED_FOR_JVM = listOf("kotlin", "kotlin.concurrent", "kotlin.jvm") map { FqName(it) }
+private val PACKAGES_SHOULD_BE_VALIDATED_FOR_JVM = listOf("kotlin", "kotlin.jvm", "kotlin.concurrent") map { FqName(it) }
 private val PACKAGES_SHOULD_BE_VALIDATED_FOR_JS = listOf("kotlin", "kotlin.js") map { FqName(it) }
 
 private val KOTLIN_ROOT_PATH = "../../../"

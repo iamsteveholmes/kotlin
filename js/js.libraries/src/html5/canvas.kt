@@ -1,4 +1,4 @@
-package js.dom.html5
+package kotlin.js.dom.html5
 
 import js.native
 import js.noImpl
