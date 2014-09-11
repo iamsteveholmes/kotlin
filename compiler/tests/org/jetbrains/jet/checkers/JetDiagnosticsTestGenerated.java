@@ -2127,6 +2127,12 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
                 doTest(fileName);
             }
             
+            @TestMetadata("noConstructor.kt")
+            public void testNoConstructor() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/dataClasses/noConstructor.kt");
+                doTest(fileName);
+            }
+            
             @TestMetadata("notADataClass.kt")
             public void testNotADataClass() throws Exception {
                 String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/dataClasses/notADataClass.kt");
@@ -2142,6 +2148,12 @@ public class JetDiagnosticsTestGenerated extends AbstractJetDiagnosticsTest {
             @TestMetadata("overrideInvisibleMember.kt")
             public void testOverrideInvisibleMember() throws Exception {
                 String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/dataClasses/overrideInvisibleMember.kt");
+                doTest(fileName);
+            }
+            
+            @TestMetadata("paramNameSameToField.kt")
+            public void testParamNameSameToField() throws Exception {
+                String fileName = JetTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/dataClasses/paramNameSameToField.kt");
                 doTest(fileName);
             }
             
