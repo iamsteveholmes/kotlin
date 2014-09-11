@@ -1,7 +1,5 @@
 package kotlin.js
 
-import js.library
-
 native public class Json() {
     public fun get(propertyName: String): Any? = js.noImpl
     public fun set(propertyName: String, value: Any?): Unit = js.noImpl

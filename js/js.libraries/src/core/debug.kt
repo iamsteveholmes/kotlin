@@ -1,7 +1,5 @@
 package kotlin.js
 
-import js.noImpl
-
 // https://developer.mozilla.org/en/DOM/console
 native public trait Console {
     native public fun dir(o: Any): Unit = noImpl

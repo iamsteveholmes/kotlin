@@ -1,7 +1,5 @@
 package kotlin.js;
 
-import js.native
-
 //TODO: declare using number
 native
 public class MathClass() {
