@@ -119,6 +119,11 @@ public final class JsAstUtils {
     }
 
     @NotNull
+    public static JsInvocation invokeKotlinFunction(@NotNull String name, @NotNull JsExpression... argument) {
+        return new JsInvocation(new JsNameRef(name, Namer.KOTLIN_OBJECT_REF), argument);
+    }
+
+    @NotNull
     public static JsExpression toInt32(@NotNull JsExpression expression, @NotNull TranslationContext context) {
         return new JsBinaryOperation(JsBinaryOperator.BIT_OR, expression, context.program().getNumberLiteral(0));
     }
@@ -147,7 +152,7 @@ public final class JsAstUtils {
     public static JsExpression rangeTo(@NotNull JsExpression rangeStart, @NotNull JsExpression rangeEnd) {
         JsNameRef expr = new JsNameRef("NumberRange", Namer.KOTLIN_NAME);
         JsNew numberRangeConstructorInvocation = new JsNew(expr);
-        JsAstUtils.setArguments(numberRangeConstructorInvocation, rangeStart, rangeEnd);
+        setArguments(numberRangeConstructorInvocation, rangeStart, rangeEnd);
         return numberRangeConstructorInvocation;
     }
 
