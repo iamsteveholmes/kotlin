@@ -22,20 +22,22 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.k2js.translate.context.Namer;
 import org.jetbrains.k2js.translate.context.TranslationContext;
 import org.jetbrains.k2js.translate.intrinsic.functions.patterns.DescriptorPredicate;
+import org.jetbrains.k2js.translate.intrinsic.functions.patterns.PatternBuilder;
 
 import java.util.List;
 
 import static org.jetbrains.k2js.translate.intrinsic.functions.patterns.PatternBuilder.pattern;
+import static org.jetbrains.k2js.translate.intrinsic.functions.patterns.PatternBuilder.Pattern.*;
 
 public class LongUtils {
     private LongUtils() {
     }
 
     @NotNull
-    public static final DescriptorPredicate LONG_EQUALS_ANY = pattern("Long.equals");
+    public static final DescriptorPredicate LONG_EQUALS_ANY = pattern(LONG.dot(EQUALS));
 
     @NotNull
-    public static final DescriptorPredicate FLOATING_POINT_COMPARE_TO_LONG = pattern("Double|Float.compareTo(Long)");
+    public static final DescriptorPredicate FLOATING_POINT_COMPARE_TO_LONG = pattern(DOUBLE.or(FLOAT).dot(COMPARE_TO).withArguments(LONG));
 
     @NotNull
     public static final DescriptorPredicate LONG_COMPARE_TO_FLOATING_POINT = pattern("Long.compareTo(Double|Float)");
@@ -51,7 +53,7 @@ public class LongUtils {
 
     @NotNull
     public static final DescriptorPredicate LONG_BINARY_LONG =
-            pattern("Long.compareTo|rangeTo|plus|minus|times|div|mod|and|or|xor(Long)");
+            pattern(LONG.dot(COMPARE_TO.or(RANGE_TO).or(PLUS).or(MINUS).or(TIMES).or(DIV).or(MOD).or(AND).or(OR).or(XOR)).withArguments(LONG));
 
     @NotNull
     public static final DescriptorPredicate LONG_UNARY = pattern("Long.plus|minus|inc|dec|inv()");

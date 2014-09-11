@@ -41,6 +41,71 @@ public final class PatternBuilder {
     private PatternBuilder() {
     }
 
+    public static class Pattern  {
+        @NotNull
+        public static final Pattern DOUBLE = new Pattern("Double");
+        @NotNull
+        public static final Pattern FLOAT = new Pattern("Float");
+        @NotNull
+        public static final Pattern LONG = new Pattern("Long");
+        @NotNull
+        public static final Pattern INT = new Pattern("Int");
+        @NotNull
+        public static final Pattern SHORT = new Pattern("Short");
+        @NotNull
+        public static final Pattern BYTE = new Pattern("Byte");
+        @NotNull
+        public static final Pattern EQUALS = new Pattern("equals");
+        @NotNull
+        public static final Pattern COMPARE_TO = new Pattern("compareTo");
+        @NotNull
+        public static final Pattern RANGE_TO = new Pattern("rangeTo");
+        @NotNull
+        public static final Pattern PLUS = new Pattern("plus");
+        @NotNull
+        public static final Pattern MINUS = new Pattern("minus");
+        @NotNull
+        public static final Pattern DIV = new Pattern("div");
+        @NotNull
+        public static final Pattern MOD = new Pattern("mod");
+        @NotNull
+        public static final Pattern TIMES = new Pattern("times");
+        @NotNull
+        public static final Pattern AND = new Pattern("and");
+        @NotNull
+        public static final Pattern OR = new Pattern("or");
+        @NotNull
+        public static final Pattern XOR = new Pattern("xor");
+
+        @NotNull
+        private final String value;
+
+        Pattern(@NotNull String value) {
+            this.value = value;
+        }
+
+        @Override
+        @NotNull
+        public String toString() {
+            return value;
+        }
+
+        @NotNull
+        public Pattern or(@NotNull Pattern other) {
+            return new Pattern(value + "|" + other);
+        }
+
+        @NotNull
+        public Pattern dot(@NotNull Pattern other) {
+            return new Pattern(value + "." + other);
+        }
+
+        @NotNull
+        public Pattern withArguments(@NotNull Pattern other) {
+            return new Pattern(value + "(" + other + ")");
+        }
+    }
+
     @NotNull
     public static DescriptorPredicate pattern(@NotNull NamePredicate checker, @NotNull String stringWithPattern) {
         List<NamePredicate> checkers = Lists.newArrayList(checker);
@@ -66,6 +131,11 @@ public final class PatternBuilder {
         String argumentsString = getArgumentsPatternFromString(string);
         List<NamePredicate> argumentCheckers = argumentsString != null ? parseStringAsArgumentCheckerList(argumentsString) : null;
         return pattern(checkers, argumentCheckers);
+    }
+
+    @NotNull
+    public static DescriptorPredicate pattern(@NotNull Pattern p) {
+        return pattern(p.toString());
     }
 
     @NotNull
