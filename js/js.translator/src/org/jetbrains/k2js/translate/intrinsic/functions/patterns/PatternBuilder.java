@@ -56,9 +56,7 @@ public final class PatternBuilder {
         String namePatternString = getNamePatternFromString(stringWithPattern);
         List<NamePredicate> checkers = Lists.newArrayList(parseStringAsCheckerList(namePatternString));
         checkers.add(checker);
-        String argumentsString = getArgumentsPatternFromString(stringWithPattern);
-        List<NamePredicate> argumentCheckers = argumentsString != null ? parseStringAsArgumentCheckerList(argumentsString) : null;
-        return pattern(checkers, argumentCheckers);
+        return pattern(checkers);
     }
 
     @NotNull

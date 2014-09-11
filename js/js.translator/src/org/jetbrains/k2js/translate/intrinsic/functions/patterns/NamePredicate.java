@@ -18,6 +18,7 @@ package org.jetbrains.k2js.translate.intrinsic.functions.patterns;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.intellij.openapi.util.Condition;
 import com.intellij.util.Function;
 import com.intellij.util.containers.ContainerUtil;
@@ -29,6 +30,7 @@ import org.jetbrains.jet.lang.types.lang.PrimitiveType;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public final class NamePredicate implements Predicate<Name> {
 
@@ -62,10 +64,10 @@ public final class NamePredicate implements Predicate<Name> {
     public static final NamePredicate STRING = new NamePredicate("String");
 
     @NotNull
-    public static final NamePredicate LONG = new NamePredicate("Long");
+    public static final NamePredicate LONG = new NamePredicate(PrimitiveType.LONG.getTypeName());
 
     @NotNull
-    private final List<Name> validNames = Lists.newArrayList();
+    private final Set<Name> validNames = Sets.newHashSet();
 
     public NamePredicate(@NotNull String... validNames) {
         this(Arrays.asList(validNames));
@@ -87,14 +89,6 @@ public final class NamePredicate implements Predicate<Name> {
 
     @Override
     public boolean apply(@Nullable Name name) {
-        if (name == null) {
-            return false;
-        }
-        for (Name validName : validNames) {
-            if (name.equals(validName)) {
-                return true;
-            }
-        }
-        return false;
+        return name != null && validNames.contains(name);
     }
 }
